@@ -1,0 +1,232 @@
+:root{
+    /* Main colors */
+    --primary-color: #fcd201;
+    --secondary-color: #498dd2;
+    --secondary-color-dark: #2851a3;
+    --accent-color: #ffffff; 
+    --text-color: #000000;
+
+    /* Breakpoints */
+    --small-tablet: 600px;
+    --large-tablet: 768px;
+    --medium-screen: 992px;
+
+    /* Margins / Gutters */
+    --margin-width: 1em; 
+    --margin-width-smaller: .5em;
+    --margin-width-larger: 1.5em;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+/* Layout / Main Sections */
+body{
+    background-color: var(--primary-color);
+    margin: 0 auto;
+    font-family: 'Open Sans', sans-serif;
+}
+
+header{
+    text-align: center;
+    margin-bottom: -15%;
+    overflow: hidden;
+}
+
+main{
+    background-color: var(--accent-color);
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+
+main > * {
+    flex: 1 100%;
+    margin: var(--margin-width);
+    text-align: justify; 
+    align-self: flex-start;
+}
+
+footer{
+    padding: auto;
+    background-color: var(--secondary-color-dark);
+    color: var(--accent-color); 
+    line-height: 3em;
+    text-align: center;
+}
+
+/* Subsections */
+nav {     
+    display: inline-flex;
+    justify-content: center; 
+    flex-wrap: wrap;
+    margin: 0;
+    text-align: right; /* Set #hamburger-menu-link alignment */
+    border-top: 1px solid var(--accent-color);
+    border-bottom: 2px dashed var(--accent-color);
+}
+
+article{
+    flex: 3 0px;
+}
+
+aside{   
+    padding: 1em 1.5em;
+}
+
+/* Content */
+header img{
+    width: 100%;
+}
+
+figure{
+    margin: var(--margin-width);
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+figcaption{
+    width: 100%;
+    padding: .25rem;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+figcaption > span{
+    font-size: small;
+    font-style: italic;
+}
+
+.gallery{
+    width: 100%;
+    display: inline-flex; 
+    justify-content: space-between;
+}
+
+.img-wrapper{  
+    width: 180px; /* large-tablet: 225px, medium-screen+: 200;  */
+    height: 180px;
+    border: 1px solid var(--text-color);
+    overflow: hidden;
+}
+
+.gallery img{
+    width: 100%;
+}
+
+.aside-figure img{
+    width: auto;
+    height: 200px;
+    max-height: 250px;
+    border: 1px solid var(--accent-color);
+}
+
+/* Headings / Links */
+h1{
+    font-size: 2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--primary-color);
+    margin-top: var(--margin-width-smaller);
+}
+
+h2{
+    width: 100%;
+    margin: 0;
+    padding: .5rem;
+    font-size: 2em; 
+    font-weight: bold;
+    font-style: italic;
+    border-bottom: 1px solid var(--accent-color);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: .3s ease-in;
+}
+
+.content-blue{
+    background-color: var(--secondary-color);
+    color: var(--accent-color);
+    font-weight: normal;
+}
+
+/* Navigation */
+nav a { 
+    padding: 1.25em;
+}
+
+.nav-link{
+    display: none;
+    flex: 1 100%;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#hamburger-menu-link{
+    flex: 1 100%;
+    display: block;
+    order: -1;
+}
+  
+#hamburger-menu-link:after{
+    font-family: "FontAwesome";
+    content: "\f0c9";
+}
+#hamburger-menu-link.trigger-close:after{
+    content: "\f00d";
+    font-size:  1.125em;
+  }
+  
+.nav-link:hover{
+    background-color: var(--primary-color);
+}
+
+#hamburger-menu-link:hover:after{
+    color: var(--primary-color);
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {    
+    :root{
+        --margin-width: var(--margin-width-larger);
+    }
+    aside{
+        width: calc(100%/3);
+        flex: 1 0px;
+        align-self: center;
+    }
+    .img-wrapper{
+        width: 225px; height: 225px;   
+    }    
+    nav a{
+        font-size: inherit;
+    }
+    .nav-link{
+        flex: 0 auto;
+        display: block;
+    } 
+    #hamburger-menu-link{
+        display: none;
+    }
+}
+ 
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) { 
+    .aside-figure img{
+        height: 250px;
+    } 
+    .img-wrapper{
+        width: 200px; height: 200px;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    body{
+        width: var(--medium-screen);
+    }
+}
