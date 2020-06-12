@@ -1,0 +1,140 @@
+/* mon commentaire */
+:root{
+    /* Main colors */
+    --primary-color: #fcd201;
+    --secondary-color: #498dd2;
+    --secondary-color-dark: #2851a3;
+    --accent-color: #ffffff; 
+}
+
+body{
+    background-color: var(--primary-color);
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+}
+
+a{   
+    color: inherit;
+}
+
+header, nav, aside, footer{
+    background-color: var(--secondary-color);
+}
+
+header>h2, footer>p{
+    margin: 0;
+    padding: 1em 0;
+}
+
+header h2{
+    font-style: italic;
+    border-bottom: 1px solid var(--accent-color);
+}
+
+.text-white{
+    color: #fff;
+}
+
+.text-center{
+    text-align: center;
+}
+
+#wrapper{
+    margin: auto;
+    max-width: 900px;
+    background-color: #fff;
+}
+
+#banner{
+    margin: 0;
+    height: 350px;
+    overflow: hidden;
+}
+#banner>img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+main{
+    padding: 2em 1em;
+}
+main, article{
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+nav{
+    flex: 1 100%;   
+    margin: -2em -1em 2em;
+    border-top: 1px solid var(--accent-color);
+    border-bottom: 2px dashed var(--accent-color);
+}
+article{
+    flex: 4;
+}
+article h1{
+    font-size: 2em;
+    text-transform: uppercase;
+    color: var(--primary-color);
+}
+section{
+    flex: 2;
+    margin: 0 1em;
+    text-align: justify;
+}
+
+#gallery{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.img-wrapper{
+    flex: 1 auto;
+    max-width: 180px;
+    height: 180px;
+    overflow: hidden;
+    border: 1px solid #000000;
+}
+.img-wrapper>img{
+    width: 100%;
+    object-fit: cover;
+}
+aside{
+    flex: 1;
+}
+aside>figure{
+    margin: 1em;
+    text-align: center;
+}
+aside>figure>img{
+    margin: 0 1em;
+    width: 100px;
+}
+aside>figure p{
+    text-align: justify;
+}
+aside>figure h4{
+    font-weight: normal;
+    font-style: italic;
+    font-size: small;
+}
+nav ul{
+    list-style: none;
+    margin-block-start: 1.5em;
+    margin-block-end: 1.5em;
+    padding-left: 0;
+    display: inline-flex;
+    justify-content: center;
+}
+
+nav ul li{   
+    text-transform: uppercase;
+    padding: 0 1em;
+}
+
+a{
+    text-decoration: none;
+}
+footer{
+    background-color: var(--secondary-color-dark);
+}
