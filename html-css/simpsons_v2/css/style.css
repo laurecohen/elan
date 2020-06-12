@@ -1,4 +1,4 @@
-/* mon commentaire */
+/* v2 Correction */
 :root{
     /* Main colors */
     --primary-color: #fcd201;
@@ -108,7 +108,8 @@ aside>figure{
 }
 aside>figure>img{
     margin: 0 1em;
-    width: 100px;
+    width: 200px;
+    border: 1px solid var(--accent-color);
 }
 aside>figure p{
     text-align: justify;
