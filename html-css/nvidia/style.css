@@ -1,7 +1,135 @@
+:root{
+    --branding-color: #76B900;
+    --branding-color--darker: #558600;;
+    --accent-color: #ffffff;
+    --text-color: #000000;
+}
+
 *{
     box-sizing: border-box;
 }
 
-body{
+body {
     margin: 0;
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-color);
+}
+
+.site-wrapper{
+    margin: 0 1em; /* --> Media queries */
+}
+
+header{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.site-branding{
+    flex: 1 unset;
+    height: 6rem; /* Fix nav-links --> burger */
+    padding: .5em;
+}
+
+.site-branding_link > img{
+    height: 100%;
+}
+
+.main-nav{
+    flex: 1 auto;
+    display: flex;
+    justify-content: center;
+}
+.main-nav > a{
+    padding: 1em 2em;
+    align-self: flex-end;
+    font-size: .875em; /* 14px */
+    color: inherit;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+/* Advertising */
+.ad-figure{ 
+    position: relative;
+    margin: 0;
+    background: linear-gradient(18deg, #76B900, #1e1e1e, #000000);
+    color: var(--accent-color);
+    text-align: center;
+}
+
+.ad-figure > img{
+    padding: 3em;
+}
+
+.ad-figure > figcaption {
+    background-color: rgba(0, 78, 56, .5);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: left;
+    line-height: 2em;
+    padding: 1em;
+}
+
+img{
+    max-width: 100%; /* fix */
+}
+
+figcaption > a {
+    float: left; /* Float left setting for small handset */
+}
+
+figcaption > a:after{
+    font-family: 'Fontawesome';
+    content: "\f0da";
+    margin-left: .5em;
+}
+
+.button {
+    background-color: var(--branding-color);
+    color: var(--accent-color);
+    letter-spacing: 1px;
+    text-decoration: none;
+    padding: 0 1em;
+    border-radius: .5em;
+}
+.button:hover{
+    background-color: var(--branding-color--darker);
+}
+
+h2{
+    text-transform: uppercase;
+}
+
+article{
+    display: flex;
+    justify-content: space-between;
+    text-align: justify;
+    padding: 1em 0;
+}
+.content-wrapper{
+    flex: 2 auto;
+    margin-right: 1em;
+}
+aside{
+    background-color: var(--branding-color);
+    color: var(--accent-color);
+    padding: 1em;
+    flex: 1 auto;
+}
+
+@media only screen and (min-width: 600px){
+    figcaption > a {
+        float: right;
+    }
+}
+
+@media only screen and (min-width: 1200px){
+    .site-wrapper{
+        max-width: 65vw;
+        margin: 0 auto;
+    }
 }
