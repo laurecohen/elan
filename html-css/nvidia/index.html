@@ -32,7 +32,7 @@
             </figure>
             <article class="main-content">
                 <div class="content-wrapper">
-                    <h2 id="test">La puissance, tout simplement</h2>
+                    <h2 class="decorated-title">La puissance, tout simplement</h2>
                     <p>
                         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus provident eum officiis labore
                         inventore laboriosam, reprehenderit impedit aperiam iste, sunt dolores beatae soluta. Hic odit quod
@@ -75,10 +75,10 @@
                 </aside>
             </article>
         </main>
-        <footer>
+        <footer class="site-footer">
             <section>
                 <h3>Newsletter</h3>
-                <form action="#">
+                <form class="section-content newsletter-form" action="#">
                     <div>
                         <label for="name" class="sr-only focus-only">Votre nom</label>
                         <input type="text" name="name" id="name" placeholder="Nom" required>
@@ -88,27 +88,28 @@
                         <input type="email" name="email" id="email" placeholder="Email" required>
                     </div>
                     <div>
-                        <button type="submit" aria-label="S'inscrire à la newsletter">S'inscrire</button>
+                        <input class="button" type="button" value="S'inscrire" aria-label="S'inscrire à la newsletter">
                     </div>
                 </form>
             </section>
             <section>
                 <h3>Galerie</h3>
-                <div class="thumbnail-wrapper"><img src="./img/U4lxVYEw_400x400.png" alt="Texte alternatif vignette 1"
-                        onclick=""></div>
-                <div class="thumbnail-wrapper"><img src="./img/40488302471_21d60f0342_b.jpg"
-                        alt="Texte alternatif vignette 2" onclick=""></div>
-                <div class="thumbnail-wrapper"><img src="./img/computer-5268574_960_720.jpg"
-                        alt="Texte alternatif vignette 3" onclick=""></div>
-                <div class="thumbnail-wrapper"><img src="./img/nvidia-1692796_960_720.jpg" alt="Texte alternatif vignette 4"
-                        onclick=""></div>
+                <div class="section-content">
+                    <a href="" class="thumbnail gallery"><img src="./img/U4lxVYEw_400x400.png" alt="Texte alternatif vignette 1" onclick=""></a>
+                    <a href="" class="thumbnail gallery"><img src="./img/40488302471_21d60f0342_b.jpg" alt="Texte alternatif vignette 2" onclick=""></a>
+                    <a href="" class="thumbnail gallery"><img src="./img/computer-5268574_960_720.jpg" alt="Texte alternatif vignette 3" onclick=""></a>
+                    <a href="" class="thumbnail gallery"><img src="./img/nvidia-1692796_960_720.jpg" alt="Texte alternatif vignette 4" onclick=""></a>
+                </div>
             </section>
             <section>
                 <h3>Partenaires</h3>
-                <img src="./img/U4lxVYEw_400x400.png" class="partners-logo" alt="Logotype du partenaire x">
-                <img src="./img/U4lxVYEw_400x400.png" class="partners-logo" alt="Logotype du partenaire y">
-                <img src="./img/U4lxVYEw_400x400.png" class="partners-logo" alt="Logotype du partenaire z">
+                    <div class="section-content">
+                        <a href="" class="thumbnail partenaires"><img src="./img/Intel-logo.svg" alt="Logo Intel"></a>
+                        <a href="" class="thumbnail partenaires"><img src="./img/asus-logo-1.png" alt="Logo Asus"></a>
+                        <a href="" class="thumbnail partenaires"><img src="./img/600px-Electronic-Arts-Logo.png" alt="Logo Electronics Arts"></a>
+                    </div>
             </section>
+            <a href="" class="scroll-top_link" aria-label="Scroll Back to top"></a>
         </footer>
     </div>
 </body>
