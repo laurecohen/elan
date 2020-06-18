@@ -1,6 +1,7 @@
 :root{
+    /* Main colors */
     --branding-color: #76B900;
-    --branding-color--darker: #558600;;
+    --branding-color--darker: #558600; /* 10% darker */
     --accent-color: #ffffff;
     --text-color: #000000;
 }
@@ -19,12 +20,17 @@ body {
     margin: 0 1em; /* --> Media queries */
 }
 
-header{
+.site-header{
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
 }
 
+img{
+    max-width: 100%; /* Quickfix for gallery img --> TO BE DELETED */
+}
+
+/* Header: Branding / Main Navigation */
 .site-branding{
     flex: 1 unset;
     height: 6rem; /* Fix nav-links --> burger */
@@ -40,49 +46,43 @@ header{
     display: flex;
     justify-content: center;
 }
+
 .main-nav > a{
-    padding: 1em 2em;
     align-self: flex-end;
-    font-size: .875em; /* 14px */
+    padding: 1em 2em;   
+    font-size: .875em; /* 16 * 0.075 = 14px */
     color: inherit;
     font-weight: bold;
     text-transform: uppercase;
     text-decoration: none;
 }
 
-/* Advertising */
+/* Advertising Figure */
 .ad-figure{ 
-    position: relative;
     margin: 0;
-    background: linear-gradient(18deg, #76B900, #1e1e1e, #000000);
-    color: var(--accent-color);
-    text-align: center;
-}
-
-.ad-figure > img{
     padding: 3em;
+    position: relative;   
+    background: linear-gradient(18deg, #76B900, #1e1e1e, #000000);
+    text-align: center; /* Center all child elements */
+    color: var(--accent-color);
 }
 
 .ad-figure > figcaption {
-    background-color: rgba(0, 78, 56, .5);
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    text-align: left;
+    background-color: rgba(0, 78, 56, .5);
+    text-align: left; /* Override text-align:center   */
     line-height: 2em;
     padding: 1em;
 }
 
-img{
-    max-width: 100%; /* fix */
+.ad-figure > figcaption a {
+    float: left; /* Small-handset Setting */
 }
 
-figcaption > a {
-    float: left; /* Float left setting for small handset */
-}
-
-figcaption > a:after{
+.ad-figure > figcaption a:after{
     font-family: 'Fontawesome';
     content: "\f0da";
     margin-left: .5em;
@@ -100,36 +100,99 @@ figcaption > a:after{
     background-color: var(--branding-color--darker);
 }
 
+/* Main Content */
 h2{
     text-transform: uppercase;
 }
 
-article{
+.main-content{
     display: flex;
     justify-content: space-between;
     text-align: justify;
     padding: 1em 0;
 }
+
 .content-wrapper{
     flex: 2 auto;
-    margin-right: 1em;
+    margin-right: 1em; /* Mq:small-tablet */
 }
-aside{
+
+.main-content--aside{
     background-color: var(--branding-color);
     color: var(--accent-color);
     padding: 1em;
     flex: 1 auto;
 }
 
+.main-content--aside h2{
+    text-align: center;
+}
+
+.main-content--aside img{
+    mix-blend-mode: lighten; /* Flatten img bg */
+    max-height: 150px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.social-nav{
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    text-align: center;
+}
+
+.social-nav li{
+    flex: 1 auto;
+    vertical-align: bottom;
+}
+
+.social-nav .fab {
+    color: var(--accent-color);
+    font-size: 1.75em;
+    transition: all .5s ease-out;
+    padding: .25em .5em; /* Easier to reach */
+}
+
+.fa-facebook-f:hover{
+    color: #3b5998;
+    transition: all .3s ease-out;
+}
+
+.fa-twitter:hover{
+    color: #00aced;
+}
+
+.fa-instagram:hover{
+    background: radial-gradient(circle at 33% 100%, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.fa-snapchat-ghost:hover{
+    color: #fffc00;
+}
+
+.fa-linkedin-in:hover{
+    color: #0e76a8;
+}
+
+/*  */
 @media only screen and (min-width: 600px){
-    figcaption > a {
+    .ad-figure > figcaption a {
         float: right;
     }
 }
 
+/*  */
 @media only screen and (min-width: 1200px){
     .site-wrapper{
-        max-width: 65vw;
+        max-width: 75vw;
         margin: 0 auto;
     }
 }
