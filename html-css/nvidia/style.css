@@ -182,6 +182,11 @@ p{
     text-align: center;
 }
 
+.main-content--aside p{
+    text-align: justify;
+    font-size: .9em;
+}
+
 .main-content--aside img{
     mix-blend-mode: lighten; /* Flatten img bg */
     max-height: 180px;
@@ -371,11 +376,11 @@ input[type="button"]{ /* Overriding Default Style */
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px){
     .site-wrapper{
-        max-width: 1280px; /* Debug value */
+        max-width: 1220px; /* Debug value */
         margin: 0 auto;
     }
 
     .main-content {
-        margin: 0 2em;
+        margin: 0;
     }
 }
