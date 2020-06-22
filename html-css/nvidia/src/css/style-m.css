@@ -1,0 +1,77 @@
+/* Medium devices (tablets, 768px and up) */
+@media only screen and (min-width: 768px){
+    body{
+        font-size: 1em; /*Margin*/
+    }
+
+    h2{
+        font-size: 2em;
+        line-height: 1.5;
+    }
+
+    /* Header: Branding / Main Navigation */
+    .site-header{
+        flex-wrap: nowrap;
+    }
+
+    .site-branding{
+        flex: 0 0 auto;
+    }
+
+    #hamburger{
+        display: none;
+    }
+
+    .main-nav{
+        background-color: inherit;
+        margin-bottom: 0;       
+        display: flex;
+        align-items: stretch;
+    }
+    .main-nav, .main-nav > .nav_link{
+        border: 0;
+    }
+
+    .main-nav > .nav_link{
+        display: flex;
+        align-items: center;
+        background-color: inherit;
+        padding: 0 1rem;
+        color: var(--branding-color); 
+        text-transform: uppercase; 
+    }
+
+    .main-nav > .nav_link:hover, .main-nav > .nav_link:active, .main-nav > .nav_link:focus{
+        background-color: var(--secondary-bg-color);
+        color: var(--branding-color--brighter);
+    }
+
+    /* Advertising Figure */
+    .ad-figure > figcaption {
+        padding: .5em 1em;
+        font-size: 1em;
+        align-items: center;
+    }
+
+    .ad-figure > figcaption a{
+        margin-top: 0;
+    }
+
+    .mg-right{
+        margin-right: 2em;
+    }
+
+    /* Main Content: Article > Aside */
+    .main-content{
+        flex-wrap: nowrap;
+    }
+
+    .content-wrapper{
+        padding: 0 var(--margin);
+    }
+
+    .site-footer{
+        padding: 0 var(--margin);
+    }
+    
+}
