@@ -55,6 +55,6 @@ class Real{
     public function __toString()
     {
         return "Le réalisateur s'appelle ".$this->getPrenom()." ".$this->getNom().
-        " et a ".$this->getAge()."ans";
+        " et a ".$this->getAge()." ans.<br>";
     }
 }
