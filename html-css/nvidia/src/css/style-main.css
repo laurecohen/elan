@@ -39,6 +39,10 @@ img{
     max-width: 100%;
 }
 
+.fas {
+    font-size: 1.5em;
+}
+
 /* Header: Branding / Main Navigation */
 .site-header{
     display: flex;
@@ -70,7 +74,7 @@ img{
 .main-nav{
     display: none;
     background-color: var(--secondary-bg-color);
-    flex: 1 auto;       
+    flex: 1 100%;      
     border: 1px solid var(--border-color);
     margin-bottom: 1.5em; 
     position: relative;  
@@ -100,20 +104,22 @@ img{
     color: var(--branding-color);
 }
 
-#hamburger{
+.toggle{
     display: block;
-    background: url(../svg/bars-solid.svg) no-repeat right;
-    background-size: 20px;
-    margin-right: .5em;
 }
 
-#hamburger.close{
-    background: url(../svg/times-solid.svg) no-repeat right;
-    background-size: 20px;
+.cta.fa-bars{
+    display: block;
 }
+.cta.fa-minus{
+    display: none;
+}
+
+/* 
+#hamburger.close{} */
 
 .btn-nav:hover{
-    background-color: var(--secondary-bg-color);
+    background-color: var(--border-color);
     color: var(--branding-color--brighter);
 }
 
@@ -133,13 +139,13 @@ img{
 
 .ad-figure > figcaption {
     background-color: rgba(118, 209, 0, .2);
-    padding: 1em;
+    padding: var(--margin);
     font-size: .875em;
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    display: inline-flex;
+    display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
@@ -147,6 +153,10 @@ img{
 .ad-figure > figcaption a{
     flex: 1 100%;
     margin-top: .5em;
+}
+
+.fa-caret-right {
+    font-size: 100%;
 }
 
 /*  */
@@ -190,14 +200,15 @@ img{
 }
 
 .main-content--aside{
-    background-color: var(--border-color);
+    background-color: var(--secondary-bg-color);
+    border: 1px solid var(--border-color);
     flex: 1 auto;
     padding: 0 var(--margin) var(--margin);
     margin-bottom: calc(var(--margin)  * 2);
-    font-size: .875rem;
+    font-size: .875em;
     line-height: 1.25;
     color: inherit;
-    text-align: left;
+    text-align: center;
 }
 
 .main-content--aside img{
@@ -213,34 +224,59 @@ img{
     padding-left: 0;
     margin-bottom: 0;
     margin-top: 2em;
-    display: inline-flex;
+    display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    background-color: bisque;
+    justify-content: flex-start;
 }
 
 .social-nav li{
-    flex: 1;
-    margin-right: .5em;
+    flex: 1 1 0;
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    margin: .25em;
+    padding: 1em .5em .5em;
+    border-radius: .2em;
+    text-align: center;
 }
 
-.social-nav .svg-inline--fa {
-    border-radius: .08rem;
-    padding: .5em;
-    object-fit: contain;
-    transition: all .5s ease-out;
-    background: #DB6E82;
-    width: 36px; 
-    height: 36px;
+.social-nav li:hover{
+    background-color: var(--border-color);
 }
 
-.social-nav .btn-social:hover > .svg-inline--fa{
-    background-color: var(--secondary-bg-color);
-    object-fit: cover;
+.fa-facebook-f{
+    color: #3b5998;
 }
 
-.social-nav .btn-social:hover > .svg-inline--fa path{
-    fill: var(--branding-color--brighter);   
+.fa-twitter{
+    color: #00aced;
+}
+
+.fa-instagram{
+    background: radial-gradient(circle at 33% 100%, #FED373 4%, #F15245 30%, #D92E7F 62%, #9B36B7 85%, #515ECF);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.fa-snapchat-ghost{
+    color: #fffc00;
+}
+
+.fa-linkedin-in{
+    color: #0e76a8;
+}
+
+.fab::after{
+    content: attr(data-name);
+    display: block;
+    font-family: "Roboto", Helvetica, sans-serif;
+    font-size: small;
+    color: var(--text-color);
+    margin-top: 5px;
+}
+
+.social-nav li:hover .fab{
+    color: var(--branding-color--brighter);
 }
 
 /* Footer */
@@ -260,7 +296,6 @@ img{
 .section-content{
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
     align-items: center;
     background-color: var(--secondary-bg-color);
     padding: .25em;
@@ -275,7 +310,8 @@ img{
     text-align: right;
 }
 
-.sr-only{
+/* If not FA link */
+/* .sr-only{
     position: absolute;
     width: 1px;
     height: 1px;
@@ -285,7 +321,7 @@ img{
     clip-path: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
-}
+} */
 
 input[type="text"], 
 input[type="email"], 
@@ -323,31 +359,24 @@ input[type="button"]{ /* Overriding Default Style */
     object-fit: contain;
 }
 
-/* Back to top Link */
+/* Scroll back to top */
 .scroll-top_link{
-    width: 3em; height: 3em;
     position: absolute;
-    bottom: calc(100% - 1.5em);
-    left: calc(50% - 1.5em);
-    border-radius: 1.5em;
-    background-color: var(--main-bg-color);
-    border: 1px solid var(--border-color);
-    text-align: center;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0;
+    font-size: 1em;
 }
-
-.scroll-top_link > svg{
-    width: 20px; height: 20px;
-    transform: translateY(50%);
+.scroll-top_link .fa-angle-double-up{
+    color: var(--branding-color);
 }
-
-.scroll-top_link path{
-    fill: var(--branding-color);
+.scroll-top_link .fa-circle{
+    color: var(--main-bg-color);
 }
-
-.scroll-top_link:hover{
-    background-color: var(--secondary-bg-color);   
+.scroll-top_link:hover .fa-circle{
+    color: var(--border-color);
 }
-
-.scroll-top_link:hover path{
-    fill: var(--branding-color--brighter);
+.scroll-top_link:hover .fa-angle-double-up{
+    color: var(--branding-color--brighter);
 }

@@ -1,9 +1,12 @@
 $(function() {
-    $('#hamburger').click(function() {
-        $('#hamburger').toggleClass('close');
+    // Toggle Function
+    $('.toggle').click(function(){
+        // Switch cta
+        $('.cta').toggle();
+        // Expand nav
         $('.main-nav').animate({
             height: "toggle",
             opacity: "toggle"
-        }, 400, "swing");
+          }, "fast", "swing");
     });
 });
