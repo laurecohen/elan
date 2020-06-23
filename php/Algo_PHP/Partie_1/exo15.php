@@ -8,7 +8,7 @@ Alice DUCHEMIN a … ans */
 Class Personne{
     private $_nom;
     private $_prenom;
-    private $_date;
+    private $_birthdate;
     private $_age;
 
     public function __construct($nom, $_prenom, $_birthdate){

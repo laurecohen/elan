@@ -1,0 +1,10 @@
+Film : titre, date de sortie, duree (en min), synopsis, genre
+Genre : nom du genre
+
+ 
+
+Affichage :
+
+ 
+
+"Le film [titre] sorti le [date au format jj/mm/aaaa] dure [HH:MM] et appartient au genre : [genre]"
