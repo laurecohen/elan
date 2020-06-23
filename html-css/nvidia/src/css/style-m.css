@@ -85,19 +85,12 @@
     }
 
     /* Footer */
-    .site-footer > section {
-        flex: 1;
-        margin-right: 1rem;
+    .site-footer > section{
+        flex: 1 0 0;
     }
-    .site-footer > section:last-of-type {
-        margin-right: 0;
-    }
-
-    .section-content > .thumbnail{
+    
+    .site-footer > .section-small{
         flex: 1 auto;
     }
-    .thumbnail > img{
-        width: 100px;
-        height: 100px;
-    }
+    
 }
