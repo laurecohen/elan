@@ -1,0 +1,96 @@
+/* Medium devices (tablets, 768px and up) --> IPad */
+@media only screen and (min-width: 768px){
+    body{
+        font-size: 1em; /*Margin*/
+    }
+    h2{
+        font-size: 2em;
+        line-height: 1.5;
+    }
+
+    /* Header: Branding / Main Navigation */
+    .site-header{
+        flex-wrap: nowrap;
+    }
+    .toggle{
+        display: none;
+    }
+    .main-nav{
+        background-color: inherit;
+        margin-bottom: 0;       
+        display: flex;
+        align-items: stretch;
+    }
+    .main-nav, .main-nav > .nav_link{
+        border: 0;
+    }
+    .main-nav > .nav_link{
+        display: flex;
+        align-items: center;
+        background-color: inherit;
+        padding: 0 .5em;
+        color: var(--branding-color); 
+        text-transform: uppercase; 
+    }
+    .main-nav > .nav_link:hover, .main-nav > .nav_link:active, .main-nav > .nav_link:focus{
+        color: var(--branding-color--brighter);
+    }
+
+    /* Advertising Figure */
+    .ad-figure > figcaption {
+        padding: 1em;
+        font-size: 1em;
+        align-items: center;
+    }
+    .ad-figure > figcaption a{
+        flex: 0 1 auto;
+        margin: 0 0 0 1em;
+    }
+
+    /* Main Content: Article > Aside */
+    .content-wrapper{
+        margin-top: 0;
+    }
+    .main-content--aside{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+    .main-content--aside > div, .main-content--aside > ul{
+        flex: 1;
+    }
+    .main-content--aside > div{
+        flex: 2;
+    }
+
+    /* Social Navigation */
+    .social-nav{
+        margin-top: 0;
+        margin-left: var(--margin);
+        align-self: center;
+    }
+    .social-nav li{
+        flex: 1 100%;
+        margin: 0 0 .5em 0;
+        padding: .5em;
+        border-radius: .2em;
+        text-align: center;
+    }
+    .social-nav li:last-child{
+        margin-bottom: 0;
+    }
+    .fab::after{
+        display: inline;
+        margin-left: 1em;
+    }
+
+    /* Footer */
+    .site-footer > section{
+        flex: 1 0 0;
+    }
+    
+    .site-footer > .section-small{
+        flex: 1 auto;
+    }
+    
+}

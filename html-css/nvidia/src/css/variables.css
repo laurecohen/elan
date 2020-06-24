@@ -1,0 +1,24 @@
+:root{
+    /* Main colors */
+    --branding-color: #76b900;
+    --branding-color--darker: #558600;
+    --branding-color--brighter: #76d300;
+    --accent-color: #ffffff;
+    --text-color: #c7c7c7;
+    --main-bg-color: #141e24;
+    --secondary-bg-color: #122831;
+    --border-color: #326b83;
+
+
+    /* Margin / Gutter / Width */  
+    --margin: 1em;
+
+    --img-gradient: linear-gradient(to top right, var(--secondary-bg-color), var(--text-color));
+    --logo-gradient: linear-gradient(to bottom, var(--branding-color), transparent);
+}
+
+@media only screen and (min-width: 720px){
+    :root{
+        --margin: 2em;
+    }
+}

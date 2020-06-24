@@ -1,0 +1,11 @@
+/* Extra large devices (large desktops, 1200px and up) */
+
+/* Virer main > .content-wrapper margin */
+
+
+@media only screen and (min-width: 1200px){
+    .site-wrapper{
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}

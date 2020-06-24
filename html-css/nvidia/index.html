@@ -1,12 +1,20 @@
 <!DOCTYPE html>
-<html lang="zxx"><!-- Lorem ipsum text -->
+<html lang="zxx">
+<!-- Lorem ipsum text -->
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/1da4725731.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./src/css/variables.css">
+    <link rel="stylesheet" href="./src/css/style-main.css">
+    <link rel="stylesheet" href="./src/css/style-s.css">
+    <link rel="stylesheet" href="./src/css/style-m.css">
+    <link rel="stylesheet" href="./src/css/style-lg.css">
+    <link rel="stylesheet" href="./src/css/style-xl.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
     <title>Nvidia - Accueil</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="script.js"></script>
 </head>
 
 <body>
@@ -14,102 +22,141 @@
         <header class="site-header">
             <div class="site-branding">
                 <a class="site-branding_link" href="" aria-label="Nvidia - Aller à l'accueil">
-                    <img src="./img/logo.png" alt="Logo de Nvidia">
+                    <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 366 146.4" role="img">
+                        <title>Artificial Intelligence Computing Leadership from NVIDIA</title>
+                        <path id="XMLID_21_" class="brand-icon"
+                            d="M38.2,62.5v-6.1c0.6,0,1.2-0.1,1.8-0.1c16.6-0.5,27.5,14.3,27.5,14.3S55.7,87,43.1,87
+                        c-1.8,0-3.4-0.3-4.9-0.8V67.8c6.5,0.8,7.8,3.6,11.7,10.1l8.7-7.3c0,0-6.3-8.3-17-8.3C40.3,62.3,39.2,62.4,38.2,62.5 M38.2,42.5v9.1
+                        c0.6,0,1.2-0.1,1.8-0.1c23.1-0.8,38.2,19,38.2,19s-17.3,21-35.3,21c-1.7,0-3.2-0.2-4.7-0.4v5.6c1.2,0.2,2.5,0.3,3.9,0.3
+                        c16.8,0,28.9-8.6,40.7-18.7c1.9,1.6,9.9,5.4,11.6,7c-11.2,9.3-37.2,16.9-52,16.9c-1.4,0-2.8-0.1-4.1-0.2v7.9h63.8V42.6L38.2,42.5
+                        L38.2,42.5z M38.2,86.2V91c-15.5-2.8-19.8-18.9-19.8-18.9s7.4-8.3,19.8-9.6v5.3l0,0c-6.5-0.8-11.6,5.3-11.6,5.3S29.4,83.3,38.2,86.2
+                        M10.7,71.4c0,0,9.2-13.6,27.6-15v-4.9C17.9,53.1,0.3,70.4,0.3,70.4s10,28.8,37.9,31.5v-5.2C17.7,94,10.7,71.4,10.7,71.4z" />
+                        <path id="XMLID_16_" d="M216.8,55.2v44.2h12.5V55.2L216.8,55.2z M118.6,55.1v44.2h12.6V65h9.8c3.2,0,5.5,0.8,7,2.4
+                        c2,2.1,2.8,5.5,2.8,11.7v20.2h12.2V74.9c0-17.4-11.1-19.8-22-19.8L118.6,55.1L118.6,55.1z M236.9,55.2v44.2h20.2
+                        c10.8,0,14.3-1.8,18.1-5.8c2.7-2.8,4.4-9,4.4-15.8c0-6.2-1.5-11.7-4-15.2c-4.6-6.2-11.3-7.4-21.2-7.4L236.9,55.2L236.9,55.2z
+                        M249.2,64.8h5.4c7.8,0,12.8,3.5,12.8,12.6c0,9.1-5,12.6-12.8,12.6h-5.4V64.8z M198.9,55.2l-10.4,35l-10-35H165l14.2,44.2h18
+                        l14.4-44.2L198.9,55.2L198.9,55.2z M285.5,99.3H298V55.1h-12.5V99.3z M320.5,55.2l-17.4,44.1h12.3l2.8-7.8h20.6l2.6,7.8h13.4
+                        l-17.6-44.1H320.5z M328.5,63.2l7.6,20.7h-15.4L328.5,63.2z" />
+                        <path id="XMLID_7_"
+                            d="M360.5,96.4v-1h0.6c0.4,0,0.8,0,0.8,0.5s-0.2,0.5-0.7,0.5H360.5 M360.5,97.1h0.4l1,1.8h1.1l-1.1-1.8
+                        c0.6,0,1-0.3,1-1.1c0-1-0.7-1.3-1.8-1.3h-1.6v4.2h0.9v-1.8 M365.2,96.8c0-2.5-1.9-3.9-4-3.9s-4.1,1.4-4.1,3.9s1.9,3.9,4.1,3.9
+                        C363.4,100.7,365.2,99.3,365.2,96.8 M364,96.8c0,1.8-1.3,3-2.9,3l0,0c-1.6,0-2.9-1.2-2.9-3s1.3-3,2.9-3S364,95,364,96.8z" />
+                    </svg>
                 </a>
             </div>
+            <button class="btn btn-nav toggle" href="">
+                <i class="fas fa-bars cta"></i>
+                <i class="fas fa-minus cta"></i>
+            </button>
+
             <nav class="main-nav">
-                <a href="">Produits</a>
-                <a href="">Gamme RTX</a>
-                <a href="">Support & pilotes</a>
-                <a href="">Contact</a>
+                <a href="" class="btn nav_link">Produits</a>
+                <a href="" class="btn nav_link">Gamme RTX</a>
+                <a href="" class="btn nav_link">Support & pilotes</a>
+                <a href="" class="btn nav_link">Contact</a>
             </nav>
         </header>
         <main>
             <figure class="ad-figure">
-                <img src="./img/geforce-play-it-forward-prize-850x356-dl.png" alt="GeForce RTX 2060">
-                <figcaption id="skip-to-rtx">Plus d'informations sur la gamme GeForce RTX <a class="button" href=""
-                        aria-label="Découvrir GeForce RTX">Découvrir</a></figcaption>
+                <img src="./src/img/geforce-play-it-forward-prize-850x356-dl.png" alt="GeForce RTX 2060">
+                <figcaption id="skip-to-rtx">Plus d'informations sur la gamme GeForce RTX <a class="btn btn_link"
+                        href="" aria-hidden="true">Découvrir <i class="fas fa-caret-right"></i></a></figcaption>
             </figure>
             <article class="main-content">
                 <div class="content-wrapper">
-                    <h2 class="decorated-title">La puissance, tout simplement</h2>
+                    <h2 class="decorated-title">La puissance, simplement</h2>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus provident eum officiis labore
-                        inventore laboriosam, reprehenderit impedit aperiam iste, sunt dolores beatae soluta. Hic odit quod
-                        iste, quia quas corporis. Dolores possimus eveniet cupiditate quam at nemo cumque, corrupti quisquam
-                        provident porro. Dignissimos vitae vero fugiat sapiente ducimus explicabo quae eaque saepe. Lorem
-                        ipsum dolor sit amet consectetur adipisicing elit. Deserunt libero quod possimus similique non ut. Quae
-                        rem odio dicta qui at aliquam. Inventore impedit repudiandae modi laboriosam est! Architecto, eius.
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus provident eum officiis
+                        labore inventore laboriosam, reprehenderit impedit aperiam iste, sunt dolores beatae soluta. Hic odit
+                        quod iste, quia quas corporis. Dolores possimus eveniet cupiditate quam at nemo cumque, corrupti
+                        quisquam provident porro. Dignissimos vitae vero fugiat sapiente ducimus explicabo quae eaque saepe.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt libero quod possimus similique non
+                        ut. Quae rem odio dicta qui at aliquam. Inventore impedit repudiandae modi laboriosam est! Architecto,
+                        eius.
                     </p>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus provident eum officiis labore
-                        inventore laboriosam, reprehenderit impedit aperiam iste, sunt dolores beatae soluta. Hic odit quod
-                        iste, quia quas corporis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, quam
-                        cumque quas cum mollitia accusantium beatae est minima sapiente ut, culpa laudantium harum nam
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus provident eum officiis
+                        labore inventore laboriosam, reprehenderit impedit aperiam iste, sunt dolores beatae soluta. Hic odit
+                        quod iste, quia quas corporis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati,
+                        quam cumque quas cum mollitia accusantium beatae est minima sapiente ut, culpa laudantium harum nam
                         vitae! Laudantium corporis veritatis quod nam.
                     </p>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus provident eum officiis labore
-                        inventore laboriosam, reprehenderit impedit aperiam iste, sunt dolores beatae soluta. Hic odit quod
-                        iste, quia quas corporis.
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus provident eum officiis
+                        labore inventore laboriosam, reprehenderit impedit aperiam iste, sunt dolores beatae soluta. Hic odit
+                        quod iste, quia quas corporis.
                     </p>
                 </div>
                 <aside class="main-content--aside">
-                    <h2>À propos</h2>
-                    <div class="img-wrapper">
-                        <img src="./img/U4lxVYEw_400x400.png" alt="Logo de Nvidia">
+                    <div>
+                        <h2>À propos</h2>
+                        <div class="img-wrapper">
+                            <img src="./src/img/nvidia.svg" alt="Logo de Nvidia">
+                        </div>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat atque ex, quam molestiae
+                            doloribus minus, nisi odio quos ipsa, reprehenderit accusantium laborum non officia iure minima dolorum
+                            rerum! Molestiae, eum. Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat atque ex, quam molestiae
+                            doloribus minus, nisi odio. Lorem ipsum dolor sit amet.</p>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat atque ex, quam molestiae doloribus
-                        minus, nisi odio quos ipsa, reprehenderit accusantium laborum non officia iure minima dolorum rerum!
-                        Molestiae, eum. Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    <p>Lorem ipsum dolor.</p>
-    
+
                     <ul class="social-nav">
-                        <li><a href="" target="_blank" aria-label="Compte Facebook de Nvidia"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="" target="_blank" aria-label="Compte Twitter de Nvidia"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="" target="_blank" aria-label="Compte Instagram de Nvidia"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="" target="_blank" aria-label="Compte Snapchat de Nvidia"><i class="fab fa-snapchat-ghost"></i></a></li>
-                        <li><a href="" target="_blank" aria-label="Compte Linkedin de Nvidia"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a class="btn btn-social" href="" target="_blank" aria-label="Compte Facebook de Nvidia"><i data-name="Facebook" class="fab fa-facebook-f"></i></a></li>
+                        <li><a class="btn btn-social" href="" target="_blank" aria-label="Compte Twitter de Nvidia"><i data-name="Twitter" class="fab fa-twitter"></i></a></li>
+                        <li><a class="btn btn-social" href="" target="_blank" aria-label="Compte Instagram de Nvidia"><i data-name="Instagram" class="fab fa-instagram"></i></a></li>
+                        <li><a class="btn btn-social" href="" target="_blank" aria-label="Compte Snapchat de Nvidia"><i data-name="Snapchat" class="fab fa-snapchat-ghost"></i></a></li>
+                        <li><a class="btn btn-social" href="" target="_blank" aria-label="Compte Linkedin de Nvidia"><i data-name="Linkedin" class="fab fa-linkedin-in"></i></a></li>
                     </ul>
                 </aside>
             </article>
         </main>
         <footer class="site-footer">
-            <section>
+            <section class="section-form section-lg">
                 <h3>Newsletter</h3>
                 <form class="section-content newsletter-form" action="#">
                     <div>
-                        <label for="name" class="sr-only focus-only">Votre nom</label>
+                        <label for="name" class="sr-only">Votre nom</label>
                         <input type="text" name="name" id="name" placeholder="Nom" required>
                     </div>
                     <div>
-                        <label for="email" class="sr-only focus-only">Votre email</label>
+                        <label for="email" class="sr-only">Votre email</label>
                         <input type="email" name="email" id="email" placeholder="Email" required>
                     </div>
                     <div>
-                        <input class="button" type="button" value="S'inscrire" aria-label="S'inscrire à la newsletter">
+                        <input class="btn btn_link" type="button" value="S'inscrire"
+                            aria-label="S'inscrire à la newsletter">
                     </div>
                 </form>
             </section>
-            <section>
+            <section class="section-thumbnail section-lg">
                 <h3>Galerie</h3>
                 <div class="section-content">
-                    <a href="" class="thumbnail gallery"><img src="./img/U4lxVYEw_400x400.png" alt="Texte alternatif vignette 1" onclick=""></a>
-                    <a href="" class="thumbnail gallery"><img src="./img/40488302471_21d60f0342_b.jpg" alt="Texte alternatif vignette 2" onclick=""></a>
-                    <a href="" class="thumbnail gallery"><img src="./img/computer-5268574_960_720.jpg" alt="Texte alternatif vignette 3" onclick=""></a>
-                    <a href="" class="thumbnail gallery"><img src="./img/nvidia-1692796_960_720.jpg" alt="Texte alternatif vignette 4" onclick=""></a>
+                    <a href="javascript:void(0)" class="thumbnail gallery"><img src="./src/img/U4lxVYEw_400x400.png"
+                            alt="Texte alternatif vignette 1"></a>
+                    <a href="javascript:void(0)" class="thumbnail gallery"><img src="./src/img/40488302471_21d60f0342_b.jpg"
+                            alt="Texte alternatif vignette 2"></a>
+                    <a href="javascript:void(0)" class="thumbnail gallery"><img src="./src/img/computer-5268574_960_720.jpg"
+                            alt="Texte alternatif vignette 3"></a>
+                    <a href="javascript:void(0)" class="thumbnail gallery"><img src="./src/img/nvidia-1692796_960_720.jpg"
+                            alt="Texte alternatif vignette 4"></a>
                 </div>
             </section>
-            <section>
+            <section class="section-thumbnail section-small">
                 <h3>Partenaires</h3>
-                    <div class="section-content">
-                        <a href="" class="thumbnail partenaires"><img src="./img/Intel-logo.svg" alt="Logo Intel"></a>
-                        <a href="" class="thumbnail partenaires"><img src="./img/asus-logo-1.png" alt="Logo Asus"></a>
-                        <a href="" class="thumbnail partenaires"><img src="./img/600px-Electronic-Arts-Logo.png" alt="Logo Electronics Arts"></a>
-                    </div>
+                <div class="section-content">
+                    <a href="" class="thumbnail partenaires"><img src="./src/img/Intel_Logo_Black-700x464.png"
+                            alt="Logo Intel"></a>
+                    <a href="" class="thumbnail partenaires"><img src="./src/img/asus-logo-1.png" alt="Logo Asus"></a>
+                    <a href="" class="thumbnail partenaires"><img src="./src/img/EA_logo_black-700x700.png"
+                            alt="Logo Electronics Arts"></a>
+                </div>
             </section>
-            <a href="" class="scroll-top_link" aria-label="Scroll Back to top"></a>
+            <a href="" class="scroll-top_link" aria-label="Scroll Back to top">
+                <span class="fa-stack fa-1x">
+                    <i class="fas fa-circle fa-stack-2x fa-inverse"></i>
+                    <i class="fas fa-angle-double-up fa-stack-1x"></i>
+                  </span>
+            </a>
         </footer>
     </div>
 </body>
