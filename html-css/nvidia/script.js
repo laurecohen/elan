@@ -9,4 +9,9 @@ $(function() {
             opacity: "toggle"
           }, "fast", "swing");
     });
+
+    $('.thumbnail').click(function(){
+        $(this).toggleClass('expanded');
+        $("body").toggleClass('noscroll');
+    });
 });
