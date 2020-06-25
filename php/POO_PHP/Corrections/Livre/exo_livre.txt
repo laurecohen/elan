@@ -1,0 +1,13 @@
+classe Livre
+ - titre
+ - auteur
+ - nombre de pages
+ - prix
+
+ But ? 
+ Instancier 2 livres 
+    - Seigneur des Anneaux, J.R.R Tolkien, 250 pages, 20€
+    - Harry Potter, J.K Rowling, 158 pages, 25€
+
+Affichage :
+    "Le livre XXX écrit par YYY possède Z pages et coûte P euros"
