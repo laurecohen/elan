@@ -1,6 +1,7 @@
 :root{
     --bg-color--dark: #141e24;
     --bg-color--light: #fffff0;
+    --accent-color: #b6053a;
 }
 
 .site-header, .site-footer{
