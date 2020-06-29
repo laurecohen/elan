@@ -19,7 +19,7 @@
     }
 
     .social-nav li{
-        flex: 1 auto;
+        flex: 0 1 auto;
         margin: .25em;
     }
 

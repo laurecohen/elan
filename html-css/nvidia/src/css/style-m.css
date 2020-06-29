@@ -92,5 +92,8 @@
     .site-footer > .section-small{
         flex: 1 auto;
     }
-    
+
+    .section-thumbnail.section-lg .section-content{
+        justify-content: space-evenly;
+    }
 }

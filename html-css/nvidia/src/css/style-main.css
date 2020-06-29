@@ -226,7 +226,7 @@ p{
 }
 
 .social-nav li{
-    flex: 1 1 0;
+    flex: 0 1 0;
     font-size: 1rem;
     border: 1px solid var(--border-color);
     margin: .25em;
@@ -289,6 +289,11 @@ p{
 .site-footer > section{
     flex: 1 auto;
     margin: 1em;
+}
+
+.section-thumbnail.section-lg .section-content{
+    display: flex;
+    flex-wrap: wrap;
 }
 
 input[type="text"], 
@@ -383,4 +388,16 @@ input[type="button"]{ /* Overriding Default Style */
 }
 .scroll-top_link:hover .fa-angle-double-up{
     color: var(--branding-color--brighter);
+}
+
+@media only screen and (max-width: 450px){
+    .section-thumbnail.section-lg .section-content{
+        justify-content: space-evenly;
+    }
+}
+
+@media only screen and (min-width: 451px){
+    .section-thumbnail.section-lg .section-content{
+        justify-content: flex-start;
+    }
 }
