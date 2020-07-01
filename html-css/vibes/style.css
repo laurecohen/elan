@@ -170,20 +170,15 @@ label[required]::after{
     flex-wrap: wrap;
 }
 
-.gallery-grid a {
-    width: 100%;
-    height: 100%;
+.gallery-grid > li {
+    flex: 1 50%;
 }
 
 .gallery-grid img {
     vertical-align: top; 
     width: 100%;
-}
-
-@media only screen and (min-width: 768px){
-    /* .gallery-grid img {
-        width: 100%;
-    } */
+    height: 180px; /* IPhone X */
+    object-fit: cover;
 }
 
 /*********************
@@ -300,6 +295,11 @@ label[required]::after{
         padding-right: 20%;
     }
 
+    /* #PORTFOLIO */
+    .gallery-grid img {
+        height: 192px; /* IPhone X */
+    }
+
     /* SECTION-FOOTERS */
     .section-footer{
         flex-wrap: nowrap;
@@ -332,6 +332,11 @@ label[required]::after{
     }
     .section-flex > .subsection:last-child{
         margin-right: 0;
+    }
+
+    /* #PORTFOLIO */
+    .gallery-grid > li {
+        flex: 1 25%;
     }
 
     /* #TESTIMONIALS */
@@ -390,9 +395,24 @@ label[required]::after{
         display: block;
     }
 
+    /* #PORTFOLIO */
+    .gallery-grid > li {
+        flex: 1 25%;
+    }
+    .gallery-grid img {
+        height: 248px; /* IPhone X */
+    }
+
     /* SITE FOOTER */
     .site-footer > .flex-content{
         text-align: center;
+    }
+}
+
+@media only screen and (min-width: 1200px){
+    /* #PORTFOLIO */
+    .gallery-grid img {
+        height: 300px; /* IPhone X */
     }
 }
 
