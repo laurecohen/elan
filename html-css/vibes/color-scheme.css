@@ -1,18 +1,22 @@
 :root{
-    --bg-color--dark: #141e24;
-    --bg-color--light: #fffff0;
+    --bg-color-dark: #141e24;
+    --input-color--bg-dark:rgb(255, 255, 240, .15);
+    
+    --input-color--bg-light: rgb(20, 30, 36, .15);
+    --bg-color-light: #fffff0;
+
     --accent-color: #b6053a;
 }
 
 .site-header, .site-footer{
-    color: var(--bg-color--light);
+    color: var(--bg-color-light);
 }
 
 .template-section:nth-child(even){
-    background-color: var(--bg-color--light);
+    background-color: var(--bg-color-light);
     color: var(--bg-color--dark);
 }
 .template-section:nth-child(odd){
-    background-color: var(--bg-color--dark);
-    color: var(--bg-color--light);
+    background-color: var(--bg-color-dark);
+    color: var(--bg-color-light);
 }

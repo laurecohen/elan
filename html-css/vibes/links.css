@@ -79,4 +79,5 @@ a:hover{
 	top: 200px;
 	left: 0;
 	mix-blend-mode: normal;
+	z-index: 7;
 }
