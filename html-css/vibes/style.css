@@ -141,7 +141,7 @@ textarea {
     line-height: normal;
 }
 
-label[required]::after{
+.required::after{
     content: " * ";
     font-size: initial;
     color: var(--accent-color);
