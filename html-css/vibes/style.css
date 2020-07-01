@@ -65,9 +65,9 @@ body{
     display: none; /* Hide home-link to gain extra-space */
 }
 
-/*********************
-**	MAIN (TEMPLATE)	**
-**********************/
+/********************************
+**	MAIN (TEMPLATE) > Sections **
+*********************************/
 .template-section, .site-footer {
     padding: 5% 10%; 
 }
@@ -93,6 +93,30 @@ body{
 .section-flex > .subsection{
     flex: 1 auto;
     /* background-color: lightblue; */
+}
+
+/* Headings */
+h2{
+    width: 100%;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.decorated-title::after{
+    content: "";
+    display: block;
+    background-color: var(--accent-color);
+    margin: .875rem auto;
+}
+
+h2.decorated-title::after{
+    height: 4px;
+    width: 80px;
+}
+h3.decorated-title::after{
+    height: 2px;
+    width: 50px;
+    margin-left: 0;
 }
 
 /* Forms */
@@ -138,30 +162,6 @@ label[required]::after{
     color: var(--bg-color-light);
 }
 
-/*  */
-h2{
-    width: 100%;
-    text-transform: uppercase;
-    text-align: center;
-}
-
-.decorated-title::after{
-    content: "";
-    display: block;
-    background-color: var(--accent-color);
-    margin: .875rem auto;
-}
-
-h2.decorated-title::after{
-    height: 4px;
-    width: 80px;
-}
-h3.decorated-title::after{
-    height: 2px;
-    width: 50px;
-    margin-left: 0;
-}
-
 /*****************
 **	#Portfolio	**
 ******************/
@@ -190,44 +190,28 @@ h3.decorated-title::after{
 **	#Testimonials	**
 **********************/
 .testimonial-block{
-    margin-top: 2.5em;
-    margin-bottom: 3em;
-    position: relative;
-}
-.testimonial-block > p{
-    font-size: 1.125rem;
-    font-style: italic;
+    margin-top: 2em;
+    padding-bottom: 2.5em;
     text-align: center;
-    padding-top: 100px; /* Avatar ::before */
-}
+    font-style: italic;
+    font-size: 1.125rem;
+    border-bottom: 1px solid var(--input-color--bg-light);
 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.testimonial-block:last-of-type{
+    border-bottom: none;
+}
+.testimonial-block > .avataaar{
+    width: 90px;
+    height: 100%;
+    margin: 0 1.125rem;
+}
 .testimonial-block > footer{
     font-size: small;
-    text-align: center;
-}
-
-.testimonial-block.tommy > p::before{
-    background-image: url(./img/avataaars1.svg);
-}
-
-.testimonial-block.susan > p::before{
-    background-image: url(./img/avataaars3.svg);
-}
-
-.testimonial-block.nick > p::before{
-    background-image: url(./img/avataaars2.svg);
-}
-
-.testimonial-block p::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 80px;
-    width: 100%;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
+    font-style: normal;
 }
 
 /*************************************
@@ -279,7 +263,9 @@ h3.decorated-title::after{
     margin-bottom: 0;
 }
 
-
+/*——————————————*
+|   RESPONSIVE  |
+*———————————————*/
 @media only screen and (min-width: 576px){
     /* SITE HEADER/BRANDING */
     .site-header{
@@ -348,32 +334,35 @@ h3.decorated-title::after{
         margin-right: 0;
     }
 
-    /* #Testimonials */
-    .testimonial-block > p{
-        padding-top: 0; 
-    }
-    .testimonial-block:nth-child(even) > p{
+    /* #TESTIMONIALS */
+    .testimonial-block:nth-child(even){
         text-align: left;
-        padding-left: 100px; /* Avatar ::before */
+        justify-content: flex-start;
     }
-    .testimonial-block:nth-child(odd) > p{
+    .testimonial-block:nth-child(odd){
+        flex-direction: row-reverse;
         text-align: right;
-        padding-right: 100px; /* Avatar ::before */
     }
-    .testimonial-block:nth-child(even) > footer{
-        text-align: left;
-        padding-left: 100px;
+    .testimonial-block > .avataaar{
+        flex: 0 auto;
+        margin: 0 1.125rem 1.125rem;
+    }
+    .testimonial-block:nth-child(even) > .avataaar{
+        margin-left: 0;
+    }
+    .testimonial-block:nth-child(odd) > .avataaar{
+        margin-right: 0;
+    }
+    .testimonial-block > p{
+        flex: 1;
+    }
+    .testimonial-block > footer{
+        flex: 1 100%;
+        padding-left: 108px; /* img-width + margin-width */
     }
     .testimonial-block:nth-child(odd) > footer{
-        text-align: right;
-        padding-right: 100px;
-    }
-    .testimonial-block p::before{
-        width: 80px;
-    }
-    .testimonial-block:nth-child(odd) p::before{
-        left: 100%;
-        transform: translateX(-100%);
+        padding-left: 0;
+        padding-right: 108px; /* img-width + margin-width */
     }
 
     /* SITE FOOTER */
@@ -407,8 +396,8 @@ h3.decorated-title::after{
     }
 }
 
-/*   */
-.iframe-wrapper{
+/* Twitter Feed */
+/* .iframe-wrapper{
     max-width: 300px;
     user-select: none;
-}
+} */
