@@ -28,12 +28,16 @@ body{
     left: 0;
 }
 
-.highlight-txt{
+.highlights{
     color: var(--accent-color);
 }
 
-.bigger-txt{
+.bigger{
     font-size: 1.125rem;
+    line-height: 1.5;
+}
+.lighter{
+    font-weight: 100;
 }
 
 /*****************************
@@ -180,6 +184,30 @@ textarea {
     color: var(--bg-color-light);
 }
 
+/************
+**	#About **
+*************/
+dt{
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.5;
+    position: relative;
+}
+dt,dd{
+    margin-left: 0;
+    padding-left: 3em;
+}
+dt > i{
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 30px;
+}
+dd{
+    font-weight: 100;
+    margin-bottom: 2em;
+}
+
 /*****************
 **	#Portfolio	**
 ******************/
@@ -237,9 +265,7 @@ textarea {
     padding-bottom: 2.5em;
     text-align: center;
     font-style: italic;
-    font-size: 1.125rem; /* Add class .bigger */
     border-bottom: 1px solid var(--input-color--bg-light);
-
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -338,9 +364,9 @@ textarea {
     }
 
     /* MAIN */
-    .section-banner{
+    /* .section-banner{
         font-size: 1.125rem;
-    }
+    } */
 
     /* #PORTFOLIO */
     .gallery-grid-item{
@@ -447,8 +473,8 @@ textarea {
 
     /* MAIN */
     .section-banner{
-        padding-left: 25%;
-        padding-right: 25%;
+        padding-left: 20%;
+        padding-right: 20%;
     }
 
     /* #PORTFOLIO */
