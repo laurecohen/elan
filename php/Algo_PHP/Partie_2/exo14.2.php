@@ -4,9 +4,9 @@ class Voiture{
     private $marque;
     private $modele;
 
-    public function __construct($data){
-        $this->marque = $data[0];
-        $this->modele = $data[1];
+    public function __construct($marque,$modele){
+        $this->marque = $marque;
+        $this->modele = $modele;
     }
 
     // Getter and Setter
@@ -35,8 +35,8 @@ class Voiture{
 class VoitureElec extends Voiture{
     private $autonomie;
 
-    public function __construct($data, $autonomie){
-        parent::__construct($data);
+    public function __construct($marque,$modele,$autonomie){
+        parent::__construct($marque,$modele);
         $this->autonomie = $autonomie;
     }
 
@@ -54,8 +54,8 @@ class VoitureElec extends Voiture{
     }
 }
 
-$v1 = new Voiture(array("Peugeot","408"));
-$ve1 = new VoitureElec(array("BMW","I3"),100);
+$v1 = new Voiture("Peugeot","408");
+$ve1 = new VoitureElec("BMW","I3",100);
 
 echo $v1->getInfos()."<br/>";
 echo $ve1->getInfos()."<br/>";
