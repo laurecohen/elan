@@ -18,6 +18,24 @@ body{
     padding-left: 0;
 }
 
+.d-iblock{
+    display: inline-block;
+}
+
+.p-absolute{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.highlight-txt{
+    color: var(--accent-color);
+}
+
+.bigger-txt{
+    font-size: 1.125rem;
+}
+
 /*****************************
 **	SITE HEADER + Branding	**
 ******************************/
@@ -168,18 +186,48 @@ textarea {
 .gallery-grid{
     display: flex;
     flex-wrap: wrap;
+    align-items: flex-start;
+}
+.gallery-grid-item{
+    width: calc(100%/3);
+    flex: 0 0 auto;
 }
 
-.gallery-grid > li {
-    flex: 1 50%;
-}
-
-.gallery-grid img {
-    vertical-align: top; 
+.gallery-grid-link{
+    border: 0;
+    position: relative;
     width: 100%;
-    height: 180px; /* IPhone X */
-    object-fit: cover;
 }
+.gallery-grid-img{
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    vertical-align: top;
+}
+
+.icon-overlay{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    mix-blend-mode: lighten;
+}
+.icon-overlay > .fa-icon{
+    font-size: 80px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+/* .icon-container{
+    z-index: 3;
+    left: unset;
+    right: 0;
+} */
 
 /*********************
 **	#Testimonials	**
@@ -295,8 +343,11 @@ textarea {
     }
 
     /* #PORTFOLIO */
-    .gallery-grid img {
-        height: 192px; /* IPhone X */
+    .gallery-grid-item{
+        width: calc(100%/4);
+    }
+    .gallery-grid-img{
+        height: 144px;
     }
 
     /* SECTION-FOOTERS */
@@ -334,8 +385,8 @@ textarea {
     }
 
     /* #PORTFOLIO */
-    .gallery-grid > li {
-        flex: 1 25%;
+    .gallery-grid-img{
+        height: 192px;
     }
 
     /* #TESTIMONIALS */
@@ -401,11 +452,8 @@ textarea {
     }
 
     /* #PORTFOLIO */
-    .gallery-grid > li {
-        flex: 1 25%;
-    }
-    .gallery-grid img {
-        height: 248px; /* IPhone X */
+    .gallery-grid-img{
+        height: 248px;
     }
 
     /* SITE FOOTER */
@@ -416,8 +464,8 @@ textarea {
 
 @media only screen and (min-width: 1200px){
     /* #PORTFOLIO */
-    .gallery-grid img {
-        height: 300px; /* IPhone X */
+    .gallery-grid-img{
+        height: 300px;
     }
 }
 
