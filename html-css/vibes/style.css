@@ -33,7 +33,7 @@ body{
 }
 
 .bigger{
-    font-size: 1.125rem;
+    font-size: 1.125em;
     line-height: 1.5;
 }
 .lighter{
@@ -187,25 +187,63 @@ textarea {
 /************
 **	#About **
 *************/
+#about h3 {
+    font-size: 1.5em;
+}
+
+/*–––––––––– Subsection dL+Icons ––––––––––*/
+dl{
+    padding-left: 3em;
+}
 dt{
     font-weight: bold;
     text-transform: uppercase;
     line-height: 1.5;
     position: relative;
 }
-dt,dd{
-    margin-left: 0;
-    padding-left: 3em;
-}
 dt > i{
     position: absolute;
     top: 0;
-    left: 0;
+    left: -1.5em;
     font-size: 30px;
 }
 dd{
     font-weight: 100;
+    margin-left: 0;
     margin-bottom: 2em;
+}
+
+/*———————————–––––– Dropdown-list ———————————––––––*/
+aside.subsection{
+    align-self: center;
+}
+.dropdown-list{
+    border: 1px solid var(--input-color--bg-light);
+    border-radius: 2px;
+}
+.dropdown-element{
+    border-bottom: 1px solid var(--input-color--bg-light);
+    position: relative;
+}
+.dropdown-element > h4{
+    text-transform: uppercase;
+}
+.dropdown-element > h4, .dropdown-element > p{
+    margin-left: 3em;
+    margin-right: 1em;
+}
+.dropdown-element > i{
+    position: absolute;
+    top: 0;
+    font-size: 20px;
+    padding: 0 1em;
+}
+
+.dropdown-element i + p {
+    display: none;
+}
+.dropdown-element i.accordion-open + p {
+    display: block;
 }
 
 /*****************
@@ -362,11 +400,6 @@ dd{
     .mobile{ /* .main-menu--toggle, .main-menu.xs */
         display: none;
     }
-
-    /* MAIN */
-    /* .section-banner{
-        font-size: 1.125rem;
-    } */
 
     /* #PORTFOLIO */
     .gallery-grid-item{
