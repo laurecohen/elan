@@ -189,7 +189,7 @@ textarea {
     padding-bottom: 2.5em;
     text-align: center;
     font-style: italic;
-    font-size: 1.125rem;
+    font-size: 1.125rem; /* Add class .bigger */
     border-bottom: 1px solid var(--input-color--bg-light);
 
     display: flex;
@@ -291,8 +291,7 @@ textarea {
 
     /* MAIN */
     .section-banner{
-        padding-left: 20%;
-        padding-right: 20%;
+        font-size: 1.125rem;
     }
 
     /* #PORTFOLIO */
@@ -393,6 +392,12 @@ textarea {
     }   
     .main-menu > .menu-item:first-child{
         display: block;
+    }
+
+    /* MAIN */
+    .section-banner{
+        padding-left: 25%;
+        padding-right: 25%;
     }
 
     /* #PORTFOLIO */
