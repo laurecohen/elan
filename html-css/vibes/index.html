@@ -18,7 +18,10 @@
                 <a href="#" aria-label="Vibes – Home"><h1 class="sr-only">Vibes</h1></a>
             </div>
             <nav class="main-nav" aria-label="Main navigation">
-                <a href="#" class="btn cta main-menu--toggle mobile">Menu</a>
+                <a href="#" class="p-absolute main-menu--toggle mobile link-cta text-default border-none">
+                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-minus"></i>
+                </a>
                 <ul class="list-style-none main-menu menu-lg">
                     <li class="menu-item"><a href="#home">Home</a></li>
                     <li class="menu-item"><a href="#about">About</a></li>
@@ -36,14 +39,14 @@
                     <li class="menu-item"><a href="#template-footer">Pages</a></li>
                 </ul>
             </nav>
-            <button class="color-mode--toggle">Color Mode</button>
+            <button class="color-mode--toggle"><i class="fas fa-adjust text-highlights"></i></button>
         </header>
         <main>
             <section class="template-section section-banner" id="home">
                 <h2>Html Template for creative folks and design agencies</h2>
                 <p class="bigger">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
                 <div class="section-footer">
-                    <a href="#" class="btn cta">Read More</a>
+                    <a href="#" class="link-cta text-default border-default">Read More</a>
                 </div>
             </section>
 
@@ -57,11 +60,11 @@
                 <section class="subsection">
                     <h3>What You Get?</h3>
                     <dl>
-                        <dt><i class="fab fa-wordpress-simple highlights"></i>Colorful and compact</dt>
+                        <dt><i class="fab fa-wordpress-simple text-highlights"></i>Colorful and compact</dt>
                         <dd>Portfolio WordPress Theme</dd>
-                        <dt><i class="fas fa-tools highlights"></i>Very easy to use</dt>
+                        <dt><i class="fas fa-tools text-highlights"></i>Very easy to use</dt>
                         <dd>Page Builder & Shortcodes</dd>
-                        <dt><i class="fab fa-sass highlights"></i>Coded with Sass</dt>
+                        <dt><i class="fab fa-sass text-highlights"></i>Coded with Sass</dt>
                         <dd>Create Custom Skins in Minutes</dd>
                     </dl>
                 </section>
@@ -69,17 +72,17 @@
                     <div class="dropdown-list">
                         <div class="dropdown-element">
                             <h4>Lorem ipsum dolor</h4>
-                            <i class="fas fa-minus highlights accordion-open"></i>
+                            <i class="fas fa-minus text-highlights accordion-open"></i>
                             <p>Porro ducimus pariatur amet deserunt possimus velit cum tenetur!</p>
                         </div>
                         <div class="dropdown-element">
                             <h4>Impedit quasi mollitia</h4>
-                            <i class="fas fa-plus highlights"></i>
+                            <i class="fas fa-plus text-highlights"></i>
                             <p>ui veritatis libero natus aut quo. Alias ad harum doloribus aut?</p>
                         </div>
                         <div class="dropdown-element">
                             <h4>Fuga veritatis temporibus</h4>
-                            <i class="fas fa-plus highlights"></i>
+                            <i class="fas fa-plus text-highlights"></i>
                             <p>plus ea debitis animi earum, maiores reiciendis.</p>
                         </div>
                     </div>
@@ -92,7 +95,7 @@
                     <li class="gallery-grid-item">
                         <a class="gallery-grid-link d-iblock" href="">
                             <img class="gallery-grid-img" src="./img/artstation/dofresh-178-slum.jpg" alt="Texte alternatif de l'image 1">
-                            <!-- <div class="icon-container p-absolute bigger highlights"><i class="fa-icon far fa-play-circle"></i></div> -->
+                            <!-- <div class="icon-container p-absolute bigger text-highlights"><i class="fa-icon far fa-play-circle"></i></div> -->
                         </a>
                     </li>
                     <li class="gallery-grid-item">
@@ -108,7 +111,7 @@
                     <li class="gallery-grid-item">
                         <a class="gallery-grid-link d-iblock video" href="">
                             <img class="gallery-grid-img" src="./img/artstation/dofresh-150-tunnels.jpg" alt="Texte alternatif de l'image 4">
-                            <div class="icon-overlay p-absolute bigger highlights"><i class="fa-icon far fa-play-circle"></i></div>
+                            <div class="icon-overlay p-absolute bigger text-highlights"><i class="fa-icon far fa-play-circle"></i></div>
                         </a>
                     </li>
                     <li class="gallery-grid-item">
@@ -119,7 +122,7 @@
                     <li class="gallery-grid-item">
                         <a class="gallery-grid-link d-iblock video" href="">
                             <img class="gallery-grid-img" src="./img/artstation/tianxiao-huang-170525.jpg" alt="Texte alternatif de l'image 6">
-                            <div class="icon-overlay p-absolute bigger highlights"><i class="fa-icon far fa-play-circle"></i></div>
+                            <div class="icon-overlay p-absolute bigger text-highlights"><i class="fa-icon far fa-play-circle"></i></div>
                         </a>
                     </li>
                     <li class="gallery-grid-item">
@@ -134,14 +137,14 @@
                     </li>
                 </ul><!--  .gallery-grid -->
                 <div class="section-footer">
-                    <ul class="list-style-none flex-content secondary-nav">
-                        <li class="menu-item"><a href="#" aria-label="Show all media">All</a></li>
+                    <ul class="list-style-none flex-content secondary-nav gallery-menu">
+                        <li class="menu-item"><a class=" text-highlights" href="#" aria-label="Show all media">All</a></li>
                         <li class="menu-item"><a href="#" aria-label="Sort gallery by audio">Audio</a></li>
                         <li class="menu-item"><a href="#" aria-label="Sort gallery by images">Images</a></li>
                         <li class="menu-item"><a href="#" aria-label="Sort gallery by videos">Videos</a></li>
                     </ul>
                     <div class="flex-content">
-                        <a href="#" class="btn cta">Load More</a>
+                        <a href="#" class="link-cta text-default border-default">Load More</a>
                     </div>
                 </div><!--  .section-footer -->
             </section><!--  #portfolio -->
@@ -165,7 +168,7 @@
                     <footer class="blocquote-footer"><strong>Nick Meil</strong>, Happiness Manager</footer>
                 </blockquote>
                 <div class="section-footer">
-                    <a href="#" class="btn cta external-link" aria-label="Navigate to our contact form">Become our Client</a>
+                    <a href="#" class="link-cta text-highlights border-highlights" aria-label="Navigate to our contact form">Become our Client</a>
                 </div>
             </section>
 
@@ -173,7 +176,7 @@
                 <h2 class="decorated-title">New Horizons Await</h2>
                 <p class="bigger">Even the all-powerfull Pointing has no control about the blind texts it is almost unorthographic life One Day however a small line of blind text by the name of Lorem Ipsum decided.</p>
                 <div class="section-footer">
-                    <a href="#" class="btn cta external-link" aria-label="ThemeForest Shopping page">Buy Vibes on ThemeForest</a>
+                    <a href="#" class="link-cta text-highlights border-highlights" aria-label="ThemeForest Shopping page">Buy Vibes on ThemeForest</a>
                 </div>
             </section>
 
@@ -202,7 +205,7 @@
                             <label for="msg" class="required">Message</label>
                             <textarea id="msg" rows="4" required></textarea>
                         <p></p>
-                        <button type="submit" class="btn cta">Send</button>
+                        <button type="submit" class="link-cta border-highlights">Send</button>
                     </div>
                 </form>
             </section>
@@ -212,16 +215,16 @@
                 <section class="subsection">
                     <h3 class="decorated-title">About Vibes</h3>
                     <p><em>Vibes</em> is an ideal theme for creative folks or design agencies. <strong>Ease of use and top-notch web design techniques</strong> are wrapped with several gorgeous color schemes.</p>
-                    <p>You can buy this responsive WordPress theme on <a href="#" class="external-link" aria-label="ThemeForest Shopping page">ThemeForest</a>.</p>
+                    <p>You can buy this responsive WordPress theme on <a href="#" class="text-highlights" aria-label="ThemeForest Shopping page">ThemeForest</a>.</p>
                 </section>
                 <section class="subsection">
                     <h3 class="decorated-title">Newsletter</h3>
                     <form action="#" class="newsletter-form">
                         <p>
-                            <label for="newsletter-email"><strong>Vibes</strong> contains fully working <strong>MailChimp</strong> suscribe form.</label>
+                            <label for="newsletter-email"><em><strong>Vibes</strong></em> contains fully working <strong>MailChimp</strong> suscribe form.</label>
                             <input type="email" id="newsletter-email" placeholder="Your Email Adress" aria-label="Your Email Adress">
                         </p>
-                        <button type="submit">Suscribe</button>
+                        <button type="submit" class="link-cta border-highlights">Suscribe</button>
                     </form>
                 </section>
                 <section class="subsection">
@@ -234,14 +237,16 @@
         </main>
 
         <footer id="pages" class="site-footer">
-            <p class="flex-content footer-cta">Buy this theme on <a href="#" class="external-link" aria-label="ThemeForest Shopping page">ThemeForest.net</a></p>
+            <p class="flex-content">Buy this theme on <a href="#" class="border-bottom border-default" aria-label="ThemeForest Shopping page">themeForest.net</a></p>
             <ul class="list-style-none flex-content secondary-nav footer-menu">
-                <li class="menu-item"><a href="#" class="external-link" aria-label="External">Home</a></li>
-                <li class="menu-item"><a href="#" class="external-link" aria-label="External">Elements</a></li>
-                <li class="menu-item"><a href="#" class="external-link" aria-label="External">Documentation</a></li>
+                <li class="menu-item"><a href="#" class="border-bottom border-default" aria-label="External">Home</a></li>
+                <li class="menu-item"><a href="#" class="border-bottom border-default" aria-label="External">Elements</a></li>
+                <li class="menu-item"><a href="#" class="border-bottom border-default" aria-label="External">Documentation</a></li>
             </ul>
         </footer>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="script.js"></script>
     <!-- <script async src="https://platform.twitter.com/widgets.js"></script>  -->
 </body>
 </html>

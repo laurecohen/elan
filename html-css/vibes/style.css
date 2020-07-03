@@ -5,39 +5,34 @@
 body{
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    color: var(--bg-color-dark);
-    background-color: lightcoral;
+    color: var(--bg-dark);
+    background-color: var(--tricks);
 }
-
 .site-wrapper{
     margin: 0 auto;
 }
-
 .list-style-none{
     list-style: none;
     padding-left: 0;
 }
-
 .d-iblock{
     display: inline-block;
 }
-
 .p-absolute{
     position: absolute;
     top: 0;
     left: 0;
 }
-
-.highlights{
-    color: var(--accent-color);
-}
-
 .bigger{
     font-size: 1.125em;
     line-height: 1.5;
 }
 .lighter{
     font-weight: 100;
+}
+em{
+    text-transform: uppercase;
+    font-style: normal;
 }
 
 /*****************************
@@ -69,8 +64,11 @@ body{
 }
 
 .menu-xs{
+    display: none;
     flex: 1 100%;
-    background-color: lightblue;
+    background-color: rgba(20, 30, 36, 1);
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 .menu-lg{
     display: none;
@@ -83,6 +81,9 @@ body{
     font-size: .875rem;
 }
 
+.menu-xs > .menu-item{
+    font-size: initial;
+}
 .menu-lg > .menu-item:first-child{
     display: none; /* Hide home-link to gain extra-space */
 }
@@ -96,14 +97,15 @@ body{
 
 .section-banner{
     text-align: center;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
 }
-
 .section-flex{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
-
 .full-width{
     padding: 0;
 }
@@ -114,7 +116,7 @@ body{
 
 .section-flex > .subsection{
     flex: 1 auto;
-    /* background-color: lightblue; */
+    margin-bottom: 2em;
 }
 
 /* Headings */
@@ -148,13 +150,13 @@ input, textarea{
     line-height: 1.5;
     padding: .5em;
     margin-top: .25em;
-    background-color: var(--input-color--bg-light);
+    background-color: var(--lightgray--bg-light);
     border: 0;
     border-radius: 2px;
 }
 
 input:focus, textarea:focus{
-    outline-color: var(--bg-color-dark);
+    outline-color: var(--bg-dark);
 }
 
 textarea {
@@ -175,13 +177,21 @@ textarea {
     text-transform: uppercase;
 }
 .newsletter-form input{
-    background-color: var(--input-color--bg-dark);
+    background-color: var(--lightgray--bg-dark);
     margin-top: .5em;
 }
 
 .newsletter-form input::placeholder{
     font-style: italic;
-    color: var(--bg-color-light);
+    color: var(--bg-light);
+}
+
+/************
+**	#Home  **
+*************/
+.section-banner#home{
+    background-image: url(./img/artstation/dofresh-60-highrise-v3.jpg);
+    background-attachment: scroll;
 }
 
 /************
@@ -191,9 +201,9 @@ textarea {
     font-size: 1.5em;
 }
 
-/*–––––––––– Subsection dL+Icons ––––––––––*/
+/*——————————— Subsection dL+Icons ———————————*/
 dl{
-    padding-left: 3em;
+    padding-left: 2.5em;
 }
 dt{
     font-weight: bold;
@@ -205,7 +215,7 @@ dt > i{
     position: absolute;
     top: 0;
     left: -1.5em;
-    font-size: 30px;
+    font-size: 24px;
 }
 dd{
     font-weight: 100;
@@ -213,16 +223,13 @@ dd{
     margin-bottom: 2em;
 }
 
-/*———————————–––––– Dropdown-list ———————————––––––*/
-aside.subsection{
-    align-self: center;
-}
+/*——————————— Dropdown-list ———————————*/
 .dropdown-list{
-    border: 1px solid var(--input-color--bg-light);
+    border: 1px solid var(--lightgray--bg-light);
     border-radius: 2px;
 }
 .dropdown-element{
-    border-bottom: 1px solid var(--input-color--bg-light);
+    border-bottom: 1px solid var(--lightgray--bg-light);
     position: relative;
 }
 .dropdown-element > h4{
@@ -295,6 +302,10 @@ aside.subsection{
     right: 0;
 } */
 
+.gallery-menu > .menu-item a{
+    border-bottom: 0;
+}
+
 /*********************
 **	#Testimonials	**
 **********************/
@@ -303,7 +314,7 @@ aside.subsection{
     padding-bottom: 2.5em;
     text-align: center;
     font-style: italic;
-    border-bottom: 1px solid var(--input-color--bg-light);
+    border-bottom: 1px solid var(--lightgray--bg-light);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -319,6 +330,21 @@ aside.subsection{
 .testimonial-block > footer{
     font-size: small;
     font-style: normal;
+}
+
+/*********************
+**	#Buy-product	**
+**********************/
+.section-banner#buy-product{
+    background: linear-gradient(#000000, var(--bg-dark));
+}
+
+/*************************
+**	#Template-footer	**
+**************************/
+.iframe-wrapper{
+    max-width: 300px;
+    user-select: none;
 }
 
 /*************************************
@@ -342,14 +368,15 @@ aside.subsection{
 
 .flex-content{
     flex: 1 100%;
-    text-align: left;
+    text-align: center;
     margin-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 1em;
 }
 
 .secondary-nav{
-    /* background-color: lightslategrey; */
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
 }
 
@@ -365,14 +392,20 @@ aside.subsection{
     padding-top: 1em;
     padding-bottom: 1em;
 }
-
 .footer-menu{
     margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 /*——————————————*
 |   RESPONSIVE  |
 *———————————————*/
+@media (orientation: landscape) {
+    .menu-xs, .mobile{ /* .main-menu--toggle, .main-menu.xs */
+        display: none;
+    }
+}
+
 @media only screen and (min-width: 576px){
     /* SITE HEADER/BRANDING */
     .site-header{
@@ -388,7 +421,7 @@ aside.subsection{
     .main-nav{
         flex-grow: 1;
         flex-shrink: 1;
-    }       
+    }
     .menu-lg{
         height: 100%;
         display: flex;
@@ -397,8 +430,12 @@ aside.subsection{
     .main-menu.menu-lg > .menu-item{
         flex: 1 auto;
     }
-    .mobile{ /* .main-menu--toggle, .main-menu.xs */
+    .menu-xs, .mobile{ /* .main-menu--toggle, .main-menu.xs */
         display: none;
+    }
+    /* MAIN/SECTIONS */
+    .section-banner#home{
+        background-attachment: fixed;
     }
 
     /* #PORTFOLIO */
@@ -416,15 +453,6 @@ aside.subsection{
     .section-footer > .flex-content{
         flex: 1 auto;
         margin-bottom: 0;
-        text-align: center;
-    }
-
-    /* SITE FOOTER */
-    .site-footer > .flex-content{
-        text-align: left;
-    }
-    .footer-menu{
-        justify-content: flex-start;
     }
 }
 
@@ -437,10 +465,12 @@ aside.subsection{
     /* MAIN */
     .section-flex > .subsection{
         flex: 1;
+        min-width: calc(50% - 2em);
         margin-right: 2em;
     }
     .section-flex > .subsection:last-child{
-        margin-right: 0;
+        flex: 0;
+        margin-bottom: 0;
     }
 
     /* #PORTFOLIO */
@@ -488,6 +518,7 @@ aside.subsection{
     }  
     .footer-menu{
         justify-content: flex-end;
+        padding-bottom: 1em;
     }
 }
 
@@ -509,15 +540,22 @@ aside.subsection{
         padding-left: 20%;
         padding-right: 20%;
     }
+    .section-flex > .subsection{
+        flex: 1;
+        min-width: auto;
+        margin-right: 2em;
+    }
+    .section-flex > .subsection:last-child{
+        flex: 1;
+        margin-right: 0;
+    }
+    aside.subsection{
+        align-self: center;
+    }
 
     /* #PORTFOLIO */
     .gallery-grid-img{
         height: 248px;
-    }
-
-    /* SITE FOOTER */
-    .site-footer > .flex-content{
-        text-align: center;
     }
 }
 
@@ -527,9 +565,3 @@ aside.subsection{
         height: 300px;
     }
 }
-
-/* Twitter Feed */
-/* .iframe-wrapper{
-    max-width: 300px;
-    user-select: none;
-} */
