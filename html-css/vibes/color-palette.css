@@ -1,0 +1,37 @@
+:root{
+    --bg-dark: #141e24;
+    --bg-light: #fffff0;
+    --lightgray--bg-dark:#374043;
+    --lightgray--bg-light: #dcddd1;
+    --accent-color: #ff002b;
+    --body--bg-dark: #380036;
+    --body--bg-light: darkorange;
+}
+
+body{
+    background-color: var(--body--bg-light);
+}
+.site-header, .site-footer{
+    color: var(--bg-light);
+}
+.logo {
+    background: linear-gradient(315deg, #ff002b 0%, var(--body--bg-light) 74%);
+}
+.b-dark{
+    background-color: var(--body--bg-dark);
+}
+.l-dark{
+    background: linear-gradient(315deg, #ff002b 0%, var(--body--bg-dark) 74%);
+}
+.s-odd{
+    background-color: var(--bg-dark);
+    color: var(--bg-light);
+}
+.s-even{
+    background-color: var(--bg-light);
+    color: var(--bg-dark);
+}
+.s-dark{
+    background-color: #100E17;
+    color: var(--bg-light);
+}

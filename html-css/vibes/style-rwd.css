@@ -1,0 +1,178 @@
+/**
+ * style-rwd.css
+ *
+ * These are the styles for Responsive Web Design - Media Queries
+ *
+ * Index
+ * - Small devices (landscape phones, 576px and up) 
+ * - Medium devices (tablets, 768px and up)
+ * - Large devices (laptops/desktops, 992px and up)
+ * - Extra large devices (large laptops and desktop, 1200 and up)
+ */
+  
+/**
+ * Small devices
+ */
+@media screen and (min-width: 576px){
+    /*  Layout  */
+    .section-footer{
+        flex-wrap: nowrap;
+    }
+    .section-footer > .flex-content{
+        flex: 1 auto;
+    }
+
+    /*  #Home  */
+    .section-banner#home{
+        background-attachment: fixed;
+    }
+    
+    /*  #Portfolio  */
+    .gallery-grid-item{
+        width: calc(100%/4);
+    }
+    .gallery-grid-img{
+        height: 144px;
+    }
+}
+ 
+/**
+ * Medium devices
+ */
+@media only screen and (min-width: 768px){
+    /*  Layout  */
+    .section-flex > .subsection{
+        flex: 1;
+        min-width: calc(50% - 2em);
+        margin-right: 2em;
+    }
+    .section-flex > .subsection:last-child{
+        flex: 0;
+        margin-bottom: 0;
+    }
+
+    /*  #Portfolio  */
+    .gallery-grid-img{
+        height: 192px;
+    }
+
+    /*  #Testimonials  */
+    .testimonial-block:nth-child(even){
+        text-align: left;
+        justify-content: flex-start;
+    }
+    .testimonial-block:nth-child(odd){
+        flex-direction: row-reverse;
+        text-align: right;
+    }
+    .testimonial-block > .avataaar{
+        flex: 0 auto;
+        margin: 0 1.125rem 1.125rem;
+    }
+    .testimonial-block:nth-child(even) > .avataaar{
+        margin-left: 0;
+    }
+    .testimonial-block:nth-child(odd) > .avataaar{
+        margin-right: 0;
+    }
+    .testimonial-block > p{
+        flex: 1;
+    }
+    .testimonial-block > footer{
+        flex: 1 100%;
+        padding-left: 108px; /* img-width + margin-width */
+    }
+    .testimonial-block:nth-child(odd) > footer{
+        padding-left: 0;
+        padding-right: 108px; /* img-width + margin-width */
+    }    
+    
+    /*  Site Footer  */
+    .site-footer{
+        flex-wrap: nowrap;
+    }   
+    .site-footer > .flex-content{
+        margin-bottom: 1em;
+    } 
+}
+
+/**
+* Large devices
+*/
+@media only screen and (min-width: 992px){
+    /*  Layout  */
+    .site-wrapper{
+        max-width: 1200px;
+    }
+    .section-banner{
+        padding-left: 20%;
+        padding-right: 20%;
+    }
+    .section-flex > .subsection{
+        flex: 1;
+        min-width: auto;
+        margin-right: 2em;
+    }
+    .section-flex > .subsection:last-child{
+        flex: 1;
+        margin-right: 0;
+    }
+    
+    /*  Navigation  */
+    .main-nav{
+        flex: 1 1 auto;
+        justify-content: center;
+    }
+    .menu-xs{
+        /* Hide menu mobile */
+        display: none;
+    }
+    .menu-lg{
+        display: block;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }    
+    .menu-lg > .menu-item{
+        flex: 1 auto;
+    }
+    .main-menu--toggle{
+        /* Hide menu-mobile trigger */
+        display: none;
+    }   
+    .menu-item{
+        padding: 1em;
+    }
+    .footer-menu{
+        justify-content: flex-end;
+        padding-bottom: 1em;
+    }
+
+    /*  Header/Branding  */
+    .site-header{
+        flex-wrap: nowrap;
+    }
+    .logo{
+        flex: 0 0 auto;
+    }
+
+    /*  #About  */ 
+    aside.subsection{
+        align-self: center;
+    }
+    
+    /*  #Portfolio  */
+    .gallery-grid-img{
+        height: 248px;
+    }
+}
+
+/**
+ * Extra large devices
+ */
+@media only screen and (min-width: 1200px){
+    /*  #Portfolio  */  
+    .gallery-grid-img{
+        height: 300px;
+    }
+}

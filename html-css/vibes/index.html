@@ -4,24 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
-    <link rel="stylesheet" href="color-scheme.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="links.css">
+    <link rel="stylesheet" href="color-palette.css">
+    <link rel="stylesheet" href="style-main.css">
+    <link rel="stylesheet" href="style-rwd.css">
     <title>Vibes – Home</title>
 </head>
+
 <body>
     <!-- Allow screen reader users to bypass blocks of material that are repeated on multiple pages -->
     <a href="#home" id="skip-main" class="sr-only sr-only-focusable">Skip to main content</a>
+
     <div class="site-wrapper">
         <header class="site-header">
             <div class="logo">
-                <a href="#" aria-label="Vibes – Home"><h1 class="sr-only">Vibes</h1></a>
-            </div>
+                <a href="#" aria-label="Vibes – Home">
+                <h1 class="sr-only">Vibes</h1></a>
+            </div><!-- .logo -->
+
             <nav class="main-nav" aria-label="Main navigation">
-                <a href="#" class="p-absolute main-menu--toggle mobile link-cta text-default border-none">
+                <a href="javascript:void(0)" class="p-absolute link-cta main-menu--toggle text-default border-none" aria-label="Menu">
                     <i class="fas fa-bars"></i>
                     <i class="fas fa-minus"></i>
-                </a>
+                </a><!-- .main-menu--toggle -->
+
                 <ul class="list-style-none main-menu menu-lg">
                     <li class="menu-item"><a href="#home">Home</a></li>
                     <li class="menu-item"><a href="#about">About</a></li>
@@ -29,125 +34,132 @@
                     <li class="menu-item"><a href="#testimonials">Testimonials</a></li>
                     <li class="menu-item"><a href="#contact">Contact</a></li>
                     <li class="menu-item"><a href="#template-footer">Pages</a></li>
-                </ul>
-                <ul class="list-style-none main-menu menu-xs mobile">
+                </ul><!-- .menu-lg -->    
+                            
+                <ul class="list-style-none main-menu menu-xs">
                     <li class="menu-item"><a href="#home">Home</a></li>
                     <li class="menu-item"><a href="#about">About</a></li>
                     <li class="menu-item"><a href="#portfolio">Portfolio</a></li>
                     <li class="menu-item"><a href="#testimonials">Testimonials</a></li>
                     <li class="menu-item"><a href="#contact">Contact</a></li>
                     <li class="menu-item"><a href="#template-footer">Pages</a></li>
-                </ul>
-            </nav>
+                </ul><!-- .menu-xs -->
+            </nav><!-- .main-nav -->
+
             <button class="color-mode--toggle"><i class="fas fa-adjust text-highlights"></i></button>
-        </header>
+        </header><!-- .site-header -->
+
         <main>
             <section class="template-section section-banner" id="home">
                 <h2>Html Template for creative folks and design agencies</h2>
                 <p class="bigger">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
                 <div class="section-footer">
                     <a href="#" class="link-cta text-default border-default">Read More</a>
-                </div>
-            </section>
+                </div><!-- .section-footer -->
+            </section><!-- #home -->
 
             <section class="template-section section-flex" id="about">
                 <h2 class="sr-only">About Vibes</h2>
+                
                 <section class="subsection">
                     <h3>Why Choose Us?</h3>
                     <p class="bigger">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa similique eveniet dolores nesciunt alias maiores quo.</p>
                     <p class="lighter">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur asperiores eum quo consectetur eligendi.</p>
                 </section>
+
                 <section class="subsection">
                     <h3>What You Get?</h3>
                     <dl>
-                        <dt><i class="fab fa-wordpress-simple text-highlights"></i>Colorful and compact</dt>
+                        <dt><i class="fab fa-wordpress-simple p-absolute text-highlights list-icon"></i>Colorful and compact</dt>
                         <dd>Portfolio WordPress Theme</dd>
-                        <dt><i class="fas fa-tools text-highlights"></i>Very easy to use</dt>
+                        <dt><i class="fas fa-tools p-absolute text-highlights list-icon"></i>Very easy to use</dt>
                         <dd>Page Builder & Shortcodes</dd>
-                        <dt><i class="fab fa-sass text-highlights"></i>Coded with Sass</dt>
+                        <dt><i class="fab fa-sass p-absolute text-highlights list-icon"></i>Coded with Sass</dt>
                         <dd>Create Custom Skins in Minutes</dd>
                     </dl>
                 </section>
+
                 <aside class="subsection">
                     <div class="dropdown-list">
                         <div class="dropdown-element">
                             <h4>Lorem ipsum dolor</h4>
-                            <i class="fas fa-minus text-highlights accordion-open"></i>
+                            <a class="p-absolute list-icon" href="javascript:void(0)"><i class="fas fa-plus text-highlights"></i></a>
                             <p>Porro ducimus pariatur amet deserunt possimus velit cum tenetur!</p>
                         </div>
                         <div class="dropdown-element">
                             <h4>Impedit quasi mollitia</h4>
-                            <i class="fas fa-plus text-highlights"></i>
+                            <a class="p-absolute list-icon" href="javascript:void(0)"><i class="fas fa-plus text-highlights"></i></a>           
                             <p>ui veritatis libero natus aut quo. Alias ad harum doloribus aut?</p>
                         </div>
                         <div class="dropdown-element">
                             <h4>Fuga veritatis temporibus</h4>
-                            <i class="fas fa-plus text-highlights"></i>
+                            <a class="p-absolute list-icon" href="javascript:void(0)"><i class="fas fa-plus text-highlights"></i></a>                     
                             <p>plus ea debitis animi earum, maiores reiciendis.</p>
                         </div>
-                    </div>
+                    </div><!-- .dropdown-list -->
                 </aside>
-            </section>
+            </section><!-- #about -->
 
             <section class="template-section full-width" id="portfolio">
                 <h2 class="sr-only">Portfolio</h2>
+
                 <ul id="gallery-grid" class="list-style-none gallery-grid">
                     <li class="gallery-grid-item">
-                        <a class="gallery-grid-link d-iblock" href="">
-                            <img class="gallery-grid-img" src="./img/artstation/dofresh-178-slum.jpg" alt="Texte alternatif de l'image 1">
-                            <!-- <div class="icon-container p-absolute bigger text-highlights"><i class="fa-icon far fa-play-circle"></i></div> -->
+                        <a class="d-iblock gallery-grid-link" href="">
+                            <img class="gallery-grid-img" src="./img/artstation/dofresh-178-slum.jpg" alt="True Legacy Artworks / Slum, artist: Dofresh.">
                         </a>
                     </li>
                     <li class="gallery-grid-item">
-                        <a class="gallery-grid-link d-iblock" href="">
-                            <img class="gallery-grid-img" src="./img/artstation/dofresh-60-highrise-v3.jpg" alt="Texte alternatif de l'image 2">
+                        <a class="d-iblock gallery-grid-link" href="">
+                            <img class="gallery-grid-img" src="./img/artstation/dofresh-60-highrise-v3.jpg" alt="True Legacy Artworks Block 44-B / Highrise v3, artist: Dofresh.">
                         </a>
                     </li>
                     <li class="gallery-grid-item">
-                        <a class="gallery-grid-link d-iblock" href="">
-                            <img class="gallery-grid-img" src="./img/artstation/dofresh-50-highrise-v2.jpg" alt="Texte alternatif de l'image 3">
+                        <a class="d-iblock gallery-grid-link" href="">
+                            <img class="gallery-grid-img" src="./img/artstation/dofresh-50-highrise-v2.jpg" alt="True Legacy Artworks Block 44-B / Highrise v2, artist: Dofresh.">
                         </a>
                     </li>
                     <li class="gallery-grid-item">
-                        <a class="gallery-grid-link d-iblock video" href="">
-                            <img class="gallery-grid-img" src="./img/artstation/dofresh-150-tunnels.jpg" alt="Texte alternatif de l'image 4">
+                        <a class="d-iblock gallery-grid-link video" href="">
+                            <img class="gallery-grid-img" src="./img/artstation/dofresh-150-tunnels.jpg" alt="True Legacy Artworks / Tunnels, artist: Dofresh.">
                             <div class="icon-overlay p-absolute bigger text-highlights"><i class="fa-icon far fa-play-circle"></i></div>
                         </a>
                     </li>
                     <li class="gallery-grid-item">
-                        <a class="gallery-grid-link d-iblock" href="">
-                            <img class="gallery-grid-img" src="./img/artstation/dofresh-160-troy-s-shop.jpg" alt="Texte alternatif de l'image 5">
+                        <a class="d-iblock gallery-grid-link" href="">
+                            <img class="gallery-grid-img" src="./img/artstation/dofresh-160-troy-s-shop.jpg" alt="True Legacy Artworks / Troy's Shop, artist: Dofresh.">
                         </a>
                     </li>
                     <li class="gallery-grid-item">
-                        <a class="gallery-grid-link d-iblock video" href="">
-                            <img class="gallery-grid-img" src="./img/artstation/tianxiao-huang-170525.jpg" alt="Texte alternatif de l'image 6">
+                        <a class="d-iblock gallery-grid-link video" href="">
+                            <img class="gallery-grid-img" src="./img/artstation/tianxiao-huang-170525.jpg" alt="City at night, artist: Neo1900 千九">
                             <div class="icon-overlay p-absolute bigger text-highlights"><i class="fa-icon far fa-play-circle"></i></div>
                         </a>
                     </li>
                     <li class="gallery-grid-item">
-                        <a class="gallery-grid-link d-iblock" href="">
-                            <img class="gallery-grid-img" src="./img/artstation/kenny-jelly-lightroom-2-2-2.jpg" alt="Texte alternatif de l'image 7">
+                        <a class="d-iblock gallery-grid-link" href="">
+                            <img class="gallery-grid-img" src="./img/artstation/kenny-jelly-lightroom-2-2-2.jpg" alt="Night City / Lightroom, artist: Kenny Jelly">
                         </a>
                     </li>
                     <li class="gallery-grid-item">
-                        <a class="gallery-grid-link d-iblock" href="">
-                            <img class="gallery-grid-img" src="./img/artstation/kenny-jelly-3-63.jpg" alt="Texte alternatif de l'image 8">
+                        <a class="d-iblock gallery-grid-link" href="">
+                            <img class="gallery-grid-img" src="./img/artstation/kenny-jelly-3-63.jpg" alt="Night City, artist: Kenny Jelly">
                         </a>
                     </li>
-                </ul><!--  .gallery-grid -->
+                </ul><!-- .gallery-grid -->
+
                 <div class="section-footer">
-                    <ul class="list-style-none flex-content secondary-nav gallery-menu">
+                    <ul class="flex-content list-style-none secondary-nav gallery-menu">
                         <li class="menu-item"><a class=" text-highlights" href="#" aria-label="Show all media">All</a></li>
                         <li class="menu-item"><a href="#" aria-label="Sort gallery by audio">Audio</a></li>
                         <li class="menu-item"><a href="#" aria-label="Sort gallery by images">Images</a></li>
                         <li class="menu-item"><a href="#" aria-label="Sort gallery by videos">Videos</a></li>
-                    </ul>
+                    </ul><!-- .gallery-menu -->
                     <div class="flex-content">
                         <a href="#" class="link-cta text-default border-default">Load More</a>
                     </div>
-                </div><!--  .section-footer -->
-            </section><!--  #portfolio -->
+                </div><!-- .section-footer -->
+            </section><!-- #portfolio -->
 
             <section class="template-section" id="testimonials">
                 <h2 class="decorated-title">Client Testimonials</h2>
@@ -156,7 +168,7 @@
                     <img src="./img/avataaars/avataaars1.svg" class="avataaar" alt="Tommy Mars' Avatar">
                     <p class="bigger lighter">Exercitationem ad unde deserunt mollitia nulla voluptatem consequatur libero illum autem aperiam. Quisquam veritatis ipsum blanditiis autem vero modi, similique voluptas saepe!</p>
                     <footer class="blocquote-footer"><strong>Tommy Mars</strong>, Designer</footer>
-                </blockquote> 
+                </blockquote>
                 <blockquote class="testimonial-block">
                     <img src="./img/avataaars/avataaars3.svg" class="avataaar" alt="Susan Simmons' Avatar">
                     <p class="bigger lighter">Cum odit sequi adipisci, molestias nihil, ipsum aut dolor cupiditate deserunt assumenda reiciendis minima! At vero cum ipsam quibusdam. Quaerat, alias?</p>
@@ -167,21 +179,24 @@
                     <p class="bigger lighter">Nemo provident vero in molestiae suscipit. Culpa repudiandae fuga aperiam sint eum eveniet laborum perferendis, earum consectetur dolorum, ducimus est amet quod!</p>
                     <footer class="blocquote-footer"><strong>Nick Meil</strong>, Happiness Manager</footer>
                 </blockquote>
+
                 <div class="section-footer">
                     <a href="#" class="link-cta text-highlights border-highlights" aria-label="Navigate to our contact form">Become our Client</a>
-                </div>
-            </section>
+                </div><!-- .section-footer -->
+            </section><!-- #testimonials -->
 
             <section class="template-section section-banner" id="buy-product">
                 <h2 class="decorated-title">New Horizons Await</h2>
                 <p class="bigger">Even the all-powerfull Pointing has no control about the blind texts it is almost unorthographic life One Day however a small line of blind text by the name of Lorem Ipsum decided.</p>
+                
                 <div class="section-footer">
                     <a href="#" class="link-cta text-highlights border-highlights" aria-label="ThemeForest Shopping page">Buy Vibes on ThemeForest</a>
-                </div>
-            </section>
+                </div><!-- .section-footer -->
+            </section><!-- #buy-product -->
 
             <section class="template-section" id="contact">
                 <h2 class="decorated-title">Get in Touch</h2>
+                
                 <form action="#" class="section-flex contact-form">
                     <div class="subsection">
                         <p>
@@ -207,16 +222,18 @@
                         <p></p>
                         <button type="submit" class="link-cta border-highlights">Send</button>
                     </div>
-                </form>
-            </section>
+                </form><!-- .contact-form -->
+            </section><!-- #contact -->
 
             <section class="template-section section-flex" id="template-footer">
                 <h2 class="sr-only">Template Footer</h2>
+                
                 <section class="subsection">
                     <h3 class="decorated-title">About Vibes</h3>
                     <p><em>Vibes</em> is an ideal theme for creative folks or design agencies. <strong>Ease of use and top-notch web design techniques</strong> are wrapped with several gorgeous color schemes.</p>
                     <p>You can buy this responsive WordPress theme on <a href="#" class="text-highlights" aria-label="ThemeForest Shopping page">ThemeForest</a>.</p>
                 </section>
+
                 <section class="subsection">
                     <h3 class="decorated-title">Newsletter</h3>
                     <form action="#" class="newsletter-form">
@@ -225,26 +242,29 @@
                             <input type="email" id="newsletter-email" placeholder="Your Email Adress" aria-label="Your Email Adress">
                         </p>
                         <button type="submit" class="link-cta border-highlights">Suscribe</button>
-                    </form>
+                    </form><!-- .newsletter-form -->
                 </section>
+
                 <section class="subsection">
                     <h3 class="decorated-title">Twitter Feed</h3>
                     <!-- <div class="iframe-wrapper">
                         <a class="twitter-timeline" data-height="400" href="https://twitter.com/ThemeForest?ref_src=twsrc%5Etfw">Tweets by ThemeForest</a>
-                    </div> -->
+                    </div> --><!-- Twitter Feed iframe -->
                 </section>
-            </section>
+            </section><!-- #template-footer -->
         </main>
 
         <footer id="pages" class="site-footer">
             <p class="flex-content">Buy this theme on <a href="#" class="border-bottom border-default" aria-label="ThemeForest Shopping page">themeForest.net</a></p>
-            <ul class="list-style-none flex-content secondary-nav footer-menu">
+            
+            <ul class="flex-content list-style-none secondary-nav footer-menu">
                 <li class="menu-item"><a href="#" class="border-bottom border-default" aria-label="External">Home</a></li>
                 <li class="menu-item"><a href="#" class="border-bottom border-default" aria-label="External">Elements</a></li>
                 <li class="menu-item"><a href="#" class="border-bottom border-default" aria-label="External">Documentation</a></li>
-            </ul>
-        </footer>
-    </div>
+            </ul><!-- .footer-menu -->
+        </footer><!-- .site-footer -->
+    </div><!-- .site-wrapper -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="script.js"></script>
     <!-- <script async src="https://platform.twitter.com/widgets.js"></script>  -->

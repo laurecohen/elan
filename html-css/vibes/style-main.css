@@ -1,0 +1,547 @@
+/*-------------------------------------------*\
+styles-main.css
+
+Index
+    General
+    - Layout
+    – Links
+    – Typography
+    - Navigation
+    - Forms
+    
+    Sections
+    - Header/Branding
+    - #Home
+    - #About
+    - #Portfolio
+    - #Testimonials
+    - #Buy-product
+    - #Contact
+    - #Template-footer
+    - Site Footer
+   
+    - Color Palette
+\*-------------------------------------------*/
+
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    color: var(--bg-dark);
+}
+
+/*-------------------------------------------*\
+    Layout
+\*-------------------------------------------*/
+.site-wrapper{
+    margin: 0 auto;
+}
+.template-section, 
+.site-footer{
+    padding: 5% 10%; 
+}
+.section-flex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.section-banner{
+    text-align: center;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+}
+.full-width{
+    padding: 0;
+}
+.section-flex > .subsection{
+    flex: 1 auto;
+    margin-bottom: 2em;
+}
+.section-footer, .site-footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.section-footer{
+    padding: 1em 0;
+}
+.full-width > .section-footer{
+    padding-left: 10%; 
+    padding-right: 10%; 
+}
+.flex-content{
+    flex: 1 100%;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+.p-absolute{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.p-sticky{
+    position: sticky;
+    top: 0;
+}
+.d-iblock{
+    display: inline-block;
+}
+.list-style-none{
+    list-style: none;
+    padding-left: 0;
+}
+/*-------------------------------------------*\
+    Links
+\*-------------------------------------------*/
+a{
+	color: inherit;
+	text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+}
+.link-cta{
+	margin: 0;
+	font-size: small;
+	font-weight: bold;
+	color: inherit;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+    padding: .5rem 1rem;
+    border: 2px solid;
+    border-radius: 2px;
+}
+a.text-highlights{
+	font-weight: bold;
+}
+
+/*---------------- Navigation ---------------*/
+.main-nav > .menu-xs a{
+    border-bottom: 0;
+}
+
+/*------------------ Buttons ----------------*/
+.color-mode--toggle{
+	position: fixed;
+	top: 150px;
+	left: 0;
+	background-color: var(--bg-dark);
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+	font-size: 1.125rem;
+	padding: .3em .3em .2em .3em;
+	z-index: 7;
+	border: 1px solid var(--lightgray--bg-dark);
+	border-left: 0;
+}
+.color-mode--toggle > i{
+	text-shadow: 1px 1px 3px rgba(220, 221, 209, .2);
+}
+button[type="submit"]{
+	color: var(--bg-light);
+	background-color: var(--accent-color);
+}
+button[type="submit"]:hover{
+	color: var(--accent-color);
+}
+
+/*-------------- Header/Branding ------------*/
+.logo > a{
+    display: block;
+    height: 100%;
+    border-bottom: 0;
+}
+/*------------------- Hover -----------------*/
+.border-default:hover{
+	background-color: rgba(55, 64, 67, .6);
+}
+.border-highlights:hover{
+	background-color: rgba(182, 5, 58, .3);
+}
+.color-mode--toggle:hover{
+	background-color: rgba(182, 5, 58, .3);
+}
+
+/*-------------------------------------------*\
+    Typography
+\*-------------------------------------------*/
+h2{
+    width: 100%;
+    text-transform: uppercase;
+    text-align: center;
+                            
+}
+em{
+    text-transform: uppercase;
+    font-style: normal;
+}
+.decorated-title::after{
+    content: "";
+    display: block;
+    background-color: var(--accent-color);
+    margin: .875rem auto;
+}
+h2.decorated-title::after{
+    height: 4px;
+    width: 80px;
+}
+h3.decorated-title::after{
+    height: 2px;
+    width: 50px;
+    margin-left: 0;
+}
+.bigger{
+    font-size: 1.125em;
+    line-height: 1.5;
+}
+.lighter{
+    font-weight: 100;
+}
+.text-default{
+	color: inherit;
+}
+.text-highlights{
+    color: var(--accent-color);
+}
+.border-bottom{
+    border-bottom: 1px solid;
+}
+.border-default{
+    border-color: var(--bg-light);
+}
+.border-highlights{
+    border: 2px solid var(--accent-color);
+}
+.border-none{
+    border: 0;
+}
+
+/*-------------- Accessibility --------------*/
+.sr-only {
+    border: 0 !important;
+	clip: rect(1px, 1px, 1px, 1px) !important;
+	-webkit-clip-path: inset(50%) !important;
+    clip-path: inset(50%) !important;
+	height: 1px !important;
+	overflow: hidden !important;
+	padding: 0 !important;
+	position: absolute !important;
+	width: 1px !important;
+	white-space: nowrap !important;
+}
+.sr-only-focusable:focus, .sr-only-focusable:active {
+    clip: auto !important;
+	-webkit-clip-path: none !important;
+    clip-path: none !important;
+	height: auto !important;
+	margin: auto !important;
+	overflow: visible !important;
+	position: static !important;
+	width: auto !important;
+	white-space: normal !important;
+}
+
+/*-------------------------------------------*\
+    Navigation
+\*-------------------------------------------*/
+.main-nav{
+    flex: 1 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+.main-menu{
+    margin: 0;
+}
+.menu-item{ /* Style for ALL menu-item */
+    text-transform: uppercase;
+    text-align: center;
+    padding: .5em;
+    font-size: .875rem;
+}
+
+/*-------------- Menu Responsive ------------*/
+.menu-xs{
+    display: none;
+    flex: 1 100%;
+    background-color: rgba(20, 30, 36, 1);
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+.menu-lg{
+    display: none;
+}
+.menu-xs > .menu-item{
+    font-size: initial;
+}
+.main-menu--toggle{
+    display: block;
+	top: 54px; /* 1/2 Logo height */
+	left: unset;
+	right: 1em;
+	font-size: 24px;
+    padding: .25em;
+}
+.main-menu--toggle > .fa-bars{
+    display: block;
+}
+.main-menu--toggle > .fa-minus{
+    display: none;
+}
+.menu-xs.expanded{
+    display: block;
+}
+
+/*---------- Menus Sections & Footer --------*/
+.secondary-nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.secondary-nav > .menu-item{
+    flex: 0 1 0px;
+}
+.footer-menu{
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/*-------------------------------------------*\
+    Forms
+\*-------------------------------------------*/
+input, textarea{
+    display: inline-block;
+    width: 100%;
+    line-height: 1.5;
+    padding: .5em;
+    margin-top: .25em;
+    background-color: var(--lightgray--bg-light);
+    border: 0;
+    border-radius: 2px;
+}
+input:focus, textarea:focus{
+    outline-color: var(--bg-dark);
+}
+textarea {
+    resize: none;
+    overflow: auto;
+    line-height: normal;
+}
+.required::after{
+    content: " * ";
+    font-size: initial;
+    color: var(--accent-color);
+}
+
+/*-------------------------------------------*\
+    Site Header / Branding
+\*-------------------------------------------*/
+.site-header{
+    display: flex;
+    flex-wrap: wrap;
+}
+.logo{
+    display: block;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    /* background: linear-gradient(315deg, #ff002b 0%, #380036 74%); */
+    margin: 1em;
+}
+
+.site-header.p-sticky{
+    justify-content: flex-end;
+    background-color: var(--body--bg-light);
+    width: 100%;
+    z-index: 8;
+}
+.site-header.p-sticky .logo{
+    width: 24px;
+    height: 24px;
+    margin-right: 4em;
+}
+
+/* >>>>>>>>>Move this */
+.site-header.p-sticky .main-menu--toggle{
+    top: 20%;
+}
+
+/*-------------------------------------------*\
+    #Home
+\*-------------------------------------------*/
+.section-banner#home{
+    background-image: url(./img/artstation/dofresh-60-highrise-v3.jpg);
+    background-attachment: scroll;
+}
+
+/*-------------------------------------------*\
+    #About
+\*-------------------------------------------*/
+#about h3 {
+    font-size: 1.5em;
+}
+.list-icon{
+    left: -1.5em;
+    font-size: 1.5em;
+}
+/*-------- Subsection Description-List ------*/
+dl{
+    padding-left: 2.5em;
+}
+dt{
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.5;
+    position: relative;
+}
+dd{
+    font-weight: 100;
+    margin-left: 0;
+    margin-bottom: 2em;
+}
+/*----------- Aside Dropdown-List -----------*/
+.dropdown-list{
+    border: 1px solid var(--lightgray--bg-light);
+    border-radius: 2px;
+}
+.dropdown-element{
+    border-bottom: 1px solid var(--lightgray--bg-light);
+    position: relative;
+}
+.dropdown-element > h4{
+    text-transform: uppercase;
+}
+.dropdown-element > h4, .dropdown-element > p{
+    padding-left: 3rem;
+    padding-right: 1em;
+}
+.dropdown-element > .list-icon{
+    left: 0;
+    width: 3rem;
+    line-height: 1;
+    font-size: 1.25em;
+    text-align: center;
+}
+.dropdown-element .list-icon + p {
+    display: none;
+}
+.dropdown-element .list-icon.accordion-open + p {
+    display: block;
+}
+
+/*-------------------------------------------*\
+    #Portfolio
+\*-------------------------------------------*/
+.gallery-grid{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin: 0;
+}
+.gallery-grid-item{
+    width: calc(100%/3);
+    flex: 0 0 auto;
+}
+.gallery-grid-link{
+    border: 0;
+    position: relative;
+    width: 100%;
+}
+.gallery-grid-img{
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+}
+.gallery-menu > .menu-item a{
+    border-bottom: 0;
+}
+/*------------------ Overlay ----------------*/
+.icon-overlay{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    mix-blend-mode: lighten;
+}
+.icon-overlay > .fa-icon{
+    font-size: 80px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+/*-------------------------------------------*\
+    #Testimonials
+\*-------------------------------------------*/
+.testimonial-block{
+    margin-top: 2em;
+    padding-bottom: 2.5em;
+    text-align: center;
+    font-style: italic;
+    border-bottom: 1px solid var(--lightgray--bg-light);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.testimonial-block:last-of-type{
+    border-bottom: none;
+}
+.testimonial-block > .avataaar{
+    width: 90px;
+    height: 100%;
+    margin: 0 1.125rem;
+}
+.testimonial-block > footer{
+    font-size: small;
+    font-style: normal;
+}
+
+/*-------------------------------------------*\
+    #Buy-product
+\*-------------------------------------------*/
+.section-banner#buy-product{
+    background: linear-gradient(#000000, var(--bg-dark));
+}
+
+/*-------------------------------------------*\
+    #Contact
+\*-------------------------------------------*/
+.contact-form label{
+    font-size: small;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/*-------------------------------------------*\
+    #Template-footer
+\*-------------------------------------------*/
+.newsletter-form input{
+    background-color: var(--lightgray--bg-dark);
+    margin-top: .5em;
+}
+.newsletter-form input::placeholder{
+    font-style: italic;
+    color: var(--bg-light);
+}
+/* .iframe-wrapper{
+    max-width: 300px;
+    user-select: none;
+} */
+
+/*-------------------------------------------*\
+    Site Footer
+\*-------------------------------------------*/
+.site-footer{
+    justify-content: flex-start;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
