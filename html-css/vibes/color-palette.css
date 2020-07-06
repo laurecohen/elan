@@ -1,37 +1,74 @@
 :root{
-    --bg-dark: #141e24;
-    --bg-light: #fffff0;
-    --lightgray--bg-dark:#374043;
-    --lightgray--bg-light: #dcddd1;
-    --accent-color: #ff002b;
+    --duckdark: #141e24;
+    --bg-light: rgb(255, 255, 240);
     --body--bg-dark: #380036;
     --body--bg-light: darkorange;
+    
+    --prune: #380036;
+    --red: #ff002b;
+    --lightred: #ff3355;
+    --lighterred: #ff6680;
+    --brightred: #ff002b;
+    --green: #56ffa9;
+    --pink: #fe90d0;
+    --lavand: #9271b9;
+    --butter: #fae788;
+    --bluegray: #505b79;
+    --fushia: #fb29a2;
+    --lightblue: #9af9fd;
+    --darkestblue: #0b0d21;
+    
+    --darkgray: #141e24;
+    --lightgray--bg-dark:#333333;
+    --lightgray--bg-light: #dcddd1;
+    --ivory: #fffff0;
+    --text-hover-color: var(--lightblue);
+}
+
+:root[color-mode="light"]{
+    --bg1: var(--lightblue);
+    --bg2: var(--bluegray); 
+    --primary-text-color: var(--darkestblue);
+    --secondary-text-color: var(--ivory);
+    --accent-color: var(--lightred);
+    --input-color: var(--lightgray--bg-light);
+    --border-color: var(--lightgray--bg-light);
+    --bg-even: var(--ivory);
+}
+:root[color-mode="dark"]{
+    --bg1: var(--prune);
+    --bg2: var(--darkestblue); 
+    --primary-text-color: var(--bluegray);
+    --secondary-text-color: var(--ivory);
+    --accent-color: var(--lighterred);
+    --input-color: var(--lightgray--bg-dark);
+    --border-color: var(--bluegray);
+    --bg-even: var(--darkestblue);
 }
 
 body{
-    background-color: var(--body--bg-light);
+    background: var(--bluegray, #9af9fd);
+    background: radial-gradient(circle, var(--bg1) 0%, var(--bg2) 90%);
 }
+
 .site-header, .site-footer{
-    color: var(--bg-light);
+    --text-color: var(--primary-text-color);
+    color: var(--text-color);
 }
-.logo {
-    background: linear-gradient(315deg, #ff002b 0%, var(--body--bg-light) 74%);
+
+.site-header{
+    background-color: var(--bg2);
 }
-.b-dark{
-    background-color: var(--body--bg-dark);
+
+section{
+    color: var(--text-color);
 }
-.l-dark{
-    background: linear-gradient(315deg, #ff002b 0%, var(--body--bg-dark) 74%);
-}
+
 .s-odd{
-    background-color: var(--bg-dark);
-    color: var(--bg-light);
+    --text-color: var(--secondary-text-color);
+    background-color: var(--duckdark);
 }
 .s-even{
-    background-color: var(--bg-light);
-    color: var(--bg-dark);
-}
-.s-dark{
-    background-color: #100E17;
-    color: var(--bg-light);
+    --text-color: var(--primary-text-color);
+    background-color: var(--bg-even);
 }

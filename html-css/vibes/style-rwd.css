@@ -152,13 +152,10 @@
     .site-header{
         flex-wrap: nowrap;
     }
-    .logo{
-        flex: 0 0 auto;
-    }
 
     /*  #About  */ 
     aside.subsection{
-        align-self: center;
+        margin-top: 1.5rem;
     }
     
     /*  #Portfolio  */
