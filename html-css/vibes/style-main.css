@@ -509,6 +509,12 @@ dd{
     cursor: default;
 }
 
+/* >>>>>>>>>>>>>>>>> Test */
+
+.gallery-grid-item.focus{
+    background-color: var(--accent-color);
+}
+
 /*------------------ Overlay ----------------*/
 .gallery-grid-item::before{
     display: inline-block;
@@ -566,7 +572,7 @@ dd{
     padding: 1em;
     text-align: center;
 }
-.modal-icon:hover{
+.modal-icon:hover, .modal-icon:focus{
     color: var(--accent-color);
     cursor: pointer;
 }
@@ -580,10 +586,10 @@ dd{
     border-bottom-left-radius: 4px;
     background-color: inherit;
 }
-.gallery-control-dir{
+.gallery-control{
     top: calc(50vh - 1.5em);
 }
-.gallery-control-dir.fa-chevron-right{
+.gallery-control.dir-right{
     left: initial; right: 0;
 }
 
