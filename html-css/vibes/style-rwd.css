@@ -28,11 +28,8 @@
     }
     
     /*  #Portfolio  */
-    .gallery-grid-item{
-        width: calc(100%/4);
-    }
-    .gallery-grid-img{
-        height: 144px;
+    .gallery-grid-item > img{
+        height: 192px;
     }
 }
  
@@ -52,8 +49,8 @@
     }
 
     /*  #Portfolio  */
-    .gallery-grid-img{
-        height: 192px;
+    .gallery-grid-item{
+        width: calc(100% / 4);
     }
 
     /*  #Testimonials  */
@@ -128,7 +125,7 @@
         display: none;
     }
     .menu-lg{
-        display: block;
+        display: inline-block;
         height: 100%;
         display: flex;
         align-items: center;
@@ -159,7 +156,10 @@
     }
     
     /*  #Portfolio  */
-    .gallery-grid-img{
+    .gallery-grid-item{
+        width: calc(100% / 4);
+    }
+    .gallery-grid-item > img{
         height: 248px;
     }
 }
@@ -168,8 +168,8 @@
  * Extra large devices
  */
 @media only screen and (min-width: 1200px){
-    /*  #Portfolio  */  
-    .gallery-grid-img{
+    /*  #Portfolio  */
+    .gallery-grid-item > img{
         height: 300px;
     }
 }

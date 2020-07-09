@@ -1,22 +1,22 @@
 $( document ).ready(function() {
+    var menu = $('.menu-xs');
+    var trigger = $('.main-menu--toggle');
+    
     // Set Template Initial Color Palette
     $('.template-section:nth-child(odd)').addClass('s-odd');
     $('.template-section:nth-child(even)').addClass('s-even');
-    
-    var menu = $('.menu-xs');
-    var trigger = $('.main-menu--toggle');
 
     trigger.click(function(){
         // Display/hide the menu and switch trigger-icon
-        menu.toggleClass('expanded');
+        menu.slideToggle().toggleClass('expanded');
         $(this).children().toggle();
     });  
 
     $( '.list-icon' ).click(function(){
         // Display/hide accordion and toggle fontawesome class
-        ( $(this).toggleClass('accordion-open').children().hasClass('fa-plus') ) ? 
-            ( $(this).children().removeClass('fa-plus').addClass('fa-minus') ) :
-            ( $(this).children().removeClass('fa-minus').addClass('fa-plus') );
+        $(this).toggleClass('accordion-open').children();
+        $(this).hasClass('fa-plus') ? $(this).children().removeClass('fa-plus').addClass('fa-minus') : $(this).children().removeClass('fa-minus').addClass('fa-plus');
+        return false;
     });
 
     // Color-mode
@@ -39,11 +39,5 @@ $( document ).ready(function() {
                 $('.main-menu--toggle').children().toggle();
             }
         }
-    });
-
-    // Gallery
-    $('.gallery-grid-link').click(function(){
-        $(this).parent().children('.gallery-large').toggleClass('fullwidth');
-        // Add close btn
     });
 });
