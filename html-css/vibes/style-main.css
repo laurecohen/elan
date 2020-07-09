@@ -126,6 +126,8 @@ a.text-highlights{
 /*---------------- Navigation ---------------*/
 .main-nav > .menu-xs a{
     border-bottom: 0;
+    width: 100%; height: 100%;
+    /* Paddiiing >>>>>>>>>>>> */
 }
 .main-menu > .menu-item{
     font-weight: 600;
@@ -292,41 +294,41 @@ h3.decorated-title::after{
 
 /*-------------- Menu Responsive ------------*/
 .menu-xs{
-    display: none;
     flex: 1 100%;
-    background-color: var(--bg2);
-    padding-top: 1em;
-    padding-bottom: 1em;
+    background-color: var(--bg3);
+    color: var(--secondary-text-color);
+    position: fixed; /* !important: Dealing width overflows + sticky */
+    top: 6px; right: -100%;
+    width: 60%;
+    max-width: 300px;
+    transition: all .4s linear;
+    border-radius: 4px;
 }
 .menu-lg{
     display: none;
 }
 .menu-xs > .menu-item{
-    font-size: initial;
+    font-size: small;
+    font-weight: normal;
+    text-transform: none;
+    text-align: left;
+    padding: 0; /* --> links children full width/height */
 }
-.menu-xs > .menu-item:not(:first-child){
-    border-top: 1px solid var(--text-color);
-    margin-top: 1px;
-}
-.menu-xs > .menu-item:not(:last-child){
-    border-bottom: 1px solid var(--text-hover-color);
+.menu-xs > .menu-item a{
+    display: inline-block;
+    padding: 16px 2em;
 }
 .main-menu--toggle{
     display: inline-block;
-	top: 24px;
-	left: initial;
-	right: 1em;
+    left: initial; right: 0;
 	font-size: 24px;
-    padding: .25em;
+    padding: 1em;
 }
 .main-menu--toggle > .fa-bars{
     display: inline-block;
 }
-.main-menu--toggle > .fa-minus{
-    display: none;
-}
-.menu-xs.expanded{
-    display: inline-block;
+.menu-xs.menu-open{
+    right: 6px;
 }
 
 /*---------- Menus Sections & Footer --------*/
@@ -374,8 +376,10 @@ textarea {
     Site Header / Branding
 \*-------------------------------------------*/
 .site-header{
+    z-index: 7;
     display: flex;
     flex-wrap: wrap;
+    overflow-x: hidden;
 }
 .logo{
     padding-left: 1em;
@@ -389,9 +393,6 @@ textarea {
     text-shadow: -1px -1px var(--lightblue), 1px 1px var(--lightblue), -1px 1px var(--lightblue), 1px -1px var(--lightblue),
                 6px 0 var(--prune), 
                 6px 1px var(--lightblue), 7px 0 var(--lightblue), 6px -1px var(--lightblue);
-}
-.site-header.p-sticky{
-    z-index: 3;
 }
 
 /*-------------------------------------------*\
@@ -533,14 +534,18 @@ dd{
 /*------------------ Modal ----------------*/
 #modal{
     background-color: rgba(20, 30, 36, .7);
-    z-index: 4;
+    z-index: 8;
     position: fixed;
     top: 0; right: 0;
     width: 0vw; height: 0vh;
     opacity: 0;
     transition: opacity 1s;
 }
-#modal > .modal-container{
+#modal.modal-open{
+    width: 100vw; height: 100vh;
+    opacity: 1;
+}
+.modal-container{
     background-color: inherit;
     display: flex;
     flex-direction: column;
@@ -552,6 +557,8 @@ dd{
 }
 .modal-container > img{
     cursor: default;
+    max-width: 100%;
+    max-height: 100%;
 }
 .modal-container > .modal-caption{
     background-color: inherit;
@@ -559,20 +566,16 @@ dd{
     padding: 1em;
     text-align: center;
 }
-#modal.modal-open{
-    width: 100vw; height: 100vh;
-    opacity: 1;
-}
-.modal-icon{
-    font-size: 1.5em;
-    padding: 1em;
-    background-color: inherit;
-}
 .modal-icon:hover{
     color: var(--accent-color);
     cursor: pointer;
 }
-.close-modal{
+.modal-open .modal-icon{
+    font-size: 1.5em;
+    padding: 1em;
+    background-color: inherit;
+}
+.modal-open .close-modal{
     left: initial; right: 0;
     border-bottom-left-radius: 4px;
     background-color: inherit;

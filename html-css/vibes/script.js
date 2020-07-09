@@ -1,6 +1,5 @@
 $( document ).ready(function() {
     var menu = $('.menu-xs')
-    var trigger = $('.main-menu--toggle')
     
     // Set Template Initial Color Palette
     $('.template-section:nth-child(odd)').addClass('s-odd')
@@ -12,26 +11,27 @@ $( document ).ready(function() {
         $('html').attr('data-theme') === 'light' ? $('html').attr('data-theme', 'dark') : $('html').attr('data-theme', 'light')
     })
 
-    // Expand menu-xs
-    trigger.click(function(){
-        // Display/hide the menu and switch trigger-icon
-        menu.slideToggle().toggleClass('expanded')
-        $(this).children().toggle()
+    // Expand/Dismiss menu-xs
+    $('.main-menu--toggle').click(function(event){
+        // Prevent 'Dismiss menu-xs' propagation
+        event.stopPropagation();
+        
+        // Expand menu-xs
+        menu.addClass('menu-open')    
+        // Dismiss menu-xs
+        $('body').click(function(){
+            menu.removeClass('menu-open')
+        })
     })
 
     // Function Resize 
     $(window).resize(function(){
         var $deviceWidth = $(window).width()
         
-        // Check if browser screen width has changed
-        if( $deviceWidth >= 576){
-    
-            // Check if menu has remained open during the screen orientation/width change
-            if( $('menu-xs').hasClass('expanded')){
-                // … then hide it again and switch the trigger-icon again
-                $('menu-xs').removeClass('expanded')
-                $('.main-menu--toggle').children().toggle()
-            }
+        // Check if browser screen width has changed AND if the menu has remained open …
+        if( $deviceWidth >= 768 && menu.hasClass('menu-open')){
+            // Dismiss menu
+            menu.removeClass('menu-open')
         }
     })
 
@@ -42,7 +42,7 @@ $( document ).ready(function() {
         $(this).children('i').toggleClass('fa-plus fa-minus')
     })
 
-    // Galllery
+    // Open #Portfolio thumbnails full-width in #modal
     $('.gallery-grid-item').click(function(){
         $source = $(this).children('img').attr('src')
         $text = $(this).children('img').attr('alt')
@@ -52,7 +52,8 @@ $( document ).ready(function() {
             'src': $source, 
             'alt': $text 
         })
-        // Set alt text as modal ficaption
+
+        // Set 'alt' text as modal ficaption
         $('.modal-caption').text($text)
 
         // Call openModal function
@@ -74,7 +75,6 @@ $( document ).ready(function() {
                 closeModal()
             }
         })
-
     })
 
     function openModal(){
