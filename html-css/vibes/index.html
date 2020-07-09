@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx" color-mode="light">
+<html lang="zxx" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,9 +22,8 @@
 
             <nav class="main-nav" aria-label="Main navigation">
                 <a href="javascript:void(0)" class="p-absolute link-cta main-menu--toggle text-default border-none" aria-label="Menu">
-                    <i class="fas fa-bars"></i>
-                    <i class="fas fa-minus"></i>
-                </a><!-- .main-menu--toggle -->
+                    <i class="fas fa-bars"></i><i class="fas fa-minus"></i>
+                </a>
 
                 <ul class="list-style-none main-menu menu-lg">
                     <li class="menu-item hover-color"><a href="#home" aria-current="page">Home</a></li>
@@ -82,17 +81,17 @@
                     <div class="dropdown-list">
                         <div class="dropdown-element">
                             <h4>Lorem ipsum dolor</h4>
-                            <a class="p-absolute list-icon" href="javascript:void(0)"><i class="fas fa-plus text-highlights"></i></a>
+                            <i class="p-absolute list-icon fas fa-plus text-highlights"></i> 
                             <p>Porro ducimus pariatur amet deserunt possimus velit cum tenetur!</p>
                         </div>
                         <div class="dropdown-element">
                             <h4>Impedit quasi mollitia</h4>
-                            <a class="p-absolute list-icon" href="javascript:void(0)"><i class="fas fa-plus text-highlights"></i></a>           
+                            <i class="p-absolute list-icon fas fa-plus text-highlights"></i>           
                             <p>Ui veritatis libero natus aut quo. Alias ad harum doloribus aut?</p>
                         </div>
                         <div class="dropdown-element">
                             <h4>Fuga veritatis temporibus</h4>
-                            <a class="p-absolute list-icon" href="javascript:void(0)"><i class="fas fa-plus text-highlights"></i></a>                     
+                            <i class="p-absolute list-icon fas fa-plus text-highlights"></i>                   
                             <p>Plus ea debitis animi earum, maiores reiciendis.</p>
                         </div>
                     </div><!-- .dropdown-list -->
@@ -104,42 +103,46 @@
 
                 <ul id="gallery-grid" class="list-style-none gallery-grid">
                     <li class="gallery-grid-item">
-                        <img class="gallery-grid-img" src="./img/artstation/dofresh-178-slum.jpg" alt="True Legacy Artworks / Slum, artist: Dofresh.">
+                        <img class="gallery-grid-img" src="./img/artstation/dofresh-178-slum.jpg" alt="True Legacy Artworks / Slum. Artist: Dofresh.">
                         <i class="fas fa-image p-absolute icon image"></i>
                     </li>
                     <li class="gallery-grid-item">
-                        <img class="gallery-grid-img" src="./img/artstation/dofresh-60-highrise-v3.jpg" alt="True Legacy Artworks Block 44-B / Highrise v3, artist: Dofresh.">
+                        <img class="gallery-grid-img" src="./img/artstation/dofresh-60-highrise-v3.jpg" alt="True Legacy Artworks Block 44-B / Highrise v3. Artist: Dofresh.">
                         <i class="fas fa-image p-absolute icon image"></i>
                     </li>
                     <li class="gallery-grid-item">
-                        <img class="gallery-grid-img" src="./img/artstation/dofresh-50-highrise-v2.jpg" alt="True Legacy Artworks Block 44-B / Highrise v2, artist: Dofresh.">
+                        <img class="gallery-grid-img" src="./img/artstation/dofresh-50-highrise-v2.jpg" alt="True Legacy Artworks Block 44-B / Highrise v2. Artist: Dofresh.">
                         <i class="fas fa-image p-absolute icon image"></i>
                     </li>
                     <li class="gallery-grid-item">
-                        <img class="gallery-grid-img=" src="./img/artstation/dofresh-150-tunnels.jpg" alt="True Legacy Artworks / True Legacy Artworks / Tunnels, artist: Dofresh.">
+                        <img class="gallery-grid-img=" src="./img/artstation/dofresh-150-tunnels.jpg" alt="True Legacy Artworks / True Legacy Artworks / Tunnels. Artist: Dofresh.">
                         <i class="fas fa-image p-absolute icon image"></i>
                     </li>
                     <li class="gallery-grid-item">
-                        <img class="gallery-grid-img" src="./img/artstation/dofresh-160-troy-s-shop.jpg" alt="True Legacy Artworks / Troy's Shop, artist: Dofresh.">
+                        <img class="gallery-grid-img" src="./img/artstation/dofresh-160-troy-s-shop.jpg" alt="True Legacy Artworks / Troy's Shop. Artist: Dofresh.">
                         <i class="fas fa-image p-absolute icon image"></i>
                     </li>
                     <li class="gallery-grid-item">
-                        <img class="gallery-grid-img" src="./img/artstation/tianxiao-huang-170525.jpg" alt="City at night, artist: Neo1900 千九">
+                        <img class="gallery-grid-img" src="./img/artstation/tianxiao-huang-170525.jpg" alt="City at night. Artist: Neo1900 千九">
                         <i class="fas fa-image p-absolute icon image"></i>
                     </li>
                     <li class="gallery-grid-item">
-                        <img class="gallery-grid-img" src="./img/artstation/kenny-jelly-lightroom-2-2-2.jpg" alt="Night City / Lightroom, artist: Kenny Jelly">
+                        <img class="gallery-grid-img" src="./img/artstation/kenny-jelly-lightroom-2-2-2.jpg" alt="Night City / Lightroom. Artist: Kenny Jelly">
                         <i class="fas fa-video p-absolute icon video"></i>
                     </li>
                     <li class="gallery-grid-item">
-                        <img class="gallery-grid-img" src="./img/artstation/kenny-jelly-3-63.jpg" alt="Night City, artist: Kenny Jelly">
+                        <img class="gallery-grid-img" src="./img/artstation/kenny-jelly-3-63.jpg" alt="Night City. Artist: Kenny Jelly">
                         <i class="fas fa-video p-absolute icon video"></i>
                     </li>
-                    <!-- <i class="fas fa-minus gallery--close-btn p-absolute"></i> -->
                 </ul><!-- .gallery-grid -->
                 <div id="modal">
-                    <figure></figure>
-                    <figcaption></figcaption>
+                    <figure class="modal-container">
+                        <img src="" alt="">
+                        <figcaption class="p-absolute modal-caption"></figcaption>
+                    </figure>
+                    <i class="p-absolute modal-icon close-modal fas fa-times"></i>
+                    <i class="p-absolute modal-icon gallery-control-dir fas fa-chevron-left"></i>
+                    <i class="p-absolute modal-icon gallery-control-dir fas fa-chevron-right"></i>
                 </div>
 
                 <div class="section-footer">

@@ -22,10 +22,11 @@
     --lightgray--bg-dark:#333333;
     --lightgray--bg-light: #dcddd1;
     --ivory: #fffff0;
+    --gray: #c2cad2;
     --text-hover-color: var(--lightblue);
 }
 
-:root[color-mode="light"]{
+:root[data-theme="light"]{
     --bg1: var(--lightblue);
     --bg2: var(--bluegray); 
     --primary-text-color: var(--darkestblue);
@@ -35,11 +36,11 @@
     --border-color: var(--lightgray--bg-light);
     --bg-even: var(--ivory);
 }
-:root[color-mode="dark"]{
+:root[data-theme="dark"]{
     --bg1: var(--prune);
     --bg2: var(--darkestblue); 
-    --primary-text-color: var(--bluegray);
-    --secondary-text-color: var(--ivory);
+    --primary-text-color: #94b8db;
+    --secondary-text-color: var(--lightgray--bg-light);
     --accent-color: var(--lighterred);
     --input-color: var(--lightgray--bg-dark);
     --border-color: var(--bluegray);

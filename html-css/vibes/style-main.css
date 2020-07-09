@@ -95,6 +95,9 @@ body{
     list-style: none;
     padding-left: 0;
 }
+.noscroll{
+    overflow: hidden;
+}
 /*-------------------------------------------*\
     Links
 \*-------------------------------------------*/
@@ -143,8 +146,7 @@ a.text-highlights{
 	border-bottom-right-radius: 3px;
 	font-size: 1.125rem;
 	padding: .3em .3em .2em .3em;
-	z-index: 7;
-	/* border: 1px solid var(--input-color); */
+	z-index: 2;
 	border: 1px solid transparent;
 	border-left: 0;
 }
@@ -312,7 +314,7 @@ h3.decorated-title::after{
 .main-menu--toggle{
     display: inline-block;
 	top: 24px;
-	left: unset;
+	left: initial;
 	right: 1em;
 	font-size: 24px;
     padding: .25em;
@@ -389,7 +391,7 @@ textarea {
                 6px 1px var(--lightblue), 7px 0 var(--lightblue), 6px -1px var(--lightblue);
 }
 .site-header.p-sticky{
-    z-index: 8;
+    z-index: 3;
 }
 
 /*-------------------------------------------*\
@@ -401,7 +403,7 @@ textarea {
     background-attachment: scroll;
 }
 .section-banner > *{
-    text-shadow: 1px 1px 5px rgba(0,0,0,.6), -1px -1px 5px rgba(0,0,0,.6);
+    text-shadow: 1px 1px 3px rgba(0,0,0,.6);
 }
 
 /*-------------------------------------------*\
@@ -437,6 +439,7 @@ dd{
 .dropdown-element{
     border-bottom: 1px solid var(--border-color);
     position: relative;
+    cursor: pointer;
 }
 .dropdown-element:last-of-type{
     border-bottom: 0;
@@ -455,14 +458,14 @@ dd{
     font-size: 1.25em;
     text-align: center;
 }
-.dropdown-element .list-icon + p {
+.dropdown-element > p {
     height: 0px;
     margin: 0;
     overflow: hidden;
     opacity: 0;
     transition: height .5s, opacity 1s;
 }
-.dropdown-element .list-icon.accordion-open + p {
+.dropdown-element.accordion-open > p {
     height: 75px;
     opacity: 1;
     overflow: visible;
@@ -471,6 +474,9 @@ dd{
 /*-------------------------------------------*\
     #Portfolio
 \*-------------------------------------------*/
+#portfolio{
+    position: relative;
+}
 .gallery-grid{
     display: flex;
     flex-wrap: wrap;
@@ -515,15 +521,77 @@ dd{
     left: 50%;
     transform: translate(-50%, -50%);
     padding: .25em .5em;
-    border-radius: 8px;
-   
-    background-color: rgba(255, 51, 85, .8);
+    border-radius: 8px;  
+    background-color: var(--accent-color);
     opacity: 0;
-    transition: opacity .8s ease-out;
+    transition: opacity .5s ease-in;
+}
+.gallery-grid-item:hover::before{
+    opacity: .8;
 }
 
-.gallery-grid-item:hover::before{
+/*------------------ Modal ----------------*/
+#modal{
+    background-color: rgba(20, 30, 36, .7);
+    z-index: 4;
+    position: fixed;
+    top: 0; right: 0;
+    width: 0vw; height: 0vh;
+    opacity: 0;
+    transition: opacity 1s;
+}
+#modal > .modal-container{
+    background-color: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+.modal-container > img{
+    cursor: default;
+}
+.modal-container > .modal-caption{
+    background-color: inherit;
+    top: initial; right: 0; bottom: 0;
+    padding: 1em;
+    text-align: center;
+}
+#modal.modal-open{
+    width: 100vw; height: 100vh;
     opacity: 1;
+}
+.modal-icon{
+    font-size: 1.5em;
+    padding: 1em;
+    background-color: inherit;
+}
+.modal-icon:hover{
+    color: var(--accent-color);
+    cursor: pointer;
+}
+.close-modal{
+    left: initial; right: 0;
+    border-bottom-left-radius: 4px;
+    background-color: inherit;
+}
+.gallery-control-dir{
+    top: calc(50vh - 1.5em);
+}
+.gallery-control-dir.fa-chevron-right{
+    left: initial; right: 0;
+}
+
+/*----------------- Tooltip ---------------*/
+.close-modal:hover::after{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: small;
+    content: "Close";
+    position: absolute;
+    top: calc(50% - 1.5em); right: 100%;
+    padding: 1em;
 }
 
 /*-------------------------------------------*\
