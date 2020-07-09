@@ -28,7 +28,8 @@
 
 :root[data-theme="light"]{
     --bg1: var(--lightblue);
-    --bg2: var(--bluegray); 
+    --bg2: var(--bluegray);
+    --bg3: var(--darkestblue); 
     --primary-text-color: var(--darkestblue);
     --secondary-text-color: var(--ivory);
     --accent-color: var(--lightred);
@@ -39,6 +40,7 @@
 :root[data-theme="dark"]{
     --bg1: var(--prune);
     --bg2: var(--darkestblue); 
+    --bg3: var(--bluegray); 
     --primary-text-color: #94b8db;
     --secondary-text-color: var(--lightgray--bg-light);
     --accent-color: var(--lighterred);
