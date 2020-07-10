@@ -6,6 +6,7 @@ Exemple:afficherRadio($nomsRadio); */
 $elements = array("Monsieur","Madame","Mademoiselle");
 
 function afficherRadio($array){
+    $radioBtn = "";
     foreach ($array as $value) {
         $id = strtolower($value);
 

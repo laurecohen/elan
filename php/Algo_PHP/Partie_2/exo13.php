@@ -7,12 +7,12 @@ class Voiture {
     private $vitesseActuelle;
     private $statut;
 
-    public function __construct($marque = "", $modele = "", $nbPortes = 0, $vitesseActuelle = 0){
+    public function __construct($marque = "", $modele = "", $nbPortes = 0){
         $this->marque = $marque;
         $this->modele = $modele;
         $this->nbPortes = $nbPortes;
-        $this->vitesseActuelle = $vitesseActuelle;
-        $this->statut = $statut;
+        $this->vitesseActuelle = 0;
+        // $this->statut = $statut;
     }
 
     // Getter & Setter
@@ -79,6 +79,7 @@ class Voiture {
             $this->vitesseActuelle -= $vitesse;
             
             // Arrêter le véhicule si la vitesse passée en paramètre est supérieure ou égale à la vitesse actuelle
+            // >>>>>>>>>>>>>>>>>>>>> Tester fn max()
             if($vitesse >= $this->vitesseActuelle){
                 $this->vitesseActuelle = 0;
                 $this->etat = false; 

@@ -50,7 +50,7 @@ class VoitureElec extends Voiture{
 
     // getInfos()2
     public function getInfos(){
-        return $this->getMarque().", ".$this->getModele().", ".$this->getAutonomie();
+        return parent::getInfos().". Autonomie : ".$this->getAutonomie();
     }
 }
 

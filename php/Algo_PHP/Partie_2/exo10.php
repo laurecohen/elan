@@ -10,6 +10,7 @@ $labelsRadio = array("Feminin", "Masculin", "Autre");
 $labelsSelect = array("Développeur Logiciel","Designer web","Intégrateur", "Chef de projet");
 
 function displayInputs($inputArray){
+    $formInputs = "";
     foreach ($inputArray as $id => $value) {
         $formInputs .= "<label for='".$id."'>".$value."</label>
             <input type='text' id='".$id."' style='display:block' required>";
@@ -18,6 +19,7 @@ function displayInputs($inputArray){
 }
 
 function displayRadio($radioArray){
+    $radioBtn = "";
     foreach ($radioArray as $value) {
         $id = strtolower($value);
         $radioBtn .= "<input type='radio' id='".$id."' name='gender'><label for='".$id."'>".$value."</label>";
@@ -26,6 +28,7 @@ function displayRadio($radioArray){
 }
 
 function displaySelect($selectArray){
+    $options = "";
     foreach ($selectArray as $value) {
         $options .= "<option>".$value."</option>";
     }   
@@ -33,6 +36,7 @@ function displaySelect($selectArray){
 }
 
 function displayForm($input, $radio, $select){
+    $formElemnts = "";
     $formElemnts .= displayInputs($input).displayRadio($radio).displaySelect($select);
     
     return "<form method = 'post' action = ''>".

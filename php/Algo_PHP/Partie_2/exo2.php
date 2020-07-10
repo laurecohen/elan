@@ -8,6 +8,8 @@ $capitales = array ("France"=>"Paris","Allemagne"=>"Berlin","USA"=>"Washington",
 
 function afficherTableHTML($array){
     asort($array);
+    $tableContent = "";
+    
     foreach ($array as $key => $value) {
        $tableContent .= "<tr><td>".strtoupper($key)."</td><td>".$value."</td></tr>";
     }

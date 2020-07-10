@@ -7,6 +7,7 @@ Exemple : genererCheckbox($elements);
 $elements = array("Choix 1" => false, "Choix 2" => true, "Choix 3" => false);
 
 function generateCheckbox($array){
+    $checkoboxes = "";
     foreach ($array as $id => $checked) {
         $state = "";
         

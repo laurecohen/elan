@@ -5,8 +5,8 @@ Exemple: formaterDateFr("2018-02-23");
 Affichage : vendredi 23 février 2018 */
 
 function formatDateFr($str){  
-    setlocale(LC_ALL, "fr_FR");  
-    return $dateStr = date("l j F Y", strtotime($str));;
+    setlocale(LC_ALL, "fr_FR.utf-8");
+    return strftime("%A %d %B %Y", strtotime($str));
 }
 
-echo formatDateFr("now");
+echo formatDateFr("2019-02-26");
