@@ -9,6 +9,7 @@ body{
     width: 100vw;
     padding: 2em;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: stretch;
 }
@@ -34,9 +35,8 @@ td{
     text-align: center;
     user-select: none;
 }
-
-#reset-table{
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+.info-container{
+    flex: 1 100%;
+    text-align: center;
+    padding: 1em;
 }
