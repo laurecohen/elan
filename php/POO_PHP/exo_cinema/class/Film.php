@@ -7,6 +7,7 @@ class Film{
     private $synopsis;
     private $genre;
     private $real;
+    private $casting;
 
     public function __construct(string $titre = "", string $anneSortie = "now", int $duree = 0, string $synopsis = "", Genre $genre = null, Realisateur $real = null){
         $this->titre = $titre;
@@ -17,6 +18,7 @@ class Film{
         $genre->addFilm($this);
         $this->real = $real;
         $real->addFilm($this);
+        $this->casting = [];
     }
 
     /**
@@ -120,8 +122,29 @@ class Film{
      */ 
     public function setGenre($genre){
         $this->genre = $genre;
-    }
+    } 
     
+    /**
+     * Add Distribution to array Casting
+     *
+     * @return  self
+     */ 
+    public function addDistribution(Distribution $distribution){
+        $this->casting[] = $distribution;
+    }
+  
+    /**
+     * getInfosDistribution
+     *
+     * @return void
+     */
+    public function getCast(){ 
+        foreach ($this->casting as $distribution) {       
+            $acteur = $distribution->getActeur();
+            $acteurs[] = $acteur;
+        }
+        return implode(', ', $acteurs);
+    }
 
     /**
      * getInfos
@@ -131,14 +154,14 @@ class Film{
     public function getInfos(){
         // array cast + foreach
         
-        return "<h4>Film : $this</h4><ul>".
-            "<li>Titre: ".$this->titre."</li>".
-            "<li>Année de sortie: ".$this->getAnneSortie()."</li>".
-            "<li>Durée: ".$this->getfDuree()."</li>".
-            "<li>Synopsis: <a href='#'>".$this->synopsis."</a></li>".
-            "<li>Genre: ".$this->genre."</li>".
-            "<li>Cast: ".$this->synopsis."</li>".
-            "<li>Réalisateur: ".$this->real."</li></ul>";
+        return "<h4>Film : $this->titre</h4><ul>".
+            "<li>Titre : ".$this->titre."</li>".
+            "<li>Année de sortie : ".$this->getAnneSortie()."</li>".
+            "<li>Durée : ".$this->getfDuree()."</li>".
+            // "<li>Synopsis: <a href='#'>".$this->synopsis."</a></li>".
+            "<li>Genre : ".$this->genre."</li>".
+            "<li>Casting : ".$this->getCast()."</li>".
+            "<li>Réalisateur : ".$this->real."</li></ul>";
     }
 
     /**
@@ -148,6 +171,6 @@ class Film{
      */
     //echo $f1 = new Film("Titre", "now", 0, "Synopsis");
     public function __toString(){
-        return $this->titre;
+        return $this->titre." (".$this->getAnneSortie().")";
     }
 }

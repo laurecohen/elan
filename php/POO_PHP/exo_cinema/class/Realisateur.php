@@ -9,22 +9,6 @@ class Realisateur extends Personne{
    }
 
    /**
-    * Get the value of films
-    */ 
-   public function getFilms(){
-      return $this->films;
-   }
-
-   /**
-    * Set the value of films
-    *
-    * @return  self
-    */ 
-   public function setFilms($films){
-      $this->films = $films;
-   }
-
-   /**
      * Add Films to array Films
      *
      * @return  self

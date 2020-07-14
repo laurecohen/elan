@@ -39,10 +39,10 @@ class Genre{
      *
      * @return void
      */
-    public function getInfos(){
+    public function getFilms(){
         $listFilms = "<h4>Genre : $this</h4><ul>";
         foreach ($this->films as $film) {
-            $listFilms .= "<li>".$film."</li>";
+            $listFilms .= "<li>".$film.", de ".$film->getReal()."</li>";
         }
         
         return $listFilms .= "</ul>";

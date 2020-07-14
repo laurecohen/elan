@@ -5,10 +5,13 @@ class Distribution{
     private $acteur;
     private $role;
 
-    public function __construct(Film $film = null, Acteur $acteur = null, string $role = ""){
+    public function __construct(Film $film = null, Acteur $acteur = null, Role $role = null){
         $this->film = $film;
         $this->acteur = $acteur;
         $this->role = $role;
+        $acteur->addDistribution($this);
+        $film->addDistribution($this);
+        $role->addDistribution($this);
     }
 
     /**
@@ -60,35 +63,11 @@ class Distribution{
     }
 
     /**
-     * getCast
-     *
-     * @return void
-     */
-    public function getCast(){
-        return "<h4>Distribution : $this</h4>
-            <ul>".
-                "<li>".$this->acteur.", ".$this->role."</li>".
-            "</ul>";
-    }
-
-    /**
-     * getFilmo
-     *
-     * @return void
-     */
-    public function getFilmo(){
-        return "<h4>Filmographie : $this->acteur</h4>
-            <ul>".
-                "<li>".$this.", ".$this->role."</li>".
-            "</ul>";
-    }
-    
-    /**
      * __toString
      *
      * @return void
      */
     public function __toString(){
-        return $this->film."";
+        return $this->film.", ".$this->acteur.", ".$this->role;
     }
 }
