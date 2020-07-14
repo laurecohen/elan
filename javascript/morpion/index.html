@@ -8,6 +8,10 @@
 </head>
 <body>
     <div class="wrapper">
+        <div class="player player-x">
+            <h2>Joueur X</h2>
+            <span class="player-info"></span>
+        </div>
         <table>
             <tr class="row">
                 <td id="1-1" class="cell"></td>
@@ -25,8 +29,13 @@
                 <td id="3-3" class="cell"></td>
             </tr>
         </table>
+        <div class="player player-o">
+            <h2>Joueur O</h2>
+            <span class="player-info"></span>
+        </div>
         <div class="info-container">      
             <button id="reset-table" class="center-me">New game</button>
+            <span id="info"></span>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
