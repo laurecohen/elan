@@ -5,8 +5,10 @@ $(document).ready( ()=>{
     let nbClick = 0
     let endOfGame = false
     let $info = $('#info')
+    let victoire = 0
     
     function handleEvent(trigger){
+        $(".morpion-cell").removeClass("current")
         if( trigger.text() ===  "" ){
             nbCell--
 
@@ -15,20 +17,22 @@ $(document).ready( ()=>{
             }
             
             nbClick++
-            trigger.text(player)
+            trigger.text(player).addClass("current")
             
             if ( nbClick >= 5 ){
                 // Commencer les tests quand le premier jouer a joué 3 coups
-                if ( endOfGame  || validateResult(player) ){      
+                if ( endOfGame  || validateResult(player) ){  
+                    $(".info-container").addClass("overlay")
+                    victoire++
+                    $info.text("Fin du jeu")
                     if (validateResult(player)){
-                        $(".player-"+player).addClass("win")
-                        $(".player-"+player).children(".player-info").text("Victoire de " + player.toUpperCase() + " !")
-                        $info.text("Fin du jeu !")
+                        $(".player-info").text("Victoire de " + player.toUpperCase() + " !")
+                        $("#score-"+player).text(victoire)
                     } else {
-                        $info.text("Match nul !")
+                        $(".player-info").text("Match nul !")
                     }
                     // Détacher l'évenement click dès que la partie est terminée
-                    $('.cell').off('click')
+                    $('.morpion-cell').off('click')
                 }
             }
             player = player === "o" ? "x" : "o"
@@ -80,16 +84,18 @@ $(document).ready( ()=>{
     }
     
     // Activer le click sur les cellules
-    $('.cell').clickHandler()
+    $('.morpion-cell').clickHandler()
     
-    $("#reset-table").click(function(){
+    $(".reset-table").click(function(){
         // Vider toutes les cases, réinitialiser les variables nbCell et endOfGame 
-        $(".cell, #info, .player-info").text("")
+        $(".morpion-cell, #info, .player-info").text("")
+        $(".morpion-cell").removeClass("current")
+        $(".info-container").removeClass("overlay")
         nbCell = 9
         endOfGame = false
         $(".player").removeClass("win")
         // Réactiver le click sur les cellules
-        $('.cell').clickHandler()
+        $('.morpion-cell').clickHandler()
     })
 
 })
