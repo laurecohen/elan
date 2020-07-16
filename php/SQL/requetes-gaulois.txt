@@ -1,0 +1,58 @@
+1. Nombre de gaulois par lieu (trié par nombre de gaulois décroissant)
+SELECT nom_lieu, COUNT(*) AS nb
+FROM villageois v, lieu l
+WHERE v.ID_LIEU = l.ID_LIEU
+GROUP BY nom_lieu
+ORDER BY nb DESC
+
+2. Nom des gaulois + spécialité + village
+SELECT nom, nom_specialite, nom_lieu
+FROM villageois v, specialite s, lieu l
+WHERE v.ID_SPECIALITE = s.ID_SPECIALITE
+AND v.ID_LIEU = l.ID_LIEU
+
+3. Nom des spécialités avec nombre de gaulois par spécialité (trié par nombre de gaulois décroissant)
+SELECT nom_specialite, COUNT(*) AS nb
+FROM specialite s, villageois v
+WHERE s.ID_SPECIALITE = v.ID_SPECIALITE
+GROUP BY nom_specialite
+ORDER BY nb DESC
+
+4. Nom des batailles + lieu de la plus récente à la plus ancienne (dates au format jj/mm/aaaa)
+SELECT nom_bataille, nom_lieu, DATE_FORMAT(date_bataille, "%d/%m/%Y") AS datef
+FROM bataille b, lieu l
+WHERE b.ID_LIEU = l.ID_LIEU
+ORDER BY datef
+
+5. Nom des potions + coût de réalisation de la potion (trié par coût décroissant)
+SELECT nom_potion, SUM(qte * cout_ingredient) AS prix
+FROM potion p, compose c, ingredient i
+WHERE p.ID_POTION = c.ID_POTION
+AND c.ID_INGREDIENT = i.ID_INGREDIENT
+GROUP BY nom_potion
+ORDER BY prix DESC
+
+6. Nom des ingrédients + coût + quantité de chaque ingrédient qui composent la potion 'Potion V'
+SELECT nom_ingredient, cout_ingredient, qte
+FROM potion p, compose c, ingredient i
+WHERE nom_potion = 'Potion V'
+AND p.ID_POTION = c.ID_POTION
+AND c.ID_INGREDIENT = i.ID_INGREDIENT
+
+7. Nom du ou des villageois qui ont pris le plus de casques dans la bataille 'Babaorum'
+
+8. Nom des villageois et la quantité de potion bue (en les classant du plus grand buveur au plus petit)
+9. Nom de la bataille où le nombre de casques pris a été le plus important
+10. Combien existe-t-il de casques de chaque type et quel est leur coût total ? (classés par nombre décroissant)
+11. Noms des potions dont un des ingrédients est la cerise
+12. Nom du / des village(s) possédant le plus d'habitants
+13. Noms des villageois qui n'ont jamais bu de potion
+14. Noms des villages qui contiennent la particule 'um'
+15. Nom du / des villageois qui n'ont pas le droit de boire la potion 'Rajeunissement II'
+
+-------------------------
+SELECT MAX(nom), qte
+FROM villageois v, bataille b, prise_casque pc
+WHERE nom_bataille = 'Babaorum'
+AND v.ID_VILLAGEOIS = pc.ID_VILLAGEOIS
+AND pc.ID_BATAILLE = b.ID_BATAILLE
