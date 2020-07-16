@@ -14,20 +14,20 @@ $g6 = new Genre("Thriller");
 $g7 = new Genre("Musical");
 
 // Realisateurs
-$r1 = new Realisateur("Lynch", "David", "now");
-$r2 = new Realisateur("Sharman", "Jim", "now");
-$r3 = new Realisateur("Scott", "Ridley", "now");
+$r1 = new Realisateur("Lynch", "David", "1946-01-20");
+$r2 = new Realisateur("Sharman", "Jim", "1945-03-12");
+$r3 = new Realisateur("Scott", "Ridley", "1937-11-30");
 
 // Acteurs
-$a1 = new Acteur("Nance", "Jack", "now");
-$a2 = new Acteur("Stewart", "Charlotte", "now");
-$a3 = new Acteur("Watts", "Naomi", "now");
-$a4 = new Acteur("Harring", "Laura", "now");
-$a5 = new Acteur("Hopkins", "Anthony", "now");
-$a6 = new Acteur("Hurt", "John", "now");
-$a7 = new Acteur("Sarandon", "Susan", "now");
-$a8 = new Acteur("Curry", "Tim", "now");
-$a9 = new Acteur("Davis", "Geena", "now");
+$a1 = new Acteur("Nance", "Jack", "1943-12-21"); // Décès 30 décembre 1996
+$a2 = new Acteur("Stewart", "Charlotte", "1941-02-27");
+$a3 = new Acteur("Watts", "Naomi", "1968-09-28");
+$a4 = new Acteur("Harring", "Laura", "1964-03-31");
+$a5 = new Acteur("Hopkins", "Anthony", "1937-12-31");
+$a6 = new Acteur("Hurt", "John", "1940-01-22"); // Décès 27 janvier 2017 
+$a7 = new Acteur("Sarandon", "Susan", "1946-10-04");
+$a8 = new Acteur("Curry", "Tim", "1946-04-19");
+$a9 = new Acteur("Davis", "Geena", "1956-01-21");
 
 // Films
 $f1 = new Film("Eraserhead", "1977-09-28", 89, "", $g2, $r1);
