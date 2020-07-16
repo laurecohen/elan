@@ -40,19 +40,69 @@ AND p.ID_POTION = c.ID_POTION
 AND c.ID_INGREDIENT = i.ID_INGREDIENT
 
 7. Nom du ou des villageois qui ont pris le plus de casques dans la bataille 'Babaorum'
+SELECT nom, MAX(qte) AS casques
+FROM villageois v, prise_casque pc, bataille b
+WHERE v.ID_VILLAGEOIS = pc.ID_VILLAGEOIS
+AND pc.ID_BATAILLE = b.ID_BATAILLE
+GROUP BY NOM
+ORDER BY casques DESC
+LIMIT 1
 
 8. Nom des villageois et la quantité de potion bue (en les classant du plus grand buveur au plus petit)
-9. Nom de la bataille où le nombre de casques pris a été le plus important
-10. Combien existe-t-il de casques de chaque type et quel est leur coût total ? (classés par nombre décroissant)
-11. Noms des potions dont un des ingrédients est la cerise
-12. Nom du / des village(s) possédant le plus d'habitants
-13. Noms des villageois qui n'ont jamais bu de potion
-14. Noms des villages qui contiennent la particule 'um'
-15. Nom du / des villageois qui n'ont pas le droit de boire la potion 'Rajeunissement II'
+SELECT nom, SUM(dose) AS doses
+FROM villageois v, boit b
+WHERE v.ID_VILLAGEOIS = b.ID_VILLAGEOIS
+GROUP BY NOM
+ORDER BY doses DESC
 
--------------------------
-SELECT MAX(nom), qte
-FROM villageois v, bataille b, prise_casque pc
-WHERE nom_bataille = 'Babaorum'
-AND v.ID_VILLAGEOIS = pc.ID_VILLAGEOIS
-AND pc.ID_BATAILLE = b.ID_BATAILLE
+9. Nom de la bataille où le nombre de casques pris a été le plus important
+SELECT nom_bataille, MAX(qte) AS max
+FROM bataille b, prise_casque pc
+WHERE B.ID_BATAILLE = pc.ID_BATAILLE
+GROUP BY nom_bataille
+LIMIT 1
+
+10. Combien existe-t-il de casques de chaque type et quel est leur coût total ? (classés par nombre décroissant)
+SELECT nom_type_casque AS nom, COUNT(c.ID_TYPE_CASQUE) AS compte, SUM(cout_casque) AS cout
+FROM type_casque tc
+INNER JOIN casque c
+ON tc.ID_TYPE_CASQUE = c.ID_TYPE_CASQUE
+GROUP BY nom
+ORDER BY cout DESC
+
+11. Noms des potions dont un des ingrédients est la cerise
+SELECT nom_potion
+FROM potion p, ingredient i, compose c
+WHERE p.ID_POTION = c.ID_POTION
+AND c.ID_INGREDIENT = i.ID_INGREDIENT
+AND i.NOM_INGREDIENT = 'Cerise'
+GROUP BY nom_potion
+
+12. Nom du / des village(s) possédant le plus d'habitants
+SELECT nom_lieu nlieu, COUNT(id_villageois) compte
+FROM lieu l
+INNER JOIN villageois v
+ON v.ID_LIEU = l.ID_LIEU
+GROUP BY nlieu
+ORDER BY compte DESC
+LIMIT 1
+
+13. Noms des villageois qui n'ont jamais bu de potion
+SELECT nom
+FROM villageois v
+LEFT JOIN boit b 
+ON v.ID_VILLAGEOIS = b.ID_VILLAGEOIS
+WHERE b.id_villageois IS NULL
+
+14. Noms des villages qui contiennent la particule 'um'
+SELECT nom_lieu
+FROM lieu l 
+WHERE RIGHT(nom_lieu, 2) = 'um'
+
+15. Nom du / des villageois qui n'ont pas le droit de boire la potion 'Rajeunissement II'
+SELECT nom_potion, nom, pe.A_LE_DROIT
+FROM potion po
+INNER JOIN peut pe ON po.ID_POTION = pe.ID_POTION
+LEFT JOIN villageois v ON pe.ID_VILLAGEOIS = v.ID_VILLAGEOIS
+WHERE po.NOM_POTION = 'Rajeunissement II'
+AND pe.A_LE_DROIT = 0
