@@ -87,6 +87,19 @@ GROUP BY nlieu
 ORDER BY compte DESC
 LIMIT 1
 
+12.2
+SELECT nom_lieu, COUNT(v.id_lieu) AS nb_villageois
+FROM villageois v
+INNER JOIN lieu l ON v.ID_LIEU = l.ID_LIEU
+GROUP BY v.id_lieu 
+HAVING COUNT(v.id_lieu)=( 
+    SELECT MAX(mycount) 
+    FROM ( 
+        SELECT nom_lieu, COUNT(v.id_lieu) mycount 
+        FROM villageois v
+        INNER JOIN lieu l ON v.ID_LIEU = l.ID_LIEU
+        GROUP BY v.id_lieu) as custom)
+
 13. Noms des villageois qui n'ont jamais bu de potion
 SELECT nom
 FROM villageois v
