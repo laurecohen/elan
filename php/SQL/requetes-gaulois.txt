@@ -158,3 +158,19 @@ INNER JOIN peut pe ON po.ID_POTION = pe.ID_POTION
 LEFT JOIN villageois v ON pe.ID_VILLAGEOIS = v.ID_VILLAGEOIS
 WHERE po.NOM_POTION = 'Rajeunissement II'
 AND pe.A_LE_DROIT = 0
+
+
+
+BONUS : Afficher le + important nb de casques pris en une seule bataille (bataille, villageois, qte)
+----------------------------------------------------------------------------------------------------
+CREATE VIEW total
+    SELECT nom_bataille, nom, qte
+    FROM bataille b
+    INNER JOIN prise_casque pc ON b.ID_BATAILLE = pc.ID_BATAILLE
+    INNER JOIN villageois v ON pc.ID_VILLAGEOIS = v.ID_VILLAGEOIS;
+
+SELECT * 
+FROM total
+HAVING qte >= ALL (
+	SELECT qte FROM total
+)
