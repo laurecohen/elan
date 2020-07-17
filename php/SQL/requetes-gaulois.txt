@@ -174,3 +174,9 @@ FROM total
 HAVING qte >= ALL (
 	SELECT qte FROM total
 )
+
+BONUS2
+SELECT DISTINCT DATEDIFF((SELECT date_bataille FROM bataille WHERE nom_bataille = 'babaorum'), (SELECT date_bataille FROM bataille WHERE nom_bataille = 'Vikings')) AS diff
+FROM bataille
+
+BONUS3
