@@ -180,3 +180,7 @@ SELECT DISTINCT DATEDIFF((SELECT date_bataille FROM bataille WHERE nom_bataille 
 FROM bataille
 
 BONUS3
+SELECT nom_type_casque AS typeCasque, GROUP_CONCAT(nom_casque) AS nomCasque
+FROM type_casque tc, casque c
+WHERE tc.ID_TYPE_CASQUE = c.ID_TYPE_CASQUE
+GROUP BY nom_type_casque
