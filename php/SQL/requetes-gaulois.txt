@@ -22,7 +22,8 @@ ORDER BY nb DESC
 SELECT nom_bataille, nom_lieu, DATE_FORMAT(date_bataille, "%d/%m/%Y") AS datef
 FROM bataille b, lieu l
 WHERE b.ID_LIEU = l.ID_LIEU
-ORDER BY datef
+ORDER BY date_bataille
+----- order by sur le type date, pas sur le format (string) 
 
 5. Nom des potions + coût de réalisation de la potion (trié par coût décroissant)
 SELECT nom_potion, SUM(qte * cout_ingredient) AS prix
@@ -38,6 +39,7 @@ FROM potion p, compose c, ingredient i
 WHERE nom_potion = 'Potion V'
 AND p.ID_POTION = c.ID_POTION
 AND c.ID_INGREDIENT = i.ID_INGREDIENT
+----- nom_potion insensible à la casse
 
 7. Nom du ou des villageois qui ont pris le plus de casques dans la bataille 'Babaorum'
 SELECT nom, MAX(qte) AS casques
@@ -47,12 +49,27 @@ AND pc.ID_BATAILLE = b.ID_BATAILLE
 GROUP BY NOM
 ORDER BY casques DESC
 LIMIT 1
+-----
+7.2
+SELECT nom, SUM(qte) AS somme
+FROM villageois v, prise_casque pc, bataille b
+WHERE v.ID_VILLAGEOIS = pc.ID_VILLAGEOIS
+AND pc.ID_BATAILLE = b.ID_BATAILLE
+AND nom_bataille = 'Babaorum'
+GROUP BY v.id_villageois
+HAVING somme >= ALL (
+	SELECT SUM(qte)
+	FROM prise_casque pc, bataille b
+	WHERE pc.ID_BATAILLE = b.ID_BATAILLE
+	AND nom_bataille = 'Babaorum'
+	GROUP BY ID_VILLAGEOIS
+)
 
 8. Nom des villageois et la quantité de potion bue (en les classant du plus grand buveur au plus petit)
 SELECT nom, SUM(dose) AS doses
 FROM villageois v, boit b
 WHERE v.ID_VILLAGEOIS = b.ID_VILLAGEOIS
-GROUP BY NOM
+GROUP BY nom
 ORDER BY doses DESC
 
 9. Nom de la bataille où le nombre de casques pris a été le plus important
@@ -61,6 +78,17 @@ FROM bataille b, prise_casque pc
 WHERE B.ID_BATAILLE = pc.ID_BATAILLE
 GROUP BY nom_bataille
 LIMIT 1
+-----
+9.2
+SELECT nom_bataille, SUM(qte) AS somme
+FROM bataille b
+INNER JOIN prise_casque pc ON b.ID_BATAILLE = pc.ID_BATAILLE
+GROUP BY b.ID_BATAILLE
+HAVING somme >= ALL (
+	SELECT SUM(qte)
+	FROM prise_casque pc
+	GROUP BY ID_BATAILLE
+)
 
 10. Combien existe-t-il de casques de chaque type et quel est leur coût total ? (classés par nombre décroissant)
 SELECT nom_type_casque AS nom, COUNT(c.ID_TYPE_CASQUE) AS compte, SUM(cout_casque) AS cout
@@ -69,6 +97,7 @@ INNER JOIN casque c
 ON tc.ID_TYPE_CASQUE = c.ID_TYPE_CASQUE
 GROUP BY nom
 ORDER BY cout DESC
+----- simplifier par COUNT(*) AS compte
 
 11. Noms des potions dont un des ingrédients est la cerise
 SELECT nom_potion
@@ -76,7 +105,7 @@ FROM potion p, ingredient i, compose c
 WHERE p.ID_POTION = c.ID_POTION
 AND c.ID_INGREDIENT = i.ID_INGREDIENT
 AND i.NOM_INGREDIENT = 'Cerise'
-GROUP BY nom_potion
+ORDER BY nom_potion
 
 12. Nom du / des village(s) possédant le plus d'habitants
 SELECT nom_lieu nlieu, COUNT(id_villageois) compte
@@ -86,7 +115,7 @@ ON v.ID_LIEU = l.ID_LIEU
 GROUP BY nlieu
 ORDER BY compte DESC
 LIMIT 1
-
+-----
 12.2
 SELECT nom_lieu, COUNT(v.id_lieu) AS nb_villageois
 FROM villageois v
@@ -99,12 +128,22 @@ HAVING COUNT(v.id_lieu)=(
         FROM villageois v
         INNER JOIN lieu l ON v.ID_LIEU = l.ID_LIEU
         GROUP BY v.id_lieu) as custom)
+-----
+12.3
+SELECT nom_lieu, COUNT(*) nbVillageois
+FROM lieu l
+INNER JOIN villageois v ON v.ID_LIEU = l.ID_LIEU
+GROUP BY v.ID_LIEU
+HAVING nbVillageois >= ALL (
+	SELECT COUNT(*)
+	FROM villageois
+	GROUP BY ID_LIEU
+)
 
 13. Noms des villageois qui n'ont jamais bu de potion
 SELECT nom
 FROM villageois v
-LEFT JOIN boit b 
-ON v.ID_VILLAGEOIS = b.ID_VILLAGEOIS
+LEFT JOIN boit b ON v.ID_VILLAGEOIS = b.ID_VILLAGEOIS
 WHERE b.id_villageois IS NULL
 
 14. Noms des villages qui contiennent la particule 'um'
