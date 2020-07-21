@@ -1,0 +1,52 @@
+a. Lister les véhicules (plaque immatriculation + modèle + marque) de marque française
+SELECT num_immat, nom_modele, nom_marque
+FROM voiture v
+INNER JOIN modele mo ON v.id_modele = mo.id_modele
+INNER JOIN marque ma ON mo.id_marque = ma.id_marque
+INNER JOIN origine o ON ma.id_origine = o.id_origine
+WHERE nom_pays = 'France'
+
+b. Nombre de véhicules par marque (trié par nombre de véhicules décroissant)
+SELECT nom_marque, COUNT(id_voiture) AS nb_voitures
+FROM marque mq
+LEFT JOIN modele md ON mq.id_marque = md.id_marque
+LEFT JOIN voiture v ON md.id_modele = v.id_modele
+GROUP BY nom_marque
+ORDER BY nb_voitures DESC
+
+c. Nombre de véhicules par motorisation (même tri que la 2)
+SELECT nom_motorisation, COUNT(id_voiture) AS nb_voitures
+FROM motorisation mt
+LEFT JOIN voiture v ON mt.id_motorisation = v.id_motorisation
+GROUP BY nom_motorisation
+ORDER BY nb_voitures DESC
+
+d. Nombre de véhicules de chaque nationalité (même tri que la 2)
+SELECT nom_pays, COUNT(id_voiture) AS nb_voitures
+FROM origine o
+LEFT JOIN marque m ON o.id_origine = m.id_origine
+LEFT JOIN modele mo ON m.id_marque = mo.id_marque
+LEFT JOIN voiture v ON v.id_modele = mo.id_modele
+GROUP BY nom_pays
+ORDER BY nb_voitures DESC
+
+e. Lister les véhicules de couleur grises ET rouge
+SELECT DISTINCT num_immat AS vehicule, GROUP_CONCAT(nom_couleur SEPARATOR ', ') AS color
+FROM voiture v
+INNER JOIN modele mo ON v.id_modele = mo.id_modele
+INNER JOIN colorisation cz ON v.id_voiture = cz.id_voiture
+INNER JOIN couleur co ON cz.id_couleur = co.id_couleur
+WHERE nom_couleur 
+IN ('rouge', 'gris')
+GROUP BY vehicule
+HAVING COUNT(nom_couleur) > 1
+
+f. Lister les véhicules Essence et dont l’origine est allemande
+SELECT DISTINCT num_immat AS vehicule, nom_motorisation, nom_pays
+FROM voiture v
+INNER JOIN motorisation mr ON v.id_motorisation = mr.id_motorisation
+INNER JOIN modele mo ON v.id_modele = mo.id_modele
+INNER JOIN marque ma ON mo.id_marque = ma.id_marque
+INNER JOIN origine o ON ma.id_origine = o.id_origine
+WHERE nom_motorisation = 'essence'
+AND nom_pays = 'Allemagne'
