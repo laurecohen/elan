@@ -1,7 +1,7 @@
 <?php
 include "./connexion.php";
-include "./rating.php";
 include "./template/header.html";
+include "./rating.php";
 
 // Récupérer le contenu de la table film
 $query = "SELECT DISTINCT f.id_film, titre, note, affiche, CONCAT(prenom_realisateur, ' ', nom_realisateur) AS np_realisateur, YEAR(annee_sortie) AS sortie, synopsis, GROUP_CONCAT(CONCAT(prenom_acteur, ' ', nom_acteur) SEPARATOR '#') AS acteurs, GROUP_CONCAT(nom_role SEPARATOR '#') AS roles, GROUP_CONCAT(nom_genre SEPARATOR '#') AS genres
@@ -52,18 +52,18 @@ while ($film = $reponse->fetch()) {
                 <li><?= $sortie ?></li>
                 <li><strong>De :</strong> <?= $real ?></li>
                 <li><strong>Avec :</strong>
-                    <?php foreach ($distribution as $acteur => $role) { ?>
+                    <?php foreach ($distribution as $acteur => $role): ?>
                         <span><a href=""><?= $acteur ?></a> (<?= $role ?>)<?= (next($distribution)) ? ', ' : '' ?></span>
-                    <?php } // fin foreach ?>
+                    <?php endforeach; ?>
                 </li>
                 <li><strong>Genre :</strong>
-                    <?php foreach ($genres as $genre) { ?>
+                    <?php foreach ($genres as $genre): ?>
                         <span><a href=""><?= $genre ?></a><?= (next($genres)) ? ', ' : '' ?></span>
-                    <?php } // fin foreach ?>
+                    <?php endforeach; ?>
                 </li>
             </ul>
             <?= $synopsis ?>
-<?php } // fin while ?>
+<?php } // endwhile ?>
         </div>
 
 <?php
