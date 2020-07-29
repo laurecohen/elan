@@ -1,35 +1,29 @@
 <?php
-session_start();
-require "DAO.php";
+    session_start();
 
-if(!empty($_POST)){
-    $username = filter_input(INPUT_POST, 'login_username', FILTER_VALIDATE_REGEXP, [
-        "options" => ["regexp" => "/^[a-zA-Z0-9]{4,32}/"]
-    ]);
-    $password = filter_input(INPUT_POST, 'login_password', FILTER_SANITIZE_STRING);
+    require "DAO.php";
 
-    if($username && $password){
-        $pdo = connect();
-        
-        try{
-            $stmt = $pdo->query("SELECT * FROM user");
-            $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-            foreach($users as $user){
-                if ($username === $user['username'] && password_verify($password, $user['password'])){
-                    $_SESSION['success'] = "Connexion de ".$user['username']." réussie !";
-                    header("Location:home.php");
-                    die();
-                } 
-                else $_SESSION['error'] = "Mauvais login-mdp !";
+    if(!empty($_POST)){
+        $user = filter_input(INPUT_POST, 'user', FILTER_SANITIZE_STRING);
+        $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+        if($user && $password){
+            $pdo = connect();
+
+            $stmt = $pdo->prepare("SELECT username, email, password FROM user WHERE email = :user OR username = :user");
+            $stmt->execute(['user' => $user]);
+
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            if(password_verify($password, $user['password'])){
+                $_SESSION["user"] = $user;
+                $_SESSION["success"] = "Bienvenue ".$user['username']." !";
+                header("Location: index.php");
+                die();
             }
+            else $_SESSION['error'] = "Le nom d'utilisateur ou le mot de passe est incorrect !";
         }
-        catch(Exception $e){
-            echo $e->getMessage();
-        }
+        else $_SESSION['error'] = "Les champs obligatoires ne sont pas tous remplis !";
     }
-}
-else $_SESSION['error'] = "Vous n'avez pas soumis le formulaire, petit malin !";
+    else $_SESSION['error'] = "Vous n'avez pas soumis le formulaire, petit malin !";
 
-header("Location:form_register.php");
-die();
+    header("Location:form_login.php");
+    die();
