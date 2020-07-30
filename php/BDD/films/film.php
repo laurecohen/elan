@@ -7,14 +7,14 @@
 
         $stmt = $pdo->prepare(
            "SELECT f.*, CONCAT(prenom_realisateur, ' ', nom_realisateur) AS noms_real, 
-           GROUP_CONCAT(DISTINCT CONCAT(sf.id_genre) ORDER BY nom_genre SEPARATOR '#') AS ids_genres,
+           GROUP_CONCAT(DISTINCT CONCAT(gf.id_genre) ORDER BY nom_genre SEPARATOR '#') AS ids_genres,
            GROUP_CONCAT(DISTINCT CONCAT(nom_genre) ORDER BY nom_genre SEPARATOR '#') AS noms_genres,
            GROUP_CONCAT(DISTINCT CONCAT(c.id_acteur) ORDER BY nom_acteur SEPARATOR '#') AS ids_acteurs,
            GROUP_CONCAT(DISTINCT CONCAT(prenom_acteur, ' ', nom_acteur) ORDER BY nom_acteur SEPARATOR '#') AS noms_acteurs,
            GROUP_CONCAT(DISTINCT CONCAT(nom_role) ORDER BY nom_role SEPARATOR '#') AS roles
            FROM film f
-           INNER JOIN style_film sf ON f.id_film = sf.id_film
-           INNER JOIN genre g ON sf.id_genre = g.id_genre
+           INNER JOIN genre_film gf ON f.id_film = gf.id_film
+           INNER JOIN genre g ON gf.id_genre = g.id_genre
            INNER JOIN realisateur r ON f.id_realisateur = r.id_realisateur
            INNER JOIN casting c ON f.id_film = c.id_film
            INNER JOIN role ro ON c.id_role = ro.id_role
@@ -48,8 +48,7 @@
 
         <p><strong>Note : </strong><?= displayRating($film['note']) ?></p>
 
-        <img src="<?= $film['affiche'] ? $film['affiche'] : 'img-replacement.jpg' ?>" alt="Affiche du film <?= $film['titre'] ?>"  class="uk-height-medium uk-border-rounded" uk-img>
-
+        <img data-src="<?= $film['affiche'] ? $film['affiche'] : 'https://getuikit.com/v2/docs/images/placeholder_300x455.svg' ?>" src="<?= $film['affiche'] ?>" alt="" aria-label="Affiche du film <?= $film['titre'] ?>" class="uk-height-medium uk-border-rounded" uk-img>
         <ul class="uk-list uk-list-collapse">
             <li><strong>De : </strong> <?= $film['noms_real'] ?></li>
 

@@ -5,18 +5,18 @@
 
 
     if(!empty($_GET['genre'])){
-        $stmt = $pdo->prepare("SELECT f.*, g.* FROM film f INNER JOIN style_film sf ON f.id_film = sf.id_film INNER JOIN genre g ON sf.id_genre = g.id_genre WHERE sf.id_genre = :genre");
+        $stmt = $pdo->prepare("SELECT f.*, g.* FROM film f INNER JOIN genre_film gf ON f.id_film = gf.id_film INNER JOIN genre g ON gf.id_genre = g.id_genre WHERE gf.id_genre = :genre");
         $stmt->execute(['genre' => $_GET['genre']]);
     } 
     // ... etc.
     else {
         $stmt = $pdo->query(
-            "SELECT f.*, GROUP_CONCAT(DISTINCT CONCAT(sf.id_genre) ORDER BY nom_genre SEPARATOR '#') AS ids_genres,
+            "SELECT f.*, GROUP_CONCAT(DISTINCT CONCAT(gf.id_genre) ORDER BY nom_genre SEPARATOR '#') AS ids_genres,
                 GROUP_CONCAT(DISTINCT CONCAT(nom_genre) ORDER BY nom_genre SEPARATOR '#') AS noms_genres
             FROM film f 
-            INNER JOIN style_film sf ON f.id_film = sf.id_film 
-            INNER JOIN genre g ON sf.id_genre = g.id_genre
-            GROUP BY sf.id_film"
+            INNER JOIN genre_film gf ON f.id_film = gf.id_film 
+            INNER JOIN genre g ON gf.id_genre = g.id_genre
+            GROUP BY gf.id_film"
         );
     }
     
@@ -44,7 +44,7 @@
                 <div>
                     <div class="uk-card uk-card-default uk-card-small">
                         <div class="uk-card-media-left">
-                            <img data-src="<?= $film['affiche'] ? $film['affiche'] : 'https://getuikit.com/v2/docs/images/placeholder_300x455.svg' ?>" src="<?= $film['affiche'] ?>" alt="Affiche du film <?= $film['titre'] ?>" class="uk-height-medium uk-border-rounded" uk-img>
+                            <img data-src="<?= $film['affiche'] ? $film['affiche'] : 'https://getuikit.com/v2/docs/images/placeholder_300x455.svg' ?>" src="<?= $film['affiche'] ?>" alt="" aria-label="Affiche du film <?= $film['titre'] ?>" class="uk-height-medium uk-border-rounded" uk-img>
                         </div>
                         <div class="uk-card-body">
                             <p>

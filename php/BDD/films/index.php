@@ -5,11 +5,11 @@
     $pdo = connect();
 
     $stmt = $pdo->query(
-        "SELECT f.*, CONCAT(prenom_realisateur, ' ', nom_realisateur) AS noms_real, GROUP_CONCAT(nom_genre SEPARATOR '#') AS genres
+        "SELECT f.*, note, CONCAT(prenom_realisateur, ' ', nom_realisateur) AS noms_real, GROUP_CONCAT(nom_genre SEPARATOR '#') AS genres
         FROM film f
         INNER JOIN realisateur r ON f.id_realisateur = r.id_realisateur
-        INNER JOIN style_film sf ON f.id_film = sf.id_film
-        INNER JOIN genre g ON sf.id_genre = g.id_genre
+        INNER JOIN genre_film gf ON f.id_film = gf.id_film
+        INNER JOIN genre g ON gf.id_genre = g.id_genre
         GROUP BY f.id_film ORDER BY titre"
     );
 
@@ -48,8 +48,7 @@
                         <td>
 
                             <?php foreach($arr_genres as $genre) : ?>
-                                <span><a href="genre.php"></a><?= $genre ?><?= (next($arr_genres)) ? ', ' : '' ?></span>
-                                
+                                <span><a href="genre.php"></a><?= $genre ?><?= (next($arr_genres)) ? ', ' : '' ?></span>         
                             <?php endforeach; ?>
 
                         </td>

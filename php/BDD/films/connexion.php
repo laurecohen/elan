@@ -6,7 +6,8 @@
     {
         try{
             $user = "root";
-            $pass = "root"; // MAMP
+            $pass = "";
+            // $pass = "root"; // MAMP
             $options = [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             ];
