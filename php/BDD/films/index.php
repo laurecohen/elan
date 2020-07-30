@@ -1,63 +1,67 @@
 <?php
-include "./connexion.php";
-include "./template/header.html";
-include "./rating.php";
+    include "./connexion.php";
+    include "./rating.php"; 
 
-// Récupérer le contenu de la table film
-$query = "SELECT f.id_film, titre, note, CONCAT(prenom_realisateur, ' ', nom_realisateur) AS np_realisateur, YEAR(annee_sortie) AS sortie, TIME_FORMAT(SEC_TO_TIME(duree * 60), '%H:%i') AS duree_film, GROUP_CONCAT(nom_genre SEPARATOR ', ') AS genres FROM film f INNER JOIN realisateur r ON f.id_realisateur = r.id_realisateur INNER JOIN style_film sf ON f.id_film = sf.id_film INNER JOIN genre g ON sf.id_genre = g.id_genre GROUP BY f.id_film ORDER BY titre";
-$reponse = $bdd->query($query);
-$film = $reponse->fetch();
+    $pdo = connect();
 
-                        $id_film = $film['id_film'];
-                        $titre = '<a href="film.php?id='.$id_film.'">'.$film['titre'].'</a>';               
-                        $note = displayRating($film['note']); // Conversion de la note en étoiles
-                        $real = $film['np_realisateur'];
-                        $sortie = $film['sortie'] ? $film['sortie'] : '-';
-                        $duree = $film['duree_film'] ? $film['duree_film'] : '-';
-                        $genre = $film['genres'];
+    $stmt = $pdo->query(
+        "SELECT f.*, CONCAT(prenom_realisateur, ' ', nom_realisateur) AS noms_real, GROUP_CONCAT(nom_genre SEPARATOR '#') AS genres
+        FROM film f
+        INNER JOIN realisateur r ON f.id_realisateur = r.id_realisateur
+        INNER JOIN style_film sf ON f.id_film = sf.id_film
+        INNER JOIN genre g ON sf.id_genre = g.id_genre
+        GROUP BY f.id_film ORDER BY titre"
+    );
+
+    include "./template/header.html";
 ?>
-        <!-- Suite header -->
-        <title>Accueil</title>
-    </head>
+
+<title>Accueil</title>
+</head><!-- Fin header -->
+
 <body>
-    <div class="uk-container uk-container-xlarge"></div>
-        <div class="uk-padding">
-            <h1>Liste des films</h1>   
-            <table class="uk-table uk-table-middle uk-table-divider uk-table-hover uk-table-responsive">
-                <thead>
+    <div class="uk-container uk-container-xlarge uk-padding">
+        <h1>Liste des films</h1>
+        <table class="uk-table uk-table-middle uk-table-divider uk-table-hover uk-table-responsive">
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Note</th>
+                    <th>Réalisateur</th>
+                    <th>Année</th>
+                    <th>Durée</th>
+                    <th>Genre</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <?php while($film = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
+                    <?php $arr_genres = explode('#', $film['genres']); ?>
+                    
                     <tr>
-                        <th>Titre</th>
-                        <th>Note</th>
-                        <th>Réalisateur</th>
-                        <th>Année</th>
-                        <th>Durée</th>
-                        <th>Genre</th>
+                        <td class="uk-table-link"><a href="film.php?id=<?= $film['id_film'] ?>"><?= $film['titre'] ?></a></td>
+                        <td><?= displayRating($film['note']) ?></td>
+                        <td><?= $film['noms_real'] ?></td>
+                        <td><?= date_format(date_create($film['annee_sortie']), 'Y')?></td>
+                        <td><?= date("H:i", mktime(0, $film['duree'])) ?></td>
+
+                        <td>
+
+                            <?php foreach($arr_genres as $genre) : ?>
+                                <span><a href="genre.php"></a><?= $genre ?><?= (next($arr_genres)) ? ', ' : '' ?></span>
+                                
+                            <?php endforeach; ?>
+
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    <?php while ($film = $reponse->fetch()) {
-                        // Préparer les infos à afficher
-                        $id_film = $film['id_film'];
-                        $titre = '<a href="film.php?id='.$id_film.'">'.$film['titre'].'</a>';               
-                        $note = displayRating($film['note']); // Conversion de la note en étoiles
-                        $real = $film['np_realisateur'];
-                        $sortie = $film['sortie'] ? $film['sortie'] : '-';
-                        $duree = $film['duree_film'] ? $film['duree_film'] : '-';
-                        $genre = $film['genres'];
-                    ?>
-                        <tr>
-                            <td class="uk-table-link"><?= $titre ?></td>
-                            <td><?= $note ?></td>
-                            <td><?= $real ?></td>
-                            <td><?= $sortie ?></td>
-                            <td><?= $duree ?></td>
-                            <td><?= $genre ?></td>
-                        </tr>
-                    <?php } // fin while  ?>
-                </tbody>
-            </table>
-        </div>
+
+                <?php endwhile; ?>
+
+            </tbody>
+        </table>
+    </div>
 
 <?php
-include "./template/footer.html";
-$reponse->closeCursor();
+    include "./template/footer.html";
+
+    $stmt->closeCursor();
