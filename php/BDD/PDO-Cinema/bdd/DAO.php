@@ -5,11 +5,17 @@ class DAO {
     private $bdd;
 
     public function __construct(){
-        $this->bdd = new PDO('mysql:host=localhost;dbname=cinema;charset=utf8', 'root', ''); 
+        $this->bdd = new PDO('mysql:host=localhost;dbname=cinema;charset=utf8', 'root', 'root', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]); 
     }
 
-    function getBDD(){
-        return $this->bdd;
+    function getBDD() :PDO{
+        try{
+            return $this->bdd;
+        }
+        catch(PDOException $e){
+            echo $e->getMessage();
+            die();
+        }
     }
 
     public function executerRequete($sql, $params = null) {

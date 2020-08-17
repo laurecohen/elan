@@ -6,3 +6,10 @@
     fill: gold;
     stroke: gold;
 }
+
+img[data-src][src*='data:image'] { 
+    background-color: rgba(0, 0, 0, .3); 
+}
+a:hover img[data-src][src*='data:image'] { 
+    background-color: rgba(15, 110, 205, .3); 
+}
