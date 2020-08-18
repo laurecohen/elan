@@ -53,6 +53,19 @@ class GenreController {
     }
         
     /**
+     * getGenresById
+     *
+     * @return void
+     */
+    public function getGenresIds($id){
+        $dao = new DAO();
+        $sql = "SELECT id_genre 
+                    FROM genre_film
+                    WHERE id_film = :id";
+        return $dao->executerRequete($sql, [":id" => $id]);
+    }
+        
+    /**
      * formAddGenre
      *
      * @return void

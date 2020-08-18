@@ -11,6 +11,7 @@
             <th>REALISATEUR</th>
             <th>ANNEE</th>
             <th>GENRES</th>
+            <th>ACTIONS</th>
         </tr>
     </thead>
     <tbody>
@@ -25,6 +26,10 @@
             <td><?= $film["rea"] ?></td>
             <td><?= $film["annee_film"] ?></td>
             <td><?= $film["genres"] ?></td>
+            <td>
+                <a href="index.php?action=editFilm&id=<?= $film["id_film"] ?>">Editer</a>
+                <a href="index.php?action=deleteFilm&id=<?= $film["id_film"] ?>">Supprimer</a>
+            </td>
         </tr>
 
 <?php }

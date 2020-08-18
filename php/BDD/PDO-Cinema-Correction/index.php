@@ -15,6 +15,9 @@ if(isset($_GET['action'])){
         case "detailFilm" : $ctrlFilm->findOneById($_GET['id']); break;
         case "addFilm": $ctrlFilm->formAddFilm(); break;
         case "addFilmOK": $ctrlFilm->addFilm($_POST); break;
+        case "editFilm": $ctrlFilm->formEditFilm($_GET['id']); break;
+        case "editFilmOK": $ctrlFilm->editFilm($_GET['id'], $_POST); break;
+        case "deleteFilm": $ctrlFilm->deleteFilm($_GET['id']); break;
         case "listReal" : $ctrlRealisateur->findAll(); break;
         case "detailReal" : $ctrlRealisateur->findOneById($_GET['id']); break;
         case "addRealisateur": $ctrlRealisateur->formAddRealisateur(); break;

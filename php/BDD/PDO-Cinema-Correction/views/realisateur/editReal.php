@@ -12,8 +12,7 @@
         type="text" 
         name="nom_realisateur" 
         id="nom_realisateur" 
-        value=<?= $detailRealisateur["nom_realisateur"] ?>
-    >
+        value=<?= $detailRealisateur["nom_realisateur"] ?>>
     <label for="prenom_realisateur">Prénom réalisateur</label>
     <input 
         class="uk-input" 
