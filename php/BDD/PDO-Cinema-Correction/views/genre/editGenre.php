@@ -9,7 +9,6 @@
 <form action="index.php?action=editGenreOK&id=<?= $genre["id_genre"] ?>" method="POST">
     <label for="nom_genre">Nom genre</label>
     <input class="uk-input" type="text" name="nom_genre" id="nom_genre" value="<?= $genre["nom_genre"] ?>">
-    <select class="uk-select"></select>
     <input class="uk-button uk-margin-top" type="submit" value="Modifier">
 </form>
 

@@ -23,6 +23,9 @@
     <label for="duree_film">Durée du film (en minutes)*</label>
     <input class="uk-input uk-margin-bottom" type="text" name="duree_film" id="duree_film" value="<?= $detailFilm["duree_film"] ?>" required>
 
+    <label for="synopsis">Synopsis</label>
+    <textarea class="uk-textarea uk-margin-bottom" type="text" name="synopsis" id="synopsis"><?= $detailFilm["synopsis"] ?></textarea>
+
     <?php 
         $array_ids = [];
         while( $id = $list_ids->fetch(PDO::FETCH_ASSOC)){
@@ -36,6 +39,12 @@
             <option value="<?= $genre['id_genre'] ?>" <?= (in_array($genre['id_genre'], $array_ids)) ? "selected='selected'" : '' ?>><?= $genre['nom_genre'] ?></option>
         <?php endwhile; ?>
     </select>
+
+    <label for="affiche_film">Affiche du film (url)</label>
+    <input class="uk-input uk-margin-bottom" type="text" name="affiche_film" id="affiche_film" value="<?= $detailFilm["affiche_film"] ?>">
+
+    <label for="note_film">Note (sur 5)</label>
+    <input class="uk-input uk-margin-bottom" type="text" name="note_film" id="note_film" value="<?= $detailFilm["note_film"] ?>">
 
     <input class="uk-button uk-button-primary uk-margin-top" type="submit" value="Modifier">
 </form>

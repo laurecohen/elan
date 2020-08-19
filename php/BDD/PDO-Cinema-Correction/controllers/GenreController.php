@@ -139,8 +139,13 @@ class GenreController {
     public function deleteGenre($id) {
 
         $dao = new DAO();
-        $sql = "DELETE FROM genre WHERE id_genre = :id";
+        $sql = "DELETE FROM genre_film WHERE id_genre = :id";
         $dao->executerRequete($sql, [
+                ":id" => $id
+            ]);
+
+        $sql2 = "DELETE FROM genre WHERE id_genre = :id";
+        $dao->executerRequete($sql2, [
                 ":id" => $id
             ]);
 

@@ -29,7 +29,7 @@ class RealisateurController {
     public function findOneById($id, $edit = false) {
 
         $dao = new DAO();
-        $sql = "SELECT id_realisateur, prenom_realisateur, nom_realisateur 
+        $sql = "SELECT id_realisateur, prenom_realisateur, nom_realisateur, sexe_realisateur, date_realisateur
                     FROM realisateur
                     WHERE id_realisateur = :id";
         $realisateur = $dao->executerRequete($sql, [":id" => $id]);
@@ -104,13 +104,17 @@ class RealisateurController {
 
         $nom_realisateur = filter_var ($array["nom_realisateur"], FILTER_SANITIZE_STRING);
         $prenom_realisateur = filter_var ($array["prenom_realisateur"], FILTER_SANITIZE_STRING);
+        $date_realisateur = filter_input (INPUT_POST, 'date_realisateur');
+        $sexe_realisateur = filter_input (INPUT_POST, 'sexe_realisateur');
         
         $dao = new DAO();
-        $sql = "INSERT INTO realisateur(nom_realisateur, prenom_realisateur) 
-                    VALUES (:nom_realisateur, :prenom_realisateur)";
+        $sql = "INSERT INTO realisateur(nom_realisateur, prenom_realisateur, date_realisateur, sexe_realisateur) 
+                    VALUES (:nom_realisateur, :prenom_realisateur, :date_realisateur, :sexe_realisateur)";
         $dao->executerRequete($sql, [
                 ":nom_realisateur" => $nom_realisateur,
-                ":prenom_realisateur" => $prenom_realisateur
+                ":prenom_realisateur" => $prenom_realisateur,
+                ":date_realisateur" => $date_realisateur,
+                ":sexe_realisateur" => $sexe_realisateur
             ]);
 
         header("Location: index.php?action=listReal");
@@ -127,16 +131,22 @@ class RealisateurController {
 
         $nom_realisateur = filter_var ($array["nom_realisateur"], FILTER_SANITIZE_STRING);
         $prenom_realisateur = filter_var ($array["prenom_realisateur"], FILTER_SANITIZE_STRING);
+        $date_realisateur = filter_input (INPUT_POST, 'date_realisateur');
+        $sexe_realisateur = filter_input (INPUT_POST, 'sexe_realisateur');
 
         $dao = new DAO();
         $sql = "UPDATE realisateur 
                     SET nom_realisateur = :nom_realisateur,
-                    prenom_realisateur = :prenom_realisateur
+                    prenom_realisateur = :prenom_realisateur,
+                    date_realisateur = :date_realisateur,
+                    sexe_realisateur = :sexe_realisateur
                     WHERE id_realisateur = :id";
         $dao->executerRequete($sql, [
             ":id" => $id,
             ":nom_realisateur" => $nom_realisateur,
-            ":prenom_realisateur" => $prenom_realisateur
+            ":prenom_realisateur" => $prenom_realisateur,
+            ":date_realisateur" => $date_realisateur,
+            ":sexe_realisateur" => $sexe_realisateur
         ]);
 
         header("Location: index.php?action=listReal");

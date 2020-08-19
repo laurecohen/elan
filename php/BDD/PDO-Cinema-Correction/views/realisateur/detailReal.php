@@ -1,6 +1,9 @@
-<?php ob_start(); ?>
+<?php 
+    ob_start(); 
+    $detailReal = $realisateur->fetch();
+?>
 
-<h2><?= "aaa" ?></h2>
+<h2><?= $detailReal["prenom_realisateur"] ?> <?= $detailReal["nom_realisateur"] ?></h2>
 
 <?php
 

@@ -14,11 +14,14 @@
         <?php endwhile; ?>
     </select>
 
-    <label for="annee_film" required>Année de sortie*</label>
-    <input class="uk-input uk-margin-bottom" type="text" name="annee_film" id="annee_film">
+    <label for="annee_film">Année de sortie*</label>
+    <input class="uk-input uk-margin-bottom" type="text" name="annee_film" id="annee_film" required>
 
     <label for="duree_film">Durée (en minutes)*</label>
     <input class="uk-input uk-margin-bottom" type="text" name="duree_film" id="duree_film" required>
+
+    <label for="synopsis">Synopsis</label>
+    <textarea class="uk-textarea uk-margin-bottom" type="text" name="synopsis" id="synopsis"></textarea>
 
     <label for="genres_film">Genres</label>
     <select class="uk-select uk-margin-bottom" name="genres_film[]" id="genres_film" multiple>
@@ -27,6 +30,12 @@
             <option value="<?= $genre['id_genre'] ?>"><?= $genre['nom_genre'] ?></option>
         <?php endwhile; ?>
     </select>
+
+    <label for="affiche_film">Affiche du film (url)</label>
+    <input class="uk-input uk-margin-bottom" type="text" name="affiche_film" id="affiche_film">
+
+    <label for="note_film">Note (sur 5)</label>
+    <input class="uk-input uk-margin-bottom" type="text" name="note_film" id="note_film">
 
     <input class="uk-button uk-button-primary uk-margin-top" type="submit" value="Ajouter">
 </form>

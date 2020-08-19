@@ -1,0 +1,8 @@
+.uk-icon:not(.uk-preserve)[uk-icon="star"] [stroke*="#"]:not(.uk-preserve) {
+    fill: lightgray;
+    stroke: lightgray;
+}
+.uk-icon:not(.uk-preserve)[uk-icon="star"].checked [stroke*="#"]:not(.uk-preserve) {
+    fill: gold;
+    stroke: gold;
+}

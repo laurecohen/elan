@@ -7,6 +7,7 @@ spl_autoload_register(function ($class_name) {
 $ctrlFilm = new FilmController(); 
 $ctrlRealisateur = new RealisateurController();
 $ctrlGenre = new GenreController();
+$ctrlActeur = new ActeurController();
 
 if(isset($_GET['action'])){
 
@@ -31,6 +32,13 @@ if(isset($_GET['action'])){
         case "editGenre": $ctrlGenre->formEditGenre($_GET['id']); break;
         case "editGenreOK": $ctrlGenre->editGenre($_GET['id'], $_POST); break;
         case "deleteGenre": $ctrlGenre->deleteGenre($_GET['id']); break;
+        case "listActeurs": $ctrlActeur->findAll(); break;
+        case "detailActeur" : $ctrlActeur->findOneById($_GET['id']); break;
+        case "addActeur": $ctrlActeur->formAddActeur(); break;
+        case "addActeurOK": $ctrlActeur->addActeur($_POST); break;
+        case "editActeur": $ctrlActeur->formEditActeur($_GET['id']); break;
+        case "editActeurOK": $ctrlActeur->editActeur($_GET['id'], $_POST); break;
+        case "deleteActeur": $ctrlActeur->deleteActeur($_GET['id']); break;
     }
 }else {
     $ctrlFilm->findAll();
