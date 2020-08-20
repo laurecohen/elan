@@ -1,0 +1,10 @@
+// Liste des utilisateurs avec leur rôle
+SELECT username, role
+FROM user
+
+// Vue page sujet + messages
+SELECT titre_sujet, username, s.date_creation, est_resolu, est_verrouille, GROUP_CONCAT(texte SEPARATOR '#'), COUNT(texte)
+FROM sujet s
+INNER JOIN user u ON s.id_user = u.id_user
+INNER JOIN message m ON s.id_sujet = m.id_sujet
+GROUP BY s.id_sujet
