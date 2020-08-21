@@ -167,25 +167,28 @@ INSERT INTO `sujet` (`id_sujet`, `titre_sujet`, `date_creation`, `est_verrouille
 CREATE TABLE IF NOT EXISTS `user` (
   `id_user` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(32) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `role` varchar(50) NOT NULL DEFAULT '["ROLE_USER"]',
+  `user_email` varchar(50) NOT NULL,
+  `user_password` varchar(100) NOT NULL,
+  `user_role` varchar(50) NOT NULL DEFAULT '["ROLE_USER"]',
   `date_creation` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id_user`)
+  PRIMARY KEY (`id_user`),
+  UNIQUE KEY `username` (`username`),
+  UNIQUE KEY `email` (`user_email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 -- Listage des données de la table forumdl8.user : ~10 rows (environ)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` (`id_user`, `username`, `password`, `role`, `date_creation`) VALUES
-	(1, 'Laure', 'eget', '["ROLE_ADMIN"]', '2020-08-20 16:15:30'),
-	(2, 'Admin', 'ultrices,', '["ROLE_ADMIN"]', '2020-08-20 16:15:30'),
-	(3, 'Quisque', 'odio.', '["ROLE_USER"]', '2020-08-20 16:15:30'),
-	(4, 'massa.', 'lacus.', '["ROLE_USER"]', '2020-08-20 16:15:30'),
-	(5, 'arcu.', 'litora', '["ROLE_USER"]', '2020-08-20 16:15:30'),
-	(6, 'in,', 'nibh', '["ROLE_USER"]', '2020-08-20 16:15:30'),
-	(7, 'eu', 'ipsum', '["ROLE_USER"]', '2020-08-20 16:15:30'),
-	(8, 'Maecenas', 'velit', '["ROLE_USER"]', '2020-08-20 16:15:30'),
-	(9, 'luctus,', 'erat.', '["ROLE_USER"]', '2020-08-20 16:15:30'),
-	(10, 'Nullam', 'aliquet', '["ROLE_USER"]', '2020-08-20 16:15:30');
+INSERT INTO `user` (`id_user`, `username`, `user_email`, `user_password`, `user_role`, `date_creation`) VALUES
+	(1, 'Laure', 'laure@gmail.com', 'eget', '["ROLE_ADMIN"]', '2020-08-20 16:15:30'),
+	(2, 'Admin', 'admin@gmail.com', 'ultrices,', '["ROLE_ADMIN"]', '2020-08-20 16:15:30'),
+	(3, 'Quisque', 'quisque@gmail.com', 'odio.', '["ROLE_USER"]', '2020-08-20 16:15:30'),
+	(4, 'massa', 'massa@gmail.com', 'lacus.', '["ROLE_USER"]', '2020-08-20 16:15:30'),
+	(5, 'arcu', 'arcu@gmail.com', 'litora', '["ROLE_USER"]', '2020-08-20 16:15:30'),
+	(6, 'inata', 'inata@gmail.com', 'nibh', '["ROLE_USER"]', '2020-08-20 16:15:30'),
+	(7, 'euutega', 'euutega@gmail.com', 'ipsum', '["ROLE_USER"]', '2020-08-20 16:15:30'),
+	(8, 'Maecenas', 'maecenas@gmail.com', 'velit', '["ROLE_USER"]', '2020-08-20 16:15:30'),
+	(9, 'luctus', 'luctus@gmail.com', 'erat.', '["ROLE_USER"]', '2020-08-20 16:15:30'),
+	(10, 'Nullam', 'nullam@gmail.com', 'aliquet', '["ROLE_USER"]', '2020-08-20 16:15:30');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
