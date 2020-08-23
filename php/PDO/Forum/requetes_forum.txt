@@ -2,7 +2,7 @@
 SELECT * FROM user
 
 // Créer un nouvel utilisateur
-INSERT INTO user (username, user_email, user_password) VALUES (:name, :email, :password)
+INSERT INTO user (username, email, password) VALUES (:name, :email, :password)
 
 // Supprimer un utilisateur (mon profil ou admin)
 DELETE FROM user WHERE id_user = :id"
@@ -28,13 +28,13 @@ INNER JOIN user u ON m.id_user = u.id_user
 GROUP BY m.id_user
 
 // Compter les réponses pour un sujet
-SELECT titre_sujet, COUNT(id_message) -1 AS reponses
+SELECT titre, COUNT(id_message) -1 AS reponses
 FROM sujet s
 INNER JOIN message m ON s.id_sujet = m.id_sujet
-GROUP BY titre_sujet
+GROUP BY titre
 
 // Afficher les sujets d'un utilisateur (ids_sujets)
-SELECT id_sujet, titre_sujet
+SELECT id_sujet, titre
 FROM sujet s
 INNER JOIN user u ON s.id_user = u.id_user
 WHERE s.id_user = :id
@@ -46,13 +46,13 @@ INNER JOIN user u ON m.id_user = u.id_user
 WHERE m.id_user = :id
 
 // Créer un nouveau sujet
-INSERT INTO sujet (titre_sujet, id_user) VALUES (:titre, :auteur)
+INSERT INTO sujet (titre, id_user) VALUES (:titre, :auteur)
 
 // Créer un nouveau message
 INSERT INTO message (texte, id_sujet, id_user) VALUES (:texte, :sujet, :auteur)
 
-// Éditer un sujet (titre_sujet)
-UPDATE sujet SET titre_sujet = :titre WHERE id_sujet = :sujet
+// Éditer un sujet (titre)
+UPDATE sujet SET titre = :titre WHERE id_sujet = :sujet
 
 // Éditer un message (texte)
 UPDATE message SET texte = :texte WHERE id_message = :message
@@ -71,22 +71,22 @@ INNER JOIN message m ON s.id_sujet = m.id_sujet
 GROUP BY s.id_sujet
 
 // Afficher tous les sujets (auteur, date, est_resolu, est_verrouille, description, nbReponses)
-SELECT s.id_sujet, username AS auteur, s.date_creation, est_resolu, est_verrouille, MIN(id_message) AS description, COUNT(texte) -1 AS nbReponses
+SELECT s.id_sujet, username AS auteur, s.datecreation, resolu, verrouille, MIN(id_message) AS description, COUNT(texte) -1 AS nbReponses
 FROM sujet s
 INNER JOIN user u ON s.id_user = u.id_user
 INNER JOIN message m ON s.id_sujet = m.id_sujet
 GROUP BY s.id_sujet
 
 // Afficher un sujet (auteur, date, est_resolu, est_verrouille, description, nbReponses) => View Liste des sujets
-SELECT s.id_sujet, username AS auteur, s.date_creation, est_resolu, est_verrouille, MIN(id_message) AS description, COUNT(texte) -1 AS nbReponses
+SELECT s.id_sujet, username AS auteur, s.datecreation, resolu, verrouille, MIN(id_message) AS description, COUNT(texte) -1 AS nbReponses
 FROM sujet s
 INNER JOIN user u ON s.id_user = u.id_user
 INNER JOIN message m ON s.id_sujet = m.id_sujet
-WHERE s.id_sujet = 1
+WHERE s.id_sujet = :id
 GROUP BY s.id_sujet
 
 // Afficher un sujet => View Page sujet
-SELECT s.id_sujet, username AS auteur, s.date_creation, est_resolu, est_verrouille, COUNT(texte) -1 AS nbReponses, GROUP_CONCAT(id_message) AS ids_messages
+SELECT s.id_sujet, username AS auteur, s.datecreation, resolu, verrouille, COUNT(texte) -1 AS nbReponses, GROUP_CONCAT(id_message) AS ids_messages
 FROM sujet s
 INNER JOIN user u ON s.id_user = u.id_user
 INNER JOIN message m ON s.id_sujet = m.id_sujet
@@ -94,7 +94,7 @@ WHERE s.id_sujet = :sujet
 GROUP BY s.id_sujet
 
 // Afficher tous les messages d'un sujet => View Page sujet
-SELECT id_message, texte, username, m.date_creation
+SELECT id_message, texte, username, m.datecreation
 FROM message m
 INNER JOIN sujet s ON m.id_sujet = s.id_sujet
 INNER JOIN user u ON m.id_user = u.id_user

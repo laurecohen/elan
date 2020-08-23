@@ -2,21 +2,21 @@
 
 class Sujet {
     private $id_sujet;
-    private $titre_sujet;
-    private $date_creation;
-    private $est_verrouille;
-    private $est_resolu;
+    private $titre;
+    private $datecreation;
+    private $verrouille;
+    private $resolu;
     private $id_user;
 
-    public function __construct(int $id_sujet, string $titre_sujet, string $date_creation, int $est_verrouille, int $est_resolu, int $id_user)
+    public function __construct(int $id_sujet, string $titre, string $datecreation, int $verrouille, int $resolu, int $id_user)
     {
         $this->id_sujet = $id_sujet;
         $this->setId_sujet($id_sujet);
-        $this->titre_sujet = $titre_sujet;
-        $this->date_creation = $date_creation;
-        $this->setDate_creation($date_creation);
-        $this->est_verrouille = $est_verrouille;
-        $this->est_resolu = $est_resolu;
+        $this->titre = $titre;
+        $this->datecreation = $datecreation;
+        $this->setDatecreation($datecreation);
+        $this->verrouille = $verrouille;
+        $this->resolu = $resolu;
         $this->id_user = $id_user;
     }
 
@@ -30,35 +30,35 @@ class Sujet {
     } 
 
     /**
-     * Get the value of titre_sujet
+     * Get the value of titre
      */ 
-    public function getTitre_sujet()
+    public function getTitre()
     {
-        return $this->titre_sujet;
+        return $this->titre;
     }
 
     /**
-     * Get the value of date_creation
+     * Get the value of datecreation
      */ 
-    public function getDate_creation()
+    public function getDatecreation()
     {
-        return $this->date_creation;
+        return $this->datecreation;
     }
 
     /**
-     * Get the value of est_verrouille
+     * Get the value of verrouille
      */ 
-    public function getEst_verrouille()
+    public function getverrouille()
     {
-        return $this->est_verrouille;
+        return $this->verrouille;
     }
 
     /**
-     * Get the value of est_resolu
+     * Get the value of resolu
      */ 
-    public function getEst_resolu()
+    public function getresolu()
     {
-        return $this->est_resolu;
+        return $this->resolu;
     }
 
     /**
@@ -83,49 +83,49 @@ class Sujet {
     }
 
     /**
-     * Set the value of titre_sujet
+     * Set the value of titre
      *
      * @return  self
      */ 
-    public function setTitre_sujet($titre_sujet)
+    public function setTitre($titre)
     {
-        $this->titre_sujet = $titre_sujet;
+        $this->titre = $titre;
 
         return $this;
     }
 
     /**
-     * Set the value of date_creation
+     * Set the value of datecreation
      *
      * @return  self
      */ 
-    public function setDate_creation($date_creation)
+    public function setDatecreation($datecreation)
     {
-        $this->date_creation = $date_creation;
+        $this->datecreation = $datecreation;
 
         return $this;
     }
 
     /**
-     * Set the value of est_verrouille
+     * Set the value of verrouille
      *
      * @return  self
      */ 
-    public function setEst_verrouille($est_verrouille)
+    public function setVerrouille($verrouille)
     {
-        $this->est_verrouille = $est_verrouille;
+        $this->verrouille = $verrouille;
 
         return $this;
     }
 
     /**
-     * Set the value of est_resolu
+     * Set the value of resolu
      *
      * @return  self
      */ 
-    public function setEst_resolu($est_resolu)
+    public function setResolu($resolu)
     {
-        $this->est_resolu = $est_resolu;
+        $this->resolu = $resolu;
 
         return $this;
     }
@@ -140,5 +140,11 @@ class Sujet {
         $this->id_user = $id_user;
 
         return $this;
+    }
+
+    // toString 
+    public function __toString()
+    {
+        return $this->getTitre();
     }
 }
