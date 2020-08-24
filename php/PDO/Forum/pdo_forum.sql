@@ -20,7 +20,7 @@ USE `forumdl8`;
 CREATE TABLE IF NOT EXISTS `message` (
   `id_message` int(11) NOT NULL AUTO_INCREMENT,
   `texte` text NOT NULL,
-  `date_creation` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `datecreation` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `id_sujet` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   PRIMARY KEY (`id_message`),
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `message` (
 
 -- Listage des données de la table forumdl8.message : ~100 rows (environ)
 /*!40000 ALTER TABLE `message` DISABLE KEYS */;
-INSERT INTO `message` (`id_message`, `texte`, `date_creation`, `id_sujet`, `id_user`) VALUES
+INSERT INTO `message` (`id_message`, `texte`, `datecreation`, `id_sujet`, `id_user`) VALUES
 	(1, 'gravida sit amet, dapibus id, blandit at, nisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin vel nisl. Quisque fringilla euismod enim. Etiam gravida molestie arcu. Sed eu nibh vulputate mauris sagittis placerat. Cras dictum', '2020-08-20 16:30:34', 9, 1),
 	(2, 'nibh dolor, nonummy ac, feugiat non, lobortis quis, pede. Suspendisse dui. Fusce diam nunc, ullamcorper eu, euismod ac, fermentum vel, mauris. Integer sem elit, pharetra ut, pharetra sed, hendrerit a, arcu. Sed et libero. Proin mi. Aliquam gravida mauris ut mi. Duis risus odio, auctor vitae, aliquet', '2020-08-20 16:30:34', 8, 2),
 	(3, 'dui augue eu tellus. Phasellus elit pede, malesuada vel, venenatis vel, faucibus id, libero. Donec consectetuer mauris id', '2020-08-20 16:30:34', 1, 9),
@@ -138,10 +138,10 @@ INSERT INTO `message` (`id_message`, `texte`, `date_creation`, `id_sujet`, `id_u
 -- Listage de la structure de la table forumdl8. sujet
 CREATE TABLE IF NOT EXISTS `sujet` (
   `id_sujet` int(11) NOT NULL AUTO_INCREMENT,
-  `titre_sujet` varchar(255) NOT NULL,
-  `date_creation` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `est_verrouille` tinyint(1) NOT NULL DEFAULT '0',
-  `est_resolu` tinyint(1) NOT NULL DEFAULT '0',
+  `titre` varchar(255) NOT NULL,
+  `datecreation` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `verrouille` tinyint(1) NOT NULL DEFAULT '0',
+  `resolu` tinyint(1) NOT NULL DEFAULT '0',
   `id_user` int(11) NOT NULL,
   PRIMARY KEY (`id_sujet`),
   KEY `sujet_user_FK` (`id_user`),
@@ -150,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `sujet` (
 
 -- Listage des données de la table forumdl8.sujet : ~10 rows (environ)
 /*!40000 ALTER TABLE `sujet` DISABLE KEYS */;
-INSERT INTO `sujet` (`id_sujet`, `titre_sujet`, `date_creation`, `est_verrouille`, `est_resolu`, `id_user`) VALUES
+INSERT INTO `sujet` (`id_sujet`, `titre`, `datecreation`, `verrouille`, `resolu`, `id_user`) VALUES
 	(1, 'pretium et, rutrum non, hendrerit id, ante.', '2020-08-20 16:26:06', 0, 0, 9),
 	(2, 'rhoncus. Donec est. Nunc ullamcorper, velit in aliquet lobortis, nisi', '2020-08-20 16:26:06', 0, 0, 10),
 	(3, 'Sed dictum. Proin eget odio. Aliquam vulputate ullamcorper magna. Sed eu eros. Nam consequat dolor', '2020-08-20 16:26:06', 0, 0, 10),
@@ -167,18 +167,18 @@ INSERT INTO `sujet` (`id_sujet`, `titre_sujet`, `date_creation`, `est_verrouille
 CREATE TABLE IF NOT EXISTS `user` (
   `id_user` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(32) NOT NULL,
-  `user_email` varchar(50) NOT NULL,
-  `user_password` varchar(100) NOT NULL,
-  `user_role` varchar(50) NOT NULL DEFAULT '["ROLE_USER"]',
-  `date_creation` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `role` varchar(50) NOT NULL DEFAULT '["ROLE_USER"]',
+  `datecreation` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_user`),
   UNIQUE KEY `username` (`username`),
-  UNIQUE KEY `email` (`user_email`)
+  UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 -- Listage des données de la table forumdl8.user : ~10 rows (environ)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` (`id_user`, `username`, `user_email`, `user_password`, `user_role`, `date_creation`) VALUES
+INSERT INTO `user` (`id_user`, `username`, `email`, `password`, `role`, `datecreation`) VALUES
 	(1, 'Laure', 'laure@gmail.com', 'eget', '["ROLE_ADMIN"]', '2020-08-20 16:15:30'),
 	(2, 'Admin', 'admin@gmail.com', 'ultrices,', '["ROLE_ADMIN"]', '2020-08-20 16:15:30'),
 	(3, 'Quisque', 'quisque@gmail.com', 'odio.', '["ROLE_USER"]', '2020-08-20 16:15:30'),
