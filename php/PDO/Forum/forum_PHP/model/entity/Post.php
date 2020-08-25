@@ -3,7 +3,7 @@
     namespace Model\Entity;
     use App\AbstractEntity;
 
-    class Message extends AbstractEntity {
+    class Post extends AbstractEntity {
         private $id;
         private $texte;
         private $creationdate;

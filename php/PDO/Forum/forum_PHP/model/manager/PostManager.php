@@ -27,8 +27,8 @@
         }
 
         public function findOneById($id){
-            $sql = "SELECT * 
-                    FROM post 
+            $sql = "SELECT p.id, p.texte, p.creationdate, p.topic_id, p.user_id
+                    FROM post p
                     WHERE id = :id";
             return self::getOneOrNullResult(
                 self::select($sql, 
@@ -40,17 +40,16 @@
         }
 
         public function findByTopic($id){
-            $sql = "SELECT *
+            $sql = "SELECT p.id, p.texte, p.creationdate, p.topic_id, p.user_id
                     FROM post p
                     INNER JOIN topic t ON p.topic_id = t.id
                     WHERE t.id = :id";
-            return self::getOneOrNullResult(
+            return self::getResults(
                 self::select($sql, 
                     ["id" => $id], 
-                    false
+                    true
                 ), 
                 self::$classname
             );
         }
-
     }

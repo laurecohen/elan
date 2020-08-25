@@ -9,6 +9,9 @@
         private $closed;
         private $resolved;
         private $user;
+        private $nbPosts;
+        private $nbReponses;
+        private $initialPost;
 
         public function __construct($data)
         {
@@ -64,7 +67,23 @@
         {
             return $this->user;
         }
+      
+        /**
+         * Get the value of nbPosts
+         */ 
+        public function getNbPosts()
+        {
+                return $this->nbPosts;
+        }
 
+        /**
+         * Get the value of nbReponses
+         */ 
+        public function getNbReponses()
+        {
+            return $this->nbReponses;
+        }
+        
         // Setters
         /**
          * Set the value of id
@@ -142,5 +161,49 @@
         public function __toString()
         {
             return $this->getTitle();
+        }
+
+        /**
+         * Set the value of nbPosts
+         *
+         * @return  self
+         */ 
+        public function setNbPosts($nbPosts)
+        {
+            $this->nbPosts = $nbPosts;
+
+            return $this;
+        }
+
+        /**
+         * Set the value of nbReponses
+         *
+         * @return  self
+         */ 
+        public function setNbReponses($nbReponses)
+        {
+                $this->nbReponses = $nbReponses;
+
+                return $this;
+        }
+
+        /**
+         * Get the value of initialPost
+         */ 
+        public function getInitialPost()
+        {
+                return $this->initialPost;
+        }
+
+        /**
+         * Set the value of initialPost
+         *
+         * @return  self
+         */ 
+        public function setInitialPost($initialPost)
+        {
+                $this->initialPost = $initialPost;
+
+                return $this;
         }
     }

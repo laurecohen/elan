@@ -28,9 +28,10 @@
     $result = Router::handleRequest($_GET);
     
     if(is_array($result) && array_key_exists('view', $result)){
+        // $result = ["view" => "forum/home.php", "data" => null, "titrePage" => "FORUM | Accueil"]
         $data = isset($result['data']) ? $result['data'] : null;
-        include VIEW_PATH.$result['view'];
-        $titrePage = isset($result['titrePage']) ? $result['titrePage'] : null;
+        include VIEW_PATH.$result['view']; // "forum/home.php"
+        $titrePage = isset($result['titrePage']) ? $result['titrePage'] : null; // "FORUM | Accueil"
     }
 
     $page = ob_get_contents();

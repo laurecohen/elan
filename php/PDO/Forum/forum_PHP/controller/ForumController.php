@@ -16,18 +16,13 @@
          * Afficher tous les topics
          */
         public function allTopics(){
-
-            $id = (isset($_GET['id'])) ? $_GET['id'] : null;
             $manTopic = new TopicManager();
-            $manPost = new PostManager();
             $topics = $manTopic->findAll();
-            $posts = $manPost->findByTopic($id);
           
             return [
                 "view" => "forum/listTopics.php", 
                 "data" => [
                     "topics" => $topics,
-                    "posts" => $posts,
                 ],
                 "titrePage" => "FORUM | Sujets"
             ];
