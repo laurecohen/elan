@@ -16,23 +16,23 @@
 CREATE DATABASE IF NOT EXISTS `forumdl8` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `forumdl8`;
 
--- Listage de la structure de la table forumdl8. message
-CREATE TABLE IF NOT EXISTS `message` (
-  `id_message` int(11) NOT NULL AUTO_INCREMENT,
+-- Listage de la structure de la table forumdl8. post
+CREATE TABLE IF NOT EXISTS `post` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `texte` text NOT NULL,
-  `datecreation` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `id_sujet` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  PRIMARY KEY (`id_message`),
-  KEY `message_sujet_FK` (`id_sujet`),
-  KEY `message_user0_FK` (`id_user`),
-  CONSTRAINT `message_sujet_FK` FOREIGN KEY (`id_sujet`) REFERENCES `sujet` (`id_sujet`),
-  CONSTRAINT `message_user0_FK` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`)
+  `creationdate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `topic_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `message_sujet_FK` (`topic_id`),
+  KEY `message_user0_FK` (`user_id`),
+  CONSTRAINT `message_sujet_FK` FOREIGN KEY (`topic_id`) REFERENCES `topic` (`id`),
+  CONSTRAINT `message_user0_FK` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table forumdl8.message : ~100 rows (environ)
-/*!40000 ALTER TABLE `message` DISABLE KEYS */;
-INSERT INTO `message` (`id_message`, `texte`, `datecreation`, `id_sujet`, `id_user`) VALUES
+-- Listage des données de la table forumdl8.post : ~100 rows (environ)
+/*!40000 ALTER TABLE `post` DISABLE KEYS */;
+INSERT INTO `post` (`id`, `texte`, `creationdate`, `topic_id`, `user_id`) VALUES
 	(1, 'gravida sit amet, dapibus id, blandit at, nisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin vel nisl. Quisque fringilla euismod enim. Etiam gravida molestie arcu. Sed eu nibh vulputate mauris sagittis placerat. Cras dictum', '2020-08-20 16:30:34', 9, 1),
 	(2, 'nibh dolor, nonummy ac, feugiat non, lobortis quis, pede. Suspendisse dui. Fusce diam nunc, ullamcorper eu, euismod ac, fermentum vel, mauris. Integer sem elit, pharetra ut, pharetra sed, hendrerit a, arcu. Sed et libero. Proin mi. Aliquam gravida mauris ut mi. Duis risus odio, auctor vitae, aliquet', '2020-08-20 16:30:34', 8, 2),
 	(3, 'dui augue eu tellus. Phasellus elit pede, malesuada vel, venenatis vel, faucibus id, libero. Donec consectetuer mauris id', '2020-08-20 16:30:34', 1, 9),
@@ -133,52 +133,52 @@ INSERT INTO `message` (`id_message`, `texte`, `datecreation`, `id_sujet`, `id_us
 	(98, 'ultrices iaculis odio. Nam interdum enim non nisi. Aenean eget metus. In nec orci. Donec nibh. Quisque nonummy ipsum non arcu. Vivamus sit amet risus. Donec', '2020-08-20 16:30:34', 5, 10),
 	(99, 'ac arcu. Nunc mauris. Morbi non sapien molestie orci tincidunt adipiscing. Mauris molestie pharetra nibh. Aliquam ornare, libero at auctor ullamcorper, nisl arcu iaculis enim, sit amet ornare lectus justo eu arcu. Morbi sit amet massa. Quisque porttitor eros nec tellus. Nunc lectus', '2020-08-20 16:30:34', 4, 4),
 	(100, 'lorem, luctus ut, pellentesque eget, dictum placerat, augue. Sed molestie. Sed id risus quis diam luctus lobortis. Class aptent taciti sociosqu', '2020-08-20 16:30:34', 10, 7);
-/*!40000 ALTER TABLE `message` ENABLE KEYS */;
+/*!40000 ALTER TABLE `post` ENABLE KEYS */;
 
--- Listage de la structure de la table forumdl8. sujet
-CREATE TABLE IF NOT EXISTS `sujet` (
-  `id_sujet` int(11) NOT NULL AUTO_INCREMENT,
-  `titre` varchar(255) NOT NULL,
-  `datecreation` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `verrouille` tinyint(1) NOT NULL DEFAULT '0',
-  `resolu` tinyint(1) NOT NULL DEFAULT '0',
-  `id_user` int(11) NOT NULL,
-  PRIMARY KEY (`id_sujet`),
-  KEY `sujet_user_FK` (`id_user`),
-  CONSTRAINT `sujet_user_FK` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`)
+-- Listage de la structure de la table forumdl8. topic
+CREATE TABLE IF NOT EXISTS `topic` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `creationdate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `closed` tinyint(1) NOT NULL DEFAULT '0',
+  `resolved` tinyint(1) NOT NULL DEFAULT '0',
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `sujet_user_FK` (`user_id`),
+  CONSTRAINT `sujet_user_FK` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table forumdl8.sujet : ~10 rows (environ)
-/*!40000 ALTER TABLE `sujet` DISABLE KEYS */;
-INSERT INTO `sujet` (`id_sujet`, `titre`, `datecreation`, `verrouille`, `resolu`, `id_user`) VALUES
-	(1, 'pretium et, rutrum non, hendrerit id, ante.', '2020-08-20 16:26:06', 0, 0, 9),
-	(2, 'rhoncus. Donec est. Nunc ullamcorper, velit in aliquet lobortis, nisi', '2020-08-20 16:26:06', 0, 0, 10),
+-- Listage des données de la table forumdl8.topic : ~10 rows (environ)
+/*!40000 ALTER TABLE `topic` DISABLE KEYS */;
+INSERT INTO `topic` (`id`, `title`, `creationdate`, `closed`, `resolved`, `user_id`) VALUES
+	(1, 'pretium et, rutrum non, hendrerit id, ante.', '2020-08-20 16:26:06', 1, 1, 9),
+	(2, 'rhoncus. Donec est. Nunc ullamcorper, velit in aliquet lobortis, nisi', '2020-08-20 16:26:06', 1, 1, 10),
 	(3, 'Sed dictum. Proin eget odio. Aliquam vulputate ullamcorper magna. Sed eu eros. Nam consequat dolor', '2020-08-20 16:26:06', 0, 0, 10),
-	(4, 'risus. Nulla eget metus eu erat semper rutrum. Fusce', '2020-08-20 16:26:06', 0, 0, 10),
-	(5, 'sodales elit erat vitae risus. Duis a mi fringilla', '2020-08-20 16:26:06', 0, 0, 2),
-	(6, 'sagittis augue, eu tempor erat neque non quam. Pellentesque habitant morbi tristique senectus et netus', '2020-08-20 16:26:06', 0, 0, 4),
+	(4, 'risus. Nulla eget metus eu erat semper rutrum. Fusce', '2020-08-20 16:26:06', 1, 0, 10),
+	(5, 'sodales elit erat vitae risus. Duis a mi fringilla', '2020-08-20 16:26:06', 1, 1, 2),
+	(6, 'sagittis augue, eu tempor erat neque non quam. Pellentesque habitant morbi tristique senectus et netus', '2020-08-20 16:26:06', 1, 1, 4),
 	(7, 'nec tellus. Nunc lectus pede, ultrices', '2020-08-20 16:26:06', 0, 0, 4),
 	(8, 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin vel arcu', '2020-08-20 16:26:06', 0, 0, 2),
 	(9, 'a, dui. Cras pellentesque. Sed dictum. Proin eget odio. Aliquam vulputate ullamcorper magna.', '2020-08-20 16:26:06', 0, 0, 6),
 	(10, 'sagittis lobortis mauris. Suspendisse aliquet molestie tellus. Aenean egestas hendrerit', '2020-08-20 16:26:06', 0, 0, 7);
-/*!40000 ALTER TABLE `sujet` ENABLE KEYS */;
+/*!40000 ALTER TABLE `topic` ENABLE KEYS */;
 
 -- Listage de la structure de la table forumdl8. user
 CREATE TABLE IF NOT EXISTS `user` (
-  `id_user` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(32) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL,
   `role` varchar(50) NOT NULL DEFAULT '["ROLE_USER"]',
-  `datecreation` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id_user`),
+  `creationdate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 -- Listage des données de la table forumdl8.user : ~10 rows (environ)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` (`id_user`, `username`, `email`, `password`, `role`, `datecreation`) VALUES
+INSERT INTO `user` (`id`, `username`, `email`, `password`, `role`, `creationdate`) VALUES
 	(1, 'Laure', 'laure@gmail.com', 'eget', '["ROLE_ADMIN"]', '2020-08-20 16:15:30'),
 	(2, 'Admin', 'admin@gmail.com', 'ultrices,', '["ROLE_ADMIN"]', '2020-08-20 16:15:30'),
 	(3, 'Quisque', 'quisque@gmail.com', 'odio.', '["ROLE_USER"]', '2020-08-20 16:15:30'),

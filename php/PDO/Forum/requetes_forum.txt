@@ -5,40 +5,41 @@ SELECT * FROM user
 INSERT INTO user (username, email, password) VALUES (:name, :email, :password)
 
 // Supprimer un utilisateur (mon profil ou admin)
-DELETE FROM user WHERE id_user = :id"
+DELETE FROM user WHERE id = :id"
 
 // Afficher les infos d'un utilisateur
 SELECT * FROM user
-WHERE id_user = :id
+WHERE id = :id
 
 // Liste des utilisateurs, avec rôle respectifs
 SELECT username, role
 FROM user
 
 // Afficher la liste des utilisateurs avec nombre de sujets + ids
-SELECT username, COUNT(id_sujet) AS nbSujets, GROUP_CONCAT(id_sujet) AS ids_sujets
-FROM sujet s
-INNER JOIN user u ON s.id_user = u.id_user
-GROUP BY s.id_user
+SELECT username, COUNT(t.id) AS nbSujets, GROUP_CONCAT(t.id) AS ids_sujets
+FROM topic t
+INNER JOIN user u ON t.user_id = u.id
+GROUP BY t.user_id
 
 // Afficher la liste des utilisateurs avec nombre de messages + ids
-SELECT username, COUNT(id_message) AS nbMessages, GROUP_CONCAT(id_message) AS ids_messages
-FROM message m
-INNER JOIN user u ON m.id_user = u.id_user
-GROUP BY m.id_user
+SELECT username, COUNT(p.id) AS nbMessages, GROUP_CONCAT(p.id) AS ids_messages
+FROM post p
+INNER JOIN user u ON p.user_id = u.id
+GROUP BY p.user_id
 
 // Compter les réponses pour un sujet
-SELECT titre, COUNT(id_message) -1 AS reponses
-FROM sujet s
-INNER JOIN message m ON s.id_sujet = m.id_sujet
+SELECT titre, COUNT(p.id) -1 AS reponses
+FROM topic t
+INNER JOIN post p ON t.id = p.topic_id
 GROUP BY titre
 
 // Afficher les sujets d'un utilisateur (ids_sujets)
-SELECT id_sujet, titre
-FROM sujet s
-INNER JOIN user u ON s.id_user = u.id_user
-WHERE s.id_user = :id
+SELECT t.id, titre
+FROM topic t
+INNER JOIN user u ON t.user_id = u.id
+WHERE t.user_id = :id
 
+////////////////////////////////////////////////////////
 // Afficher les messages d'un utilisateur (ids_messages)
 SELECT id_message, texte
 FROM message m
