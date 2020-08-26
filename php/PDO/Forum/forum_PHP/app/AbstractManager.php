@@ -38,4 +38,9 @@
             }
             return $stmt->fetch();
         }
+
+        protected static function create($sql, $params = null){
+            $stmt = self::$connection->prepare($sql);
+            return $stmt->execute($params);
+        }
     }

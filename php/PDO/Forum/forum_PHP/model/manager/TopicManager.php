@@ -28,9 +28,10 @@
         }
 
         public function findOneById($id){
-            $sql = "SELECT t.id, title, t.creationdate, closed, resolved, t.user_id
+            $sql = "SELECT t.id, title, t.creationdate, closed, resolved, t.user_id,  COUNT(p.id) -  1 AS nbReponses, COUNT(p.id) AS nbPosts, COUNT(p.id) -  1 AS nbReponses, MIN(p.id) AS initialPost
                     FROM topic t
-                    WHERE id = :id";
+                    INNER JOIN post p ON t.id = p.topic_id
+                    WHERE t.id = :id";
             return self::getOneOrNullResult(
                 self::select($sql, 
                     ["id" => $id], 
@@ -38,6 +39,15 @@
                 ), 
                 self::$classname
             );
+        }
+
+        public function createTopic($array){
+            $title = filter_var($array['title'], FILTER_SANITIZE_STRING);
+
+            $sql = "";
+            return self::select($sql,
+                    ["title" => $title]
+                );
         }
 
     }

@@ -16,6 +16,14 @@
 CREATE DATABASE IF NOT EXISTS `forumdl8` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `forumdl8`;
 
+-- Listage de la structure de la vue forumdl8. msg
+-- Création d'une table temporaire pour palier aux erreurs de dépendances de VIEW
+CREATE TABLE `msg` (
+	`id` INT(11) NOT NULL,
+	`creationdate` DATETIME NOT NULL,
+	`texte` TEXT NOT NULL COLLATE 'latin1_swedish_ci'
+) ENGINE=MyISAM;
+
 -- Listage de la structure de la table forumdl8. post
 CREATE TABLE IF NOT EXISTS `post` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -33,23 +41,23 @@ CREATE TABLE IF NOT EXISTS `post` (
 -- Listage des données de la table forumdl8.post : ~100 rows (environ)
 /*!40000 ALTER TABLE `post` DISABLE KEYS */;
 INSERT INTO `post` (`id`, `texte`, `creationdate`, `topic_id`, `user_id`) VALUES
-	(1, 'gravida sit amet, dapibus id, blandit at, nisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin vel nisl. Quisque fringilla euismod enim. Etiam gravida molestie arcu. Sed eu nibh vulputate mauris sagittis placerat. Cras dictum', '2020-08-20 16:30:34', 9, 1),
-	(2, 'nibh dolor, nonummy ac, feugiat non, lobortis quis, pede. Suspendisse dui. Fusce diam nunc, ullamcorper eu, euismod ac, fermentum vel, mauris. Integer sem elit, pharetra ut, pharetra sed, hendrerit a, arcu. Sed et libero. Proin mi. Aliquam gravida mauris ut mi. Duis risus odio, auctor vitae, aliquet', '2020-08-20 16:30:34', 8, 2),
-	(3, 'dui augue eu tellus. Phasellus elit pede, malesuada vel, venenatis vel, faucibus id, libero. Donec consectetuer mauris id', '2020-08-20 16:30:34', 1, 9),
-	(4, 'orci. Phasellus dapibus quam quis diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac', '2020-08-20 16:30:34', 10, 8),
+	(1, 'gravida sit amet, dapibus id, blandit at, nisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin vel nisl. Quisque fringilla euismod enim. Etiam gravida molestie arcu. Sed eu nibh vulputate mauris sagittis placerat. Cras dictum', '2018-03-05 16:26:06', 9, 1),
+	(2, 'nibh dolor, nonummy ac, feugiat non, lobortis quis, pede. Suspendisse dui. Fusce diam nunc, ullamcorper eu, euismod ac, fermentum vel, mauris. Integer sem elit, pharetra ut, pharetra sed, hendrerit a, arcu. Sed et libero. Proin mi. Aliquam gravida mauris ut mi. Duis risus odio, auctor vitae, aliquet', '2016-02-14 16:26:06', 8, 2),
+	(3, 'dui augue eu tellus. Phasellus elit pede, malesuada vel, venenatis vel, faucibus id, libero. Donec consectetuer mauris id', '2020-08-20 16:26:06', 1, 9),
+	(4, 'orci. Phasellus dapibus quam quis diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac', '2020-08-15 16:26:06', 10, 8),
 	(5, 'Proin vel arcu eu odio tristique pharetra. Quisque ac libero nec ligula consectetuer rhoncus. Nullam velit dui, semper et,', '2020-08-20 16:30:34', 1, 5),
-	(6, 'aliquet. Proin velit. Sed malesuada augue ut lacus. Nulla tincidunt, neque vitae semper egestas, urna justo faucibus lectus, a sollicitudin orci sem eget massa. Suspendisse eleifend. Cras sed leo. Cras vehicula aliquet libero. Integer in magna. Phasellus dolor elit, pellentesque a, facilisis non, bibendum sed, est. Nunc laoreet lectus quis massa. Mauris vestibulum, neque', '2020-08-20 16:30:34', 6, 7),
+	(6, 'aliquet. Proin velit. Sed malesuada augue ut lacus. Nulla tincidunt, neque vitae semper egestas, urna justo faucibus lectus, a sollicitudin orci sem eget massa. Suspendisse eleifend. Cras sed leo. Cras vehicula aliquet libero. Integer in magna. Phasellus dolor elit, pellentesque a, facilisis non, bibendum sed, est. Nunc laoreet lectus quis massa. Mauris vestibulum, neque', '2012-12-20 16:26:06', 6, 7),
 	(7, 'sed dictum eleifend, nunc risus varius orci, in consequat enim diam vel arcu. Curabitur ut odio vel est tempor bibendum. Donec felis orci, adipiscing non,', '2020-08-20 16:30:34', 6, 1),
 	(8, 'Suspendisse sed dolor. Fusce mi lorem, vehicula et, rutrum eu, ultrices sit amet, risus. Donec nibh enim, gravida sit amet, dapibus id, blandit at, nisi.', '2020-08-20 16:30:34', 8, 6),
-	(9, 'vulputate ullamcorper magna. Sed eu eros. Nam consequat dolor vitae dolor. Donec fringilla. Donec feugiat metus sit amet ante. Vivamus non lorem', '2020-08-20 16:30:34', 2, 9),
-	(10, 'non enim. Mauris quis turpis vitae purus gravida sagittis. Duis gravida. Praesent eu nulla at sem molestie sodales. Mauris blandit enim consequat purus. Maecenas libero est, congue a, aliquet', '2020-08-20 16:30:34', 4, 10),
-	(11, 'lorem semper auctor. Mauris vel turpis. Aliquam adipiscing lobortis risus. In mi pede, nonummy ut, molestie in, tempus eu, ligula. Aenean euismod mauris eu elit. Nulla facilisi. Sed neque. Sed eget lacus. Mauris non dui nec urna suscipit nonummy. Fusce fermentum fermentum arcu. Vestibulum', '2020-08-20 16:30:34', 5, 1),
+	(9, 'vulputate ullamcorper magna. Sed eu eros. Nam consequat dolor vitae dolor. Donec fringilla. Donec feugiat metus sit amet ante. Vivamus non lorem', '2020-08-18 16:26:06', 2, 9),
+	(10, 'non enim. Mauris quis turpis vitae purus gravida sagittis. Duis gravida. Praesent eu nulla at sem molestie sodales. Mauris blandit enim consequat purus. Maecenas libero est, congue a, aliquet', '2004-08-13 14:07:09', 4, 10),
+	(11, 'lorem semper auctor. Mauris vel turpis. Aliquam adipiscing lobortis risus. In mi pede, nonummy ut, molestie in, tempus eu, ligula. Aenean euismod mauris eu elit. Nulla facilisi. Sed neque. Sed eget lacus. Mauris non dui nec urna suscipit nonummy. Fusce fermentum fermentum arcu. Vestibulum', '2010-07-19 16:26:06', 5, 1),
 	(12, 'et libero. Proin mi. Aliquam gravida mauris ut mi. Duis risus odio, auctor vitae, aliquet nec, imperdiet nec, leo. Morbi neque tellus, imperdiet non, vestibulum nec, euismod in, dolor. Fusce feugiat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam auctor, velit', '2020-08-20 16:30:34', 5, 9),
-	(13, 'pellentesque. Sed dictum. Proin eget odio. Aliquam vulputate ullamcorper magna. Sed eu eros. Nam consequat dolor vitae dolor. Donec fringilla. Donec feugiat metus sit amet ante. Vivamus non lorem vitae odio sagittis semper. Nam tempor diam dictum sapien. Aenean massa. Integer vitae nibh. Donec est mauris, rhoncus id, mollis nec, cursus a, enim. Suspendisse', '2020-08-20 16:30:34', 3, 10),
+	(13, 'pellentesque. Sed dictum. Proin eget odio. Aliquam vulputate ullamcorper magna. Sed eu eros. Nam consequat dolor vitae dolor. Donec fringilla. Donec feugiat metus sit amet ante. Vivamus non lorem vitae odio sagittis semper. Nam tempor diam dictum sapien. Aenean massa. Integer vitae nibh. Donec est mauris, rhoncus id, mollis nec, cursus a, enim. Suspendisse', '2020-05-16 16:26:06', 3, 10),
 	(14, 'euismod ac, fermentum vel, mauris. Integer sem elit, pharetra ut, pharetra sed, hendrerit a, arcu. Sed et libero. Proin mi. Aliquam gravida mauris ut mi. Duis risus odio, auctor', '2020-08-20 16:30:34', 8, 10),
 	(15, 'vel est tempor bibendum. Donec felis orci, adipiscing non, luctus sit amet, faucibus ut, nulla. Cras eu tellus eu augue porttitor interdum. Sed auctor odio a purus. Duis', '2020-08-20 16:30:34', 4, 9),
 	(16, 'sit amet, faucibus ut, nulla. Cras eu tellus eu augue porttitor interdum. Sed auctor odio a purus. Duis elementum, dui quis accumsan convallis, ante lectus convallis est, vitae sodales nisi magna sed dui. Fusce aliquam, enim nec tempus scelerisque, lorem ipsum sodales purus, in molestie tortor nibh sit amet orci. Ut sagittis lobortis mauris. Suspendisse aliquet molestie', '2020-08-20 16:30:34', 6, 9),
-	(17, 'pede. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin vel arcu eu odio tristique pharetra. Quisque ac libero nec ligula consectetuer rhoncus. Nullam velit dui, semper et, lacinia vitae, sodales at, velit. Pellentesque ultricies dignissim lacus. Aliquam rutrum lorem ac risus. Morbi metus. Vivamus euismod urna. Nullam', '2020-08-20 16:30:34', 7, 3),
+	(17, 'pede. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin vel arcu eu odio tristique pharetra. Quisque ac libero nec ligula consectetuer rhoncus. Nullam velit dui, semper et, lacinia vitae, sodales at, velit. Pellentesque ultricies dignissim lacus. Aliquam rutrum lorem ac risus. Morbi metus. Vivamus euismod urna. Nullam', '2019-10-20 16:26:06', 7, 3),
 	(18, 'euismod est arcu ac orci. Ut semper pretium neque. Morbi quis urna. Nunc quis arcu', '2020-08-20 16:30:34', 5, 3),
 	(19, 'consectetuer rhoncus. Nullam velit dui, semper et, lacinia vitae, sodales at, velit. Pellentesque ultricies dignissim lacus. Aliquam rutrum lorem ac risus. Morbi metus. Vivamus euismod urna. Nullam lobortis quam a felis ullamcorper viverra. Maecenas iaculis aliquet diam. Sed diam lorem, auctor quis, tristique ac, eleifend vitae, erat. Vivamus nisi. Mauris', '2020-08-20 16:30:34', 7, 8),
 	(20, 'lorem ipsum sodales purus, in molestie tortor nibh sit amet orci. Ut sagittis lobortis mauris. Suspendisse aliquet molestie tellus. Aenean egestas hendrerit neque. In ornare sagittis felis. Donec tempor,', '2020-08-20 16:30:34', 8, 5),
@@ -152,15 +160,15 @@ CREATE TABLE IF NOT EXISTS `topic` (
 /*!40000 ALTER TABLE `topic` DISABLE KEYS */;
 INSERT INTO `topic` (`id`, `title`, `creationdate`, `closed`, `resolved`, `user_id`) VALUES
 	(1, 'pretium et, rutrum non, hendrerit id, ante.', '2020-08-20 16:26:06', 1, 1, 9),
-	(2, 'rhoncus. Donec est. Nunc ullamcorper, velit in aliquet lobortis, nisi', '2020-08-20 16:26:06', 1, 1, 10),
-	(3, 'Sed dictum. Proin eget odio. Aliquam vulputate ullamcorper magna. Sed eu eros. Nam consequat dolor', '2020-08-20 16:26:06', 0, 0, 10),
-	(4, 'risus. Nulla eget metus eu erat semper rutrum. Fusce', '2020-08-20 16:26:06', 1, 0, 10),
-	(5, 'sodales elit erat vitae risus. Duis a mi fringilla', '2020-08-20 16:26:06', 1, 1, 2),
-	(6, 'sagittis augue, eu tempor erat neque non quam. Pellentesque habitant morbi tristique senectus et netus', '2020-08-20 16:26:06', 1, 1, 4),
-	(7, 'nec tellus. Nunc lectus pede, ultrices', '2020-08-20 16:26:06', 0, 0, 4),
-	(8, 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin vel arcu', '2020-08-20 16:26:06', 0, 0, 2),
-	(9, 'a, dui. Cras pellentesque. Sed dictum. Proin eget odio. Aliquam vulputate ullamcorper magna.', '2020-08-20 16:26:06', 0, 0, 6),
-	(10, 'sagittis lobortis mauris. Suspendisse aliquet molestie tellus. Aenean egestas hendrerit', '2020-08-20 16:26:06', 0, 0, 7);
+	(2, 'rhoncus. Donec est. Nunc ullamcorper, velit in aliquet lobortis, nisi', '2020-08-18 16:26:06', 1, 1, 10),
+	(3, 'Sed dictum. Proin eget odio. Aliquam vulputate ullamcorper magna. Sed eu eros. Nam consequat dolor', '2020-05-16 16:26:06', 0, 0, 10),
+	(4, 'risus. Nulla eget metus eu erat semper rutrum. Fusce', '2004-08-13 14:07:09', 1, 0, 10),
+	(5, 'sodales elit erat vitae risus. Duis a mi fringilla', '2010-07-19 16:26:06', 1, 1, 2),
+	(6, 'sagittis augue, eu tempor erat neque non quam. Pellentesque habitant morbi tristique senectus et netus', '2012-12-20 16:26:06', 1, 1, 4),
+	(7, 'nec tellus. Nunc lectus pede, ultrices', '2019-10-20 16:26:06', 0, 0, 4),
+	(8, 'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin vel arcu', '2016-02-14 16:26:06', 0, 0, 2),
+	(9, 'a, dui. Cras pellentesque. Sed dictum. Proin eget odio. Aliquam vulputate ullamcorper magna.', '2018-03-05 16:26:06', 0, 0, 6),
+	(10, 'sagittis lobortis mauris. Suspendisse aliquet molestie tellus. Aenean egestas hendrerit', '2020-08-15 16:26:06', 0, 0, 7);
 /*!40000 ALTER TABLE `topic` ENABLE KEYS */;
 
 -- Listage de la structure de la table forumdl8. user
@@ -190,6 +198,13 @@ INSERT INTO `user` (`id`, `username`, `email`, `password`, `role`, `creationdate
 	(9, 'luctus', 'luctus@gmail.com', 'erat.', '["ROLE_USER"]', '2020-08-20 16:15:30'),
 	(10, 'Nullam', 'nullam@gmail.com', 'aliquet', '["ROLE_USER"]', '2020-08-20 16:15:30');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
+
+-- Listage de la structure de la vue forumdl8. msg
+-- Suppression de la table temporaire et création finale de la structure d'une vue
+DROP TABLE IF EXISTS `msg`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `msg` AS SELECT p.id, p.creationdate, p.texte
+FROM post p
+WHERE p.creationdate = (SELECT MIN(p2.creationdate) FROM post p2 WHERE p2.topic_id = 7) ;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

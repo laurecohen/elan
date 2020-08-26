@@ -52,4 +52,22 @@
                 self::$classname
             );
         }
+
+        public function getFirstByTopic($topic){
+            $sql = "SELECT p.id
+                    FROM post p
+                    WHERE p.creationdate IN (
+                            SELECT MIN(p2.creationdate) 
+                            FROM post p2 
+                            WHERE p2.topic_id = :topic
+                    )";
+
+            return self::getOneOrNullResult(
+                self::select($sql, 
+                    ["topic" => $topic], 
+                    false
+                ), 
+                self::$classname
+            );
+        }
     }

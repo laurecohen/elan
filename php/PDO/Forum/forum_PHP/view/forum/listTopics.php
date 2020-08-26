@@ -1,5 +1,7 @@
 <h2>LISTE DES SUJETS</h2>
 
+<a class="uk-button uk-button-primary uk-margin-bottom" href="?ctrl=forum&method=addTopic">Ajouter un sujet</a>
+
 <?php foreach ($data['topics'] as $topic) : ?>
 <div class="uk-card uk-card-default uk-card-body">
     <a href="?ctrl=forum&method=show&id=<?= $topic->getId() ?>">

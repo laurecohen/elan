@@ -6,6 +6,11 @@
     require_once "app\Autoloader.php";
     Autoloader::register();
 
+    /* ------------------ XDEBUG ------------------ */
+    ini_set("xdebug.var_display_max_children", '-1');
+    ini_set("xdebug.var_display_max_data", '-1');
+    ini_set("xdebug.var_display_max_depth", '-1');
+
     /* ------------------ CONSTANTES ------------------ */
     define('DS', DIRECTORY_SEPARATOR);
     define('ROOT_DIR', '.'.DS); // "./"
