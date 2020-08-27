@@ -70,4 +70,24 @@
                 self::$classname
             );
         }
+
+        public function createPost($desc, $user, $topic){
+            $sql = "INSERT INTO post(texte, topic_id, user_id) VALUES(:texte, :topic_id, :user_id);";
+            
+            return self::create($sql, [
+                "texte" => $desc,
+                "topic_id" => $topic,
+                "user_id" => $user,
+            ]);
+        }
+
+        public function deletePost(){
+            // $sql = "INSERT INTO post(texte, topic_id, user_id) VALUES(:texte, :topic_id, :user_id);";
+            
+            // return self::create($sql, [
+            //     "texte" => $desc,
+            //     "topic_id" => $topic,
+            //     "user_id" => $user,
+            // ]);
+        }
     }

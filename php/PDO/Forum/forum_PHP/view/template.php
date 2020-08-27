@@ -14,10 +14,11 @@
 </head>
 <body>
     <!-- ------------------ NAV ------------------ -->
-    <nav class="uk-navbar-container uk-background-secondary uk-light" uk-navbar>
+    <nav class="uk-navbar-container uk-background-secondar" uk-navbar>
         <div class="uk-navbar-left">
             <ul class="uk-navbar-nav">
                 <li><a href="?ctrl=home&method=index"><span uk-icon='home'></span>&nbsp;Accueil</a></li>
+                <li><a href="?ctrl=forum&method=allTopics"><span uk-icon='star'></span>&nbsp;Sujets</a></li>
             </ul>
         </div>
     </nav>

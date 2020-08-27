@@ -43,4 +43,13 @@
             $stmt = self::$connection->prepare($sql);
             return $stmt->execute($params);
         }
+        
+        protected static function getLastInsertId(){
+            return self::$connection->lastInsertId();
+        }
+
+        protected static function delete($sql, $params = null){
+            $stmt = self::$connection->prepare($sql);
+            return $stmt->execute($params);
+        }
     }

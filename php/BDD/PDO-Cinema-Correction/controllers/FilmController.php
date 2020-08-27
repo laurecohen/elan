@@ -120,7 +120,7 @@ class FilmController {
         }
 
         header("Location: index.php?action=listFilms");
-    }
+    } 
 
     /**
      * editFilm

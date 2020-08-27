@@ -41,13 +41,21 @@
             );
         }
 
-        public function createTopic($array){
-            $title = filter_var($array['title'], FILTER_SANITIZE_STRING);
+        public function createTopic($title, $user){
+            $sql = "INSERT INTO topic(title, user_id) VALUES(:title, :user_id);";
 
-            $sql = "";
-            return self::select($sql,
-                    ["title" => $title]
-                );
+            self::create($sql, [
+                "title" => $title,
+                "user_id" => $user
+            ]);
+            
+            // On récupère l'id du sujet créé (autoincrement)
+            $lastId = self::getLastInsertId();
+
+            return [
+                "title" => $title,
+                "user" => $user,
+                "id" => $lastId
+            ];
         }
-
     }
