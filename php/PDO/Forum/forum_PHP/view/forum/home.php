@@ -6,4 +6,4 @@
     Le public visé est particulièrement hétérogène : les habitués de l'outil informatique comme les novices devront profiter d'une ergonomie et d'un rendu visuel clairs et conformes aux standards utilisés dans la conception d'applications destinées au web.<br/>
 </p>    
     
-<p><a class="uk-button uk-button-default" href="?ctrl=forum&method=allTopics">Accéder aux sujets</a></p>
+<p><a class="uk-button uk-button-default uk-button-primary" href="?ctrl=security&method=register">Register</a></p>

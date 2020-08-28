@@ -4,7 +4,7 @@
 
 <?php foreach ($data['topics'] as $topic) : ?>
 <div class="uk-card uk-card-default uk-card-body">
-    <a href="?ctrl=forum&method=show&id=<?= $topic->getId() ?>">
+    <a href="?ctrl=forum&method=show&idr=<?= $topic->getId() ?>">
         <ul>
             <li>Titre du sujet : <?= $topic->getTitle() ?></li>
             <li>Ajouté le <?= $topic->getCreationDate() ?></li>

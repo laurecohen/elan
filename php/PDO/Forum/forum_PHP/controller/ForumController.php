@@ -33,12 +33,12 @@
          * Afficher les posts d'un topic
          */
         public function show(){
-            $id = (isset($_GET['id'])) ? $_GET['id'] : null;
+            $idr = (isset($_GET['idr'])) ? $_GET['idr'] : null;
             $manTopic = new TopicManager();
             $manPost = new PostManager();
 
-            $topic = $manTopic->findOneById($id);
-            $posts = $manPost->findByTopic($id);
+            $topic = $manTopic->findOneById($idr);
+            $posts = $manPost->findByTopic($idr);
             
             return [
                 "view" => "forum/detailTopic.php",
@@ -83,31 +83,36 @@
                     "post" => $post,
                 ]
             ];
-
         }
 
         /**
          * Insert Post
          */
         public function insertPost(){
-            $topic = (isset($_GET['id'])) ? $_GET['id'] : null;
+            //$idr = (isset($_GET['idr'])) ? $_GET['idr'] : null;
+            $id = (isset($_GET['id'])) ? $_GET['id'] : null;
+            var_dump($id);
             $user = filter_input(INPUT_POST, "user_id", FILTER_SANITIZE_NUMBER_INT);
             $texte = filter_input(INPUT_POST, "response", FILTER_SANITIZE_STRING);
-
+            
             $manPost = new PostManager();
-            $manPost->createPost($texte, $user, $topic);
 
-            Router::redirectTo("forum", "show", $topic);
+            $idt = $manPost->findOneById($id)->getTopic()->getId();
+            $manPost->createPost($texte, $user, $idt);
+
+            Router::redirectTo("forum", "show", $idt);
         }
 
         /**
          * Delete Post
          */
-        public function deletePostById($id){
-            $topic = (isset($_GET['topic'])) ? $_GET['id'] : null;
+        public function deleteMessage(){
+            $id = (isset($_GET['id'])) ? $_GET['id'] : null;
+            
+            $manPost = new PostManager();
+            $idt = $manPost->findOneById($id)->getTopic()->getId();
+            $manPost->deletePost($id);
 
-
-
-            Router::redirectTo("forum", "show", $topic);
+            Router::redirectTo("forum", "show", $idt);
         }
     }

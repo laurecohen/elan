@@ -14,8 +14,7 @@
             <li>Id du post : <?= $post->getId() ?></li>
             <li>Ajouté le <?= $post->getCreationDate() ?> par <?= $post->getUser() ?></li>
             <li>Texte : <?= $post->getTexte() ?></li>
-            <li><a class="uk-text-danger" href="?ctrl=forum&method=deletePostd&id=<?= $post->getId() ?>">Supprimer</a></li>
-            <!-- <li><a class="uk-text-success" href="?ctrl=forum&method=editPost">Éditer</a></li>-->
+            <li><a class="uk-text-danger" href="?ctrl=forum&method=deleteMessage&id=<?= $post->getId() ?>">Supprimer</a></li>
         </ul>
     <?php endforeach; ?>
 </ul>
