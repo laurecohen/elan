@@ -13,7 +13,7 @@
             <?= $topic->getResolved() === '1' ? '<li>Résolu</li>' : '' ?>
             <li><?= $topic->getNbReponses() ?> réponses</li>
             <li>Post initial = <?= $topic->getInitialPost() ?></li>
-            <li>Post initial2 = <?= $data['firstpost'] ?></li>
+            <li>Post initial2 = <?= $data['firstpost']->getId() ?></li>
             <li><a class="uk-text-danger" href="?ctrl=forum&method=deleteTopic&id=<?= $topic->getId() ?>">Supprimer</a></li>
         </ul>
     </a>
