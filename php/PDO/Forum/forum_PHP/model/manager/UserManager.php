@@ -49,7 +49,7 @@
             ]);
         }
 
-        public function logUserIn($user, $password){
+        public function logUserIn($user){
             $sql = "SELECT username, email, password FROM user WHERE email = :user OR username = :user";
             
             return self::select($sql, [

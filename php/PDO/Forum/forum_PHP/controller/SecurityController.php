@@ -66,7 +66,7 @@
             
             if($login && $password){
                 $manUser = new UserManager();
-                $user = $manUser->logUserIn($login, $password);
+                $user = $manUser->logUserIn($login);
 
                 if(password_verify($password, $user['password'])){
                     var_dump($user);

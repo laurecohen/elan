@@ -24,11 +24,7 @@
                 $ctrl = new $ctrlname();
             } else $ctrl = new HomeController();
 
-            if(isset($get['idr'])){
-                $idr = $get['idr'];
-            } else $idr = null;
-
-            if(isset($get['id'])){
+            if(isset($get['id']) && is_numeric($get['id'])){
                 $id = $get['id'];
             } else $id = null;
 
@@ -42,8 +38,8 @@
             return $ctrl->$method($id);
         }
 
-        public static function redirectTo($ctrl = null, $method = null, $idr = null){
-            header("Location:?ctrl=".$ctrl."&method=".$method."&idr=".$idr);
+        public static function redirectTo($ctrl = null, $method = null, $id = null){
+            header("Location:?ctrl=".$ctrl."&method=".$method."&id=".$id);
             die();
         }
     }

@@ -58,4 +58,9 @@
                 "id" => $lastId
             ];
         }
+
+        public function dropTopic($id){
+            $sql = "DELETE FROM topic WHERE id = :id";
+            return self::delete($sql, ["id" => $id]);
+        }
     }

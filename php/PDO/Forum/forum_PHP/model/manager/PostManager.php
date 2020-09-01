@@ -54,7 +54,7 @@
         }
 
         public function getFirstByTopic($topic){
-            $sql = "SELECT p.id
+            $sql = "SELECT p.id, p.texte
                     FROM post p
                     WHERE p.creationdate IN (
                             SELECT MIN(p2.creationdate) 
@@ -81,8 +81,8 @@
             ]);
         }
 
-        public function deletePost($id){
-            $sql = "DELETE FROM post WHERE id = :id";
+        public function dropPostsInTopic($id){
+            $sql = "DELETE FROM post WHERE topic_id = :id";
             return self::delete($sql, ["id" => $id]);
         }
     }

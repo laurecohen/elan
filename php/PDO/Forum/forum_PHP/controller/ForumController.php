@@ -17,13 +17,23 @@
          */
         public function allTopics(){
             $manTopic = new TopicManager();
-
             $topics = $manTopic->findAll();
+            
+            $manPost = new PostManager();
+            
+            
+            foreach($topics as $topic){
+                $posts = $manPost->findByTopic($topic->getId());
+                $firstpost = $manPost->getFirstByTopic($topic->getId());
+            }
+
 
             return [
                 "view" => "forum/listTopics.php", 
                 "data" => [
                     "topics" => $topics,
+                    "posts" => $posts,
+                    "firstpost" => $firstpost,
                 ],
                 "titrePage" => "FORUM | Sujets"
             ];
@@ -32,13 +42,12 @@
         /**
          * Afficher les posts d'un topic
          */
-        public function show(){
-            $idr = (isset($_GET['idr'])) ? $_GET['idr'] : null;
+        public function show($idt){
             $manTopic = new TopicManager();
             $manPost = new PostManager();
 
-            $topic = $manTopic->findOneById($idr);
-            $posts = $manPost->findByTopic($idr);
+            $topic = $manTopic->findOneById($idt);
+            $posts = $manPost->findByTopic($idt);
             
             return [
                 "view" => "forum/detailTopic.php",
@@ -73,8 +82,7 @@
             
             $manPost = new PostManager();
             $post = $manPost->createPost($texte, $topic['user'], $topic['id']);
-        
-            // Retourner à la liste des sujets
+ 
             Router::redirectTo("forum", "allTopics");
 
             return [
@@ -88,16 +96,11 @@
         /**
          * Insert Post
          */
-        public function insertPost(){
-            //$idr = (isset($_GET['idr'])) ? $_GET['idr'] : null;
-            $id = (isset($_GET['id'])) ? $_GET['id'] : null;
-            var_dump($id);
+        public function insertPost($idt){
             $user = filter_input(INPUT_POST, "user_id", FILTER_SANITIZE_NUMBER_INT);
             $texte = filter_input(INPUT_POST, "response", FILTER_SANITIZE_STRING);
-            
+        
             $manPost = new PostManager();
-
-            $idt = $manPost->findOneById($id)->getTopic()->getId();
             $manPost->createPost($texte, $user, $idt);
 
             Router::redirectTo("forum", "show", $idt);
@@ -106,13 +109,13 @@
         /**
          * Delete Post
          */
-        public function deleteMessage(){
-            $id = (isset($_GET['id'])) ? $_GET['id'] : null;
-            
+        public function deleteTopic($idt){  
             $manPost = new PostManager();
-            $idt = $manPost->findOneById($id)->getTopic()->getId();
-            $manPost->deletePost($id);
+            $manPost->dropPostsInTopic($idt);
 
-            Router::redirectTo("forum", "show", $idt);
+            $manTopic = new TopicManager();
+            $manTopic->dropTopic($idt);
+            
+            Router::redirectTo("forum", "allTopics");
         }
     }

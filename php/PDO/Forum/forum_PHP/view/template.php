@@ -8,6 +8,9 @@
     <!-- UIkit JS -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.4.6/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.4.6/dist/js/uikit-icons.min.js"></script>
+    <!-- TinyMCE -->
+    <!-- <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>tinymce.init({selector:'textarea'});</script> -->
     
     <link rel="stylesheet" href="<?= CSS_PATH ?>style.css">
     <title><?= $titrePage ?></title>
@@ -38,7 +41,6 @@
                 &copy;2020 - COPYRIGHT - <a href="?ctrl=home&method=rules">Règlement du forum</a> - <a href="?ctrl=home&method=mentions">Mentions légales</a>
             </p>
         </footer>
-
     </div>
 </body>
 </html>

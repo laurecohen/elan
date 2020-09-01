@@ -8,13 +8,14 @@
     <?= $topic->getClosed() === '1' ? '<li>Verrouillé</li>' : '' ?>
     <?= $topic->getResolved() === '1' ? '<li>Résolu</li>' : '' ?>
     <li><?= $topic->getNbReponses() ?> réponses</li>
+    <li><a class="uk-text-danger" href="?ctrl=forum&method=deleteTopic&id=<?= $topic->getId() ?>">Supprimer</a></li>
 
     <?php foreach ($data['posts'] as $post) : ?>
         <ul>
             <li>Id du post : <?= $post->getId() ?></li>
             <li>Ajouté le <?= $post->getCreationDate() ?> par <?= $post->getUser() ?></li>
             <li>Texte : <?= $post->getTexte() ?></li>
-            <li><a class="uk-text-danger" href="?ctrl=forum&method=deleteMessage&id=<?= $post->getId() ?>">Supprimer</a></li>
+            <!-- <li><a class="uk-text-danger" href="?ctrl=forum&method=deleteMessages&id=<?= $post->getId() ?>">Supprimer</a></li> -->
         </ul>
     <?php endforeach; ?>
 </ul>

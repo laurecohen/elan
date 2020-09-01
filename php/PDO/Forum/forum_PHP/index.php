@@ -42,4 +42,4 @@
     $page = ob_get_contents();
     \ob_end_clean();
 
-    require VIEW_PATH."template.php"; // require "./view/layout.php"
+    require VIEW_PATH."template.php"; // require "./view/template.php"
