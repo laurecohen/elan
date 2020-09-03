@@ -1,13 +1,18 @@
 <?php
     namespace App;
 
-    abstract class Session{
-        public static function addUser($user){
-            $_SESSION['user'] = $user; 
-        }
+    abstract class Session {
 
-        public static function getUser(){
-            return (isset($_SESSION['user'])) ? $_SESSION['user'] : null;
+        public static function addFavorite($value){
+            if(!isset($_SESSION['favorites'])){
+                $_SESSION["favorites"] = [];
+            }
+            if(!in_array($value, $_SESSION['favorites'])){
+                $_SESSION['favorites'][] = $value;
+                self::addMessage("success", "Boisson ".$value->getNom()." bien enregistrée !");
+            }
+            else self::addMessage("error", "Cette boisson est déjà présente dans vos favoris !");
+            
         }
 
         public static function addMessage($type, $text){
@@ -34,5 +39,6 @@
                 return $msgs;
             }
             else return [];
+
         }
     }

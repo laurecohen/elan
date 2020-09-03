@@ -11,7 +11,7 @@
         private $user;
         private $nbPosts;
         private $nbReponses;
-        private $initialPost;
+        private $nbVues;
 
         public function __construct($data)
         {
@@ -188,22 +188,21 @@
         }
 
         /**
-         * Get the value of initialPost
+         * Get the value of nbVues
          */ 
-        public function getInitialPost()
+        public function getNbVues()
         {
-                return $this->initialPost;
+                return $this->nbVues;
         }
 
         /**
-         * Set the value of initialPost
+         * Set the value of nbVues
          *
          * @return  self
          */ 
-        public function setInitialPost($initialPost)
+        public function setNbVues($nbVues)
         {
-                $this->initialPost = $initialPost;
-
+                $this->nbVues = $nbVues;
                 return $this;
         }
     }

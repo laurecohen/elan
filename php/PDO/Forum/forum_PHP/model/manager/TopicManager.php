@@ -12,7 +12,7 @@
         }
 
         public function findAll(){
-            $sql = "SELECT t.id, title, t.creationdate, closed, resolved, t.user_id, COUNT(p.id) AS nbPosts, COUNT(p.id) -  1 AS nbReponses, MIN(p.id) AS initialPost
+            $sql = "SELECT t.id, title, t.creationdate, closed, resolved, t.user_id, COUNT(p.id) AS nbPosts, COUNT(p.id) -  1 AS nbReponses, nbVues
                     FROM topic t
                     INNER JOIN post p ON t.id = p.topic_id
                     GROUP BY t.id
@@ -52,9 +52,9 @@
             // On récupère l'id du sujet créé (autoincrement)
             $lastId = self::getLastInsertId();
 
+            // On renvoie l'id du nouveau topic
             return [
-                "title" => $title,
-                "user" => $user,
+                "user" => $user, // session
                 "id" => $lastId
             ];
         }

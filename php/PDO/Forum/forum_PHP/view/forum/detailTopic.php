@@ -15,7 +15,6 @@
             <li>Id du post : <?= $post->getId() ?></li>
             <li>Ajouté le <?= $post->getCreationDate() ?> par <?= $post->getUser() ?></li>
             <li>Texte : <?= $post->getTexte() ?></li>
-            <!-- <li><a class="uk-text-danger" href="?ctrl=forum&method=deleteMessages&id=<?= $post->getId() ?>">Supprimer</a></li> -->
         </ul>
     <?php endforeach; ?>
 </ul>
@@ -26,8 +25,8 @@
             <label for="user_id">Votre nom (id)</label>
             <input class="uk-input uk-margin-bottom" type="text" name="user_id" id="user_id" required>
 
-            <label for="response">Votre réponse</label>
-            <textarea class="uk-textarea uk-margin-bottom" type="text" name="response" id="description" placeholder="Votre message" required></textarea>
+            <label for="description">Votre réponse</label>
+            <textarea type="text" name="description" id="description" placeholder="Votre message" required></textarea>
 
             <input class="uk-button uk-button-primary uk-margin" type="submit" value="Poster ma réponse">
         </form>

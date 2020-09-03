@@ -71,11 +71,11 @@
             );
         }
 
-        public function createPost($desc, $user, $topic){
+        public function createPost($texte, $user, $topic){
             $sql = "INSERT INTO post(texte, topic_id, user_id) VALUES(:texte, :topic_id, :user_id);";
             
             return self::create($sql, [
-                "texte" => $desc,
+                "texte" => $texte,
                 "topic_id" => $topic,
                 "user_id" => $user,
             ]);

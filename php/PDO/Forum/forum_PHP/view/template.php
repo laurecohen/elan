@@ -9,8 +9,15 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.4.6/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.4.6/dist/js/uikit-icons.min.js"></script>
     <!-- TinyMCE -->
-    <!-- <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>tinymce.init({selector:'textarea'});</script> -->
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>tinymce.init({
+        selector:'textarea#description',
+        setup: function (editor) {
+            editor.on('change', function () {
+                tinymce.triggerSave();
+        });
+    }
+    });</script>
     
     <link rel="stylesheet" href="<?= CSS_PATH ?>style.css">
     <title><?= $titrePage ?></title>
@@ -22,6 +29,20 @@
             <ul class="uk-navbar-nav">
                 <li><a href="?ctrl=home&method=index"><span uk-icon='home'></span>&nbsp;Accueil</a></li>
                 <li><a href="?ctrl=forum&method=allTopics"><span uk-icon='star'></span>&nbsp;Sujets</a></li>
+                <?php
+                    if(App\Session::getUser() === null){
+                        ?>
+                        <li><a href="?ctrl=security&method=login">Connexion</a></li>
+                        <li><a href="">Inscription</a></li>
+                        <?php
+                    }
+                    else{
+                        ?>
+                        BIENVENUE <?= App\Session::getUser()->getUsername() ?>
+                        <li><a href="">Déconnexion</a></li>
+                        <?php
+                    }
+                ?>
             </ul>
         </div>
     </nav>
@@ -32,6 +53,16 @@
             <main>
                 <h1>FORUM</h1><hr>
                 <div id="page">
+                    <?php
+                        if(App\Session::hasMessages())  {
+                            foreach(App\Session::getMessage("success") as $msg){
+                                echo $msg."<br>";
+                            }
+                            foreach(App\Session::getMessage("error") as $msg){
+                                echo $msg."<br>";
+                            }
+                        }
+                    ?>
                     <?= $page ?>
                 </div>
             </main>

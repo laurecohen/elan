@@ -66,11 +66,19 @@
             
             if($login && $password){
                 $manUser = new UserManager();
-                $user = $manUser->logUserIn($login);
+                $userpass = $manUser->logUserIn($login);
 
-                if(password_verify($password, $user['password'])){
-                    var_dump($user);
-                } else echo "User not found";
+                if(password_verify($password, $userpass['password'])){
+                    //TODO = modif findOneById en Find FOr Session
+                    $u = $manUser->findOneById($userpass['id']);
+                    Session::addUser($u);
+                    Session::addMessage("success", "L'utilisateur ".$u->getUsername()." est bien connecté(e) !");
+                    Router::redirectTo("forum", "allTopics");
+        
+                } else {
+                    Session::addMessage("error", "L'identifiant ou le mot de passe est erroné.");
+                    Router::redirectTo("security", "login");
+                }
             }
         }        
     }

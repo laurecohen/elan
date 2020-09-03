@@ -20,20 +20,19 @@
             $topics = $manTopic->findAll();
             
             $manPost = new PostManager();
-            
+            $listTopics = [];
             
             foreach($topics as $topic){
-                $posts = $manPost->findByTopic($topic->getId());
-                $firstpost = $manPost->getFirstByTopic($topic->getId());
+                $listTopics[] = [
+                    "topic" => $topic,
+                    "firstPost" => $manPost->getFirstByTopic($topic->getId())
+                ];
             }
-
 
             return [
                 "view" => "forum/listTopics.php", 
                 "data" => [
-                    "topics" => $topics,
-                    "posts" => $posts,
-                    "firstpost" => $firstpost,
+                    "listTopics" => $listTopics,
                 ],
                 "titrePage" => "FORUM | Sujets"
             ];
@@ -74,21 +73,17 @@
          */
         public function insertTopic(){
             $title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_STRING);
-            $user = filter_input(INPUT_POST, "user_id", FILTER_SANITIZE_NUMBER_INT);
-            $texte = filter_input(INPUT_POST, "description", FILTER_SANITIZE_STRING);
+            $user = filter_input(INPUT_POST, "user_id", FILTER_SANITIZE_NUMBER_INT); // Session
 
             $manTopic = new TopicManager();
             $topic = $manTopic->createTopic($title, $user);
-            
-            $manPost = new PostManager();
-            $post = $manPost->createPost($texte, $topic['user'], $topic['id']);
+            $this->insertPost($topic['id']);
  
             Router::redirectTo("forum", "allTopics");
 
             return [
                 "data" => [
                     "topic" => $topic,
-                    "post" => $post,
                 ]
             ];
         }
@@ -97,9 +92,9 @@
          * Insert Post
          */
         public function insertPost($idt){
-            $user = filter_input(INPUT_POST, "user_id", FILTER_SANITIZE_NUMBER_INT);
-            $texte = filter_input(INPUT_POST, "response", FILTER_SANITIZE_STRING);
-        
+            $user = filter_input(INPUT_POST, "user_id", FILTER_SANITIZE_NUMBER_INT); // Session
+            $texte = filter_input(INPUT_POST, "description", FILTER_UNSAFE_RAW);
+
             $manPost = new PostManager();
             $manPost->createPost($texte, $user, $idt);
 
