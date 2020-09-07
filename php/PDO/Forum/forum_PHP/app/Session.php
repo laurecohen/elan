@@ -10,6 +10,24 @@
             return (isset($_SESSION['user'])) ? $_SESSION['user'] : null;
         }
 
+        public static function hasUser(){
+            return (self::getUser() !== null) ? true : false;
+        }
+
+        public static function isAdmin(){
+            if(self::hasUser()){
+                $roles = json_decode(self::getUser()->getRole());
+                
+                if(in_array("ROLE_ADMIN", $roles)){
+                    return true;
+                }
+            }
+        }
+
+        public static function deconnect(){
+            unset($_SESSION['user']);
+        }
+
         public static function addMessage($type, $text){
             if(!isset($_SESSION['msg'][$type])){
                 $_SESSION["msg"][$type] = [];

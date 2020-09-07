@@ -5,8 +5,9 @@
     use App\Router;
     use Model\Manager\TopicManager;
     use Model\Manager\PostManager;
+use Model\Manager\UserManager;
 
-    class ForumController {
+class ForumController {
 
         public function index(){
             Router::redirectTo("home","index");
@@ -73,7 +74,7 @@
          */
         public function insertTopic(){
             $title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_STRING);
-            $user = filter_input(INPUT_POST, "user_id", FILTER_SANITIZE_NUMBER_INT); // Session
+            $user = Session::getUser()->getId();
 
             $manTopic = new TopicManager();
             $topic = $manTopic->createTopic($title, $user);
@@ -92,7 +93,7 @@
          * Insert Post
          */
         public function insertPost($idt){
-            $user = filter_input(INPUT_POST, "user_id", FILTER_SANITIZE_NUMBER_INT); // Session
+            $user = Session::getUser()->getId();
             $texte = filter_input(INPUT_POST, "description", FILTER_UNSAFE_RAW);
 
             $manPost = new PostManager();
@@ -105,12 +106,30 @@
          * Delete Post
          */
         public function deleteTopic($idt){  
-            $manPost = new PostManager();
-            $manPost->dropPostsInTopic($idt);
-
-            $manTopic = new TopicManager();
-            $manTopic->dropTopic($idt);
+            if(Session::isAdmin()){
+                $manPost = new PostManager();
+                $manPost->dropPostsInTopic($idt);
+    
+                $manTopic = new TopicManager();
+                $manTopic->dropTopic($idt);
+            }
             
             Router::redirectTo("forum", "allTopics");
+        }
+
+        
+        /**
+         * Show userInfo
+         */
+        public function userInfo($id){
+            $manUser = new UserManager();
+            $user = $manUser->findOneById($id);
+
+            return [
+                "view" => "forum/formUser.php",
+                "data" => [
+                    "user" => $user,
+                ],
+            ];
         }
     }

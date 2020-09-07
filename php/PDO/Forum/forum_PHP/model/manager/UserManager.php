@@ -46,14 +46,26 @@
                 "username" => strtolower($username),
                 "email" => $email,
                 "password" => password_hash($password, PASSWORD_ARGON2I),
-            ]);
-        }
-
-        public function logUserIn($user){
+                ]);
+            }
+            
+        public function getAuthInfo($user){
             $sql = "SELECT id, password FROM user WHERE email = :user OR username = :user";
             
             return self::select($sql, [
                 "user" => $user,
             ], false);
+        }
+
+        public function getUserInfo($id){
+            $sql = "SELECT id, username, email, role FROM user WHERE id = :id";
+            
+            return self::getOneOrNullResult(
+                self::select($sql, 
+                    ["id" => $id], 
+                    false
+                ), 
+                self::$classname
+            );
         }
     }

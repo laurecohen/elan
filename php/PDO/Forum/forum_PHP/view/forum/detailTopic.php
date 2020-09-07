@@ -5,11 +5,12 @@
 
 <ul>
     <li>Ajouté le <?= $topic->getCreationDate() ?> par <?= $topic->getUser() ?></li>
-    <?= $topic->getClosed() === '1' ? '<li>Verrouillé</li>' : '' ?>
-    <?= $topic->getResolved() === '1' ? '<li>Résolu</li>' : '' ?>
+    <?= $topic->getClosed() == 1 ? '<li>Verrouillé</li>' : '' ?>
+    <?= $topic->getResolved() == 1 ? '<li>Résolu</li>' : '' ?>
     <li><?= $topic->getNbReponses() ?> réponses</li>
-    <li><a class="uk-text-danger" href="?ctrl=forum&method=deleteTopic&id=<?= $topic->getId() ?>">Supprimer</a></li>
-
+    <?php if(App\Session::isAdmin()) : ?>
+        <li><a class="uk-button uk-button-danger" href="?ctrl=forum&method=deleteTopic&id=<?= $topic->getId() ?>">Supprimer</a></li>
+    <?php endif; ?>
     <?php foreach ($data['posts'] as $post) : ?>
         <ul>
             <li>Id du post : <?= $post->getId() ?></li>
@@ -19,12 +20,10 @@
     <?php endforeach; ?>
 </ul>
 
+<?php if(App\Session::hasUser() && $topic->getClosed() == 0) : ?>
 <div>
     <div class="uk-card uk-card-default uk-card-body">
         <form action="?ctrl=forum&method=insertPost&id=<?= $topic->getId() ?>" method="POST">
-            <label for="user_id">Votre nom (id)</label>
-            <input class="uk-input uk-margin-bottom" type="text" name="user_id" id="user_id" required>
-
             <label for="description">Votre réponse</label>
             <textarea type="text" name="description" id="description" placeholder="Votre message" required></textarea>
 
@@ -32,3 +31,4 @@
         </form>
     </div>
 </div>
+<?php endif; ?>

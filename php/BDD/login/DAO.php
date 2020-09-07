@@ -6,7 +6,7 @@
     {
         try{
             $user = "root";
-            $pass = "root";
+            $pass = "";
             $options = [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             ];

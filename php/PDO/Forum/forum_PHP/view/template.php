@@ -9,14 +9,14 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.4.6/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.4.6/dist/js/uikit-icons.min.js"></script>
     <!-- TinyMCE -->
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/jtt4ldp5prwz5oh4r80swyigzmwuewsv87ysvoju3few86zf/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>tinymce.init({
         selector:'textarea#description',
         setup: function (editor) {
             editor.on('change', function () {
                 tinymce.triggerSave();
-        });
-    }
+            });
+        }   
     });</script>
     
     <link rel="stylesheet" href="<?= CSS_PATH ?>style.css">
@@ -29,20 +29,25 @@
             <ul class="uk-navbar-nav">
                 <li><a href="?ctrl=home&method=index"><span uk-icon='home'></span>&nbsp;Accueil</a></li>
                 <li><a href="?ctrl=forum&method=allTopics"><span uk-icon='star'></span>&nbsp;Sujets</a></li>
+                <!--<div class="uk-navbar-item">-->
                 <?php
-                    if(App\Session::getUser() === null){
+                    if(!App\Session::hasUser()){
                         ?>
-                        <li><a href="?ctrl=security&method=login">Connexion</a></li>
-                        <li><a href="">Inscription</a></li>
+                        <div class="uk-navbar-item">
+                            <li><a class="uk-button uk-button-primary" href="?ctrl=security&method=login">Connexion</a></li>
+                            <li><a class="uk-button uk-button-primary uk-margin-left" href="?ctrl=security&method=register">Inscription</a></li>
+                        </div>
                         <?php
-                    }
-                    else{
+                    } else {
                         ?>
-                        BIENVENUE <?= App\Session::getUser()->getUsername() ?>
-                        <li><a href="">Déconnexion</a></li>
+                        <li><a href="?ctrl=forum&method=userInfo&id=<?= App\Session::getUser()->getId() ?>"><span uk-icon='user'></span>&nbsp;<?= ucfirst(App\Session::getUser()->getUsername()) ?></a></li>
+                        <div class="uk-navbar-item">
+                            <li><a class="uk-button uk-button-primary uk-margin-left" href="?ctrl=security&method=logout">Déconnexion</a></li>
+                        </div>
                         <?php
                     }
                 ?>
+                <!--</div>-->
             </ul>
         </div>
     </nav>

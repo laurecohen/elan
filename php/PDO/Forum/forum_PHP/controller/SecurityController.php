@@ -28,6 +28,15 @@
         }
 
         /**
+         * Se déconnecter
+         */
+        public function logout(){
+            Session::deconnect();
+            Session::addMessage("success", "Vous êtes correctement déconnecté(e), à bientôt !");
+            Router::redirectTo("home", "index");
+        }
+
+        /**
          * Ajouter un nouvel utilisateur
          */
         public function insertUser(){
@@ -39,46 +48,65 @@
             $manUser = new UserManager();
             $users = $manUser->findAll();
 
+            $names = [];
+            $mails = [];
+
             foreach($users as $u){
                 $name = $u->getUsername();
+                $mail = $u->getEmail();
+
+                $names[] = $name;
+                $mails[] = $mail;
             }
 
-            if($username && ($username !== $name) && $email && $pass1){
-                if($pass1 == $pass2){
-                    $user = $manUser->createUser($username, $email, $pass1);
+            if($username && $email && $pass1 && $pass2){
+                if(!in_array($username, $names)){
+                    if(!in_array($email, $mails)){
+                        if($pass1 == $pass2){
+                            $user = $manUser->createUser($username, $email, $pass1);
 
-                    return [
-                        "view" => "security/login.php",
-                        "data" => [
-                            "user" => $user,
-                        ]
-                    ];
-                } else var_dump("Les mots de passe ne correspondent pas !");
-            } else var_dump("Vous devez remplir TOUS les champs obligatoires !");
+                            return [
+                                "view" => "security/login.php",
+                                "data" => [
+                                    "user" => $user,
+                                ]
+                            ];
+                        } else Session::addMessage("error", "Les mots de passe ne correspondent pas.");
+                    } else Session::addMessage("error", "L'email est déjà utilisé.");
+                } else Session::addMessage("error", "Le pseudo est déjà utilisé.");
+            } else Session::addMessage("error", "Tous les champs doivent être remplis.");
+
+            return [
+                "view" => "security/register.php",
+            ];
         }
 
         /**
          * Connecter un utilisateur
          */
         public function connectUser(){
-            $login = filter_input(INPUT_POST, 'login', FILTER_SANITIZE_STRING);
-            $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+            $login = filter_input(INPUT_POST, 'login_field', FILTER_SANITIZE_STRING);
+            $password = filter_input(INPUT_POST, 'password_field', FILTER_SANITIZE_STRING);
             
             if($login && $password){
                 $manUser = new UserManager();
-                $userpass = $manUser->logUserIn($login);
+                $authInfo = $manUser->getAuthInfo($login);
+                // getUserInfo() : Fetch user data without password
+                $user = $manUser->getUserInfo($authInfo['id']);
 
-                if(password_verify($password, $userpass['password'])){
-                    //TODO = modif findOneById en Find FOr Session
-                    $u = $manUser->findOneById($userpass['id']);
-                    Session::addUser($u);
-                    Session::addMessage("success", "L'utilisateur ".$u->getUsername()." est bien connecté(e) !");
+                if(password_verify($password, $authInfo['password'])){
+                    Session::addUser($user);
+                    Session::addMessage("success", "L'utilisateur ".$user->getUsername()." est bien connecté(e) !");
                     Router::redirectTo("forum", "allTopics");
-        
-                } else {
-                    Session::addMessage("error", "L'identifiant ou le mot de passe est erroné.");
-                    Router::redirectTo("security", "login");
-                }
+                    
+                } else Session::addMessage("error", "L'identifiant ou le mot de passe est erroné.");
+
+                return [
+                    "view" => "security/login.php",
+                    "data" => [
+                        "user" => $user,
+                    ]
+                ];
             }
         }        
     }
