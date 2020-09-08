@@ -52,4 +52,9 @@
             $stmt = self::$connection->prepare($sql);
             return $stmt->execute($params);
         }
+
+        protected static function update($sql, $params = null){
+            $stmt = self::$connection->prepare($sql);
+            return $stmt->execute($params);
+        }
     }

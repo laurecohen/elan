@@ -39,6 +39,21 @@
             );
         }
 
+        public function findOneByCredentials($username, $email){
+            $sql = "SELECT id
+                        FROM user 
+                        WHERE username = :username
+                        OR email = :email";
+
+            return self::select($sql, 
+                    [
+                        'username' => $username,
+                        'email' => $email
+                    ], 
+                    false
+                );
+        }
+
         public function createUser($username, $email, $password){
             $sql = "INSERT INTO user(username, email, password) VALUES(:username, :email, :password);";
             
@@ -46,8 +61,8 @@
                 "username" => strtolower($username),
                 "email" => $email,
                 "password" => password_hash($password, PASSWORD_ARGON2I),
-                ]);
-            }
+            ]);
+        }
             
         public function getAuthInfo($user){
             $sql = "SELECT id, password FROM user WHERE email = :user OR username = :user";
@@ -67,5 +82,17 @@
                 ), 
                 self::$classname
             );
+        }
+
+        public function updateUser($id, $username, $email){
+            $sql = "UPDATE user SET username = :username, email = :email WHERE id = :id";
+            
+            self::update($sql, [
+                "id" => $id,
+                "username" => $username,
+                "email" => $email,
+            ]);
+
+            return $this->getUserInfo($id);
         }
     }

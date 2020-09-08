@@ -7,7 +7,6 @@
 		private $id;
 		private $username;
 		private $email;
-		private $password;
 		private $role;
 		private $creationdate;
 		
@@ -40,14 +39,6 @@
 		public function getEmail()
 		{
 			return $this->email;
-		}
-
-		/**
-		 * Get the value of password
-		 */ 
-		public function getPassword()
-		{
-			return $this->password;
 		}
 
 		/**
@@ -104,18 +95,6 @@
 		}
 
 		/**
-		 * Set the value of password
-		 *
-		 * @return  self
-		 */ 
-		public function setPassword($password)
-		{
-			$this->password = $password;
-
-			return $this;
-		}
-
-		/**
 		 * Set the value of role
 		 *
 		 * @return  self
@@ -135,7 +114,7 @@
 		public function setCreationdate($creationdate)
 		{
 			$this->creationdate = $creationdate;
-
+			// $this->membredepuisle = ...
 			return $this;
 		}
 

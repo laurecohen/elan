@@ -116,20 +116,4 @@ class ForumController {
             
             Router::redirectTo("forum", "allTopics");
         }
-
-        
-        /**
-         * Show userInfo
-         */
-        public function userInfo($id){
-            $manUser = new UserManager();
-            $user = $manUser->findOneById($id);
-
-            return [
-                "view" => "forum/formUser.php",
-                "data" => [
-                    "user" => $user,
-                ],
-            ];
-        }
     }

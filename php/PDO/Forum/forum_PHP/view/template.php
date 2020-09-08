@@ -40,7 +40,7 @@
                         <?php
                     } else {
                         ?>
-                        <li><a href="?ctrl=forum&method=userInfo&id=<?= App\Session::getUser()->getId() ?>"><span uk-icon='user'></span>&nbsp;<?= ucfirst(App\Session::getUser()->getUsername()) ?></a></li>
+                        <li><a href="?ctrl=security&method=showProfile"><span uk-icon='user'></span>&nbsp;<?= ucfirst(App\Session::getUser()->getUsername()) ?></a></li>
                         <div class="uk-navbar-item">
                             <li><a class="uk-button uk-button-primary uk-margin-left" href="?ctrl=security&method=logout">Déconnexion</a></li>
                         </div>

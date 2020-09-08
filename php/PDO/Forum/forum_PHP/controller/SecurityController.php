@@ -46,25 +46,14 @@
             $pass2 = filter_input(INPUT_POST, "pass2", FILTER_SANITIZE_STRING);
             
             $manUser = new UserManager();
-            $users = $manUser->findAll();
-
-            $names = [];
-            $mails = [];
-
-            foreach($users as $u){
-                $name = $u->getUsername();
-                $mail = $u->getEmail();
-
-                $names[] = $name;
-                $mails[] = $mail;
-            }
 
             if($username && $email && $pass1 && $pass2){
-                if(!in_array($username, $names)){
-                    if(!in_array($email, $mails)){
+                if(!$manUser->findOneByCredentials($username, null)){
+                    if(!$manUser->findOneByCredentials(null, $email)){
                         if($pass1 == $pass2){
                             $user = $manUser->createUser($username, $email, $pass1);
-
+                            Session::addMessage("success", "Votre compte a été créé avec succès, vous pouvez vous connecter.");
+                
                             return [
                                 "view" => "security/login.php",
                                 "data" => [
@@ -72,8 +61,8 @@
                                 ]
                             ];
                         } else Session::addMessage("error", "Les mots de passe ne correspondent pas.");
-                    } else Session::addMessage("error", "L'email est déjà utilisé.");
-                } else Session::addMessage("error", "Le pseudo est déjà utilisé.");
+                    } else Session::addMessage("error", "L'email ".$email." est déjà utilisé.");
+                } else Session::addMessage("error", "Le pseudo ".$username." est déjà utilisé.");
             } else Session::addMessage("error", "Tous les champs doivent être remplis.");
 
             return [
@@ -108,5 +97,56 @@
                     ]
                 ];
             }
-        }        
+        }      
+        
+        /**
+         * Show User Profile
+         */
+        public function showProfile(){
+            if(!Session::hasUser()){
+                Router::redirectTo("home", "index");
+            }
+
+            return [
+                "view" => "forum/formUser.php",
+            ];
+        }
+
+        /** 
+         * Edit User Profile
+         */
+        public function editProfile(){
+            if(!Session::hasUser()){
+                Router::redirectTo("home", "index");
+            }
+
+            $id = Session::getUser()->getId();
+            $username = filter_input(INPUT_POST, 'username_field', FILTER_VALIDATE_REGEXP, ["options" => ["regexp" => "/^[a-zA-Z0-9]{4,32}/"]]);
+            $email = filter_input(INPUT_POST, "email__field", FILTER_SANITIZE_EMAIL);
+            $pass1 = filter_input(INPUT_POST, "pass1", FILTER_SANITIZE_STRING);
+            $pass2 = filter_input(INPUT_POST, "pass2", FILTER_SANITIZE_STRING);
+            
+            $manUser = new UserManager();
+            $user = Session::getUser();
+            
+            if($username && $email){
+                if($username == $user->getUsername() || !$manUser->findOneByCredentials($username, null)){
+                    if($email == $user->getEmail() || !$manUser->findOneByCredentials(null, $email)){
+                        $user = $manUser->updateUser($id, $username, $email);
+                        Session::addUser($user);
+
+                        if($pass1 || $pass2){
+                            if($pass1 && $pass2){
+                                if(password_verify($pass1, $manUser->getAuthInfo(Session::getUser()->getUsername())['password'])){
+                                    // TODO: update mdp in $manUser + hash
+                                    Session::addMessage("success", "Votre profil a été enregistré !");
+                                } else Session::addMessage("error", "Le mot de passe est invalide.");
+                            }
+                        } else Session::addMessage("success", "Votre profil a été enregistré !");
+                    } else Session::addMessage("error", "L'email ".$email." est déjà utilisé.");
+                } else Session::addMessage("error", "Le pseudo ".$username." est déjà utilisé.");
+            } else Session::addMessage("error", "Tous les champs doivent être remplis.");
+
+            Router::redirectTo("security", "showProfile");
+        }
     }

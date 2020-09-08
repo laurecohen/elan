@@ -31,7 +31,7 @@
             if(isset($get['method']) && method_exists($ctrl, $get['method'])){
                 // $method = allTopics
                 $method = $get['method'];
-            }
+            } else $ctrl = new HomeController();
             
             // ForumController->allTopics();
             // ForumController->findTopic($id)
