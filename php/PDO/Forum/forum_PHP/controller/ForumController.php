@@ -63,8 +63,9 @@ class ForumController {
          * Nouveau topic (Form)
          */
         public function addTopic(){
+            // TODO = if hasUser...
             return [
-                "view" => "forum/formTopic.php",
+                "view" => "forum/formAddTopic.php",
                 "titrePage" => "FORUM | Nouveau Sujet"
             ];
         }
@@ -73,6 +74,7 @@ class ForumController {
          * Insert Topic
          */
         public function insertTopic(){
+            // TODO = if hasUser...
             $title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_STRING);
             $user = Session::getUser()->getId();
 
@@ -93,6 +95,7 @@ class ForumController {
          * Insert Post
          */
         public function insertPost($idt){
+            // TODO = if hasUser...
             $user = Session::getUser()->getId();
             $texte = filter_input(INPUT_POST, "description", FILTER_UNSAFE_RAW);
 
@@ -103,17 +106,60 @@ class ForumController {
         }
 
         /**
-         * Delete Post
+         * Delete Topic and all posts in topic
          */
-        public function deleteTopic($idt){  
-            if(Session::isAdmin()){
+        public function deleteTopic($idt){
+            $manTopic = new TopicManager();
+            $user = $manTopic->findOneById($idt)->getUser()->getId();
+
+            if(Session::isAdmin() || Session::getUser()->getId() === $user){
                 $manPost = new PostManager();
                 $manPost->dropPostsInTopic($idt);
-    
-                $manTopic = new TopicManager();
                 $manTopic->dropTopic($idt);
             }
             
             Router::redirectTo("forum", "allTopics");
+        }
+
+        /**
+         * Form Edit Topic
+         */
+        public function formEditTopic($idt){
+            $manTopic = new TopicManager();
+            $topic = $manTopic->findOneById($idt);
+            $user = $topic->getUser()->getId();
+            
+            if(Session::isAdmin() || Session::getUser()->getId() === $user){
+                $manPost = new PostManager();
+
+                return [
+                    "view" => "forum/formEditTopic.php",
+                    "data" => [
+                        "topic" => $topic,
+                        "firstPost" => $manPost->getFirstByTopic($topic->getId())
+                    ],
+                    "titrePage" => "FORUM | Nouveau Sujet"
+                ];
+            }
+            
+            Router::redirectTo("forum", "allTopics");
+        }
+
+        /**
+         * Edit Topic
+         */
+        public function editTopic($idt){
+            $title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_STRING);
+            // get first post
+            // edit post
+            var_dump($idt, $title);
+        }
+
+        /**
+         * Edit Post
+         */
+        public function editPost($idt){
+            $title = filter_input(INPUT_POST, "title", FILTER_SANITIZE_STRING);
+            var_dump($idt, $title);
         }
     }

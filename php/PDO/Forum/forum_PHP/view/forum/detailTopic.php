@@ -8,16 +8,21 @@
     <?= $topic->getClosed() == 1 ? '<li>Verrouillé</li>' : '' ?>
     <?= $topic->getResolved() == 1 ? '<li>Résolu</li>' : '' ?>
     <li><?= $topic->getNbReponses() ?> réponses</li>
-    <?php if(App\Session::isAdmin()) : ?>
-        <li><a class="uk-button uk-button-danger" href="?ctrl=forum&method=deleteTopic&id=<?= $topic->getId() ?>">Supprimer</a></li>
-    <?php endif; ?>
     <?php foreach ($data['posts'] as $post) : ?>
-        <ul>
-            <li>Id du post : <?= $post->getId() ?></li>
-            <li>Ajouté le <?= $post->getCreationDate() ?> par <?= $post->getUser() ?></li>
-            <li>Texte : <?= $post->getTexte() ?></li>
-        </ul>
-    <?php endforeach; ?>
+        <li>
+            <ul>
+                <li>Id du post : <?= $post->getId() ?></li>
+                <li>Ajouté le <?= $post->getCreationDate() ?> par <?= $post->getUser() ?></li>
+                <li>Texte : <?= $post->getTexte() ?></li>
+            </ul>
+        </li>
+    <?php if(App\Session::isAdmin() || App\Session::getUser()->getId() === $topic->getUser()->getId()) : ?>
+        <li>
+        <a class="uk-button uk-button-default" href="?ctrl=forum&method=formEditTopic&id=<?= $topic->getId() ?>">Éditer le topic</a>
+            <a class="uk-button uk-button-danger" href="?ctrl=forum&method=deleteTopic&id=<?= $topic->getId() ?>">Supprimer le topic</a>
+        </li>
+    <?php endif; ?>
+        <?php endforeach; ?>
 </ul>
 
 <?php if(App\Session::hasUser() && $topic->getClosed() == 0) : ?>

@@ -16,8 +16,11 @@
         <li><?= $topic->getNbReponses() ?> réponses</li>
         <?= $topic->getClosed() === '1' ? '<li>Verrouillé</li>' : '' ?>
         <?= $topic->getResolved() === '1' ? '<li>Résolu</li>' : '' ?>
-        <?php if(App\Session::isAdmin()) : ?>
-            <li><a class="uk-button uk-button-danger" href="?ctrl=forum&method=deleteTopic&id=<?= $topic->getId() ?>">Supprimer</a></li>
+        <?php if(App\Session::isAdmin() || App\Session::getUser()->getId() === $topic->getUser()->getId()) : ?>
+            <li>
+                <a class="uk-button uk-button-default" href="?ctrl=forum&method=formEditTopic&id=<?= $topic->getId() ?>">Éditer le topic</a>
+                <a class="uk-button uk-button-danger" href="?ctrl=forum&method=deleteTopic&id=<?= $topic->getId() ?>">Supprimer le topic</a>
+            </li>
         <?php endif; ?>
     </ul>
 </div>

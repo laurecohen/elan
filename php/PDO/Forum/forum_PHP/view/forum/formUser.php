@@ -5,7 +5,7 @@
     <input class="uk-input uk-margin-bottom" type="text" name="username_field" id="username_field" value="<?= App\Session::getUser()->getUserName() ?>" required>
     
     <label for="email__field">Email</label>
-    <input class="uk-input uk-margin-bottom" type="email" name="email__field" id="email__field" value="<?= App\Session::getUser()->getEmail() ?>" required>
+    <input class="uk-input uk-margin-bottom" type="email" name="email_field" id="email_field" value="<?= App\Session::getUser()->getEmail() ?>" required>
     
     <fieldset class="uk-fieldset">
         <legend class="uk-legend">Modifiez votre mot de passe</legend>

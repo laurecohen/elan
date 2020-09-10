@@ -122,7 +122,7 @@
 
             $id = Session::getUser()->getId();
             $username = filter_input(INPUT_POST, 'username_field', FILTER_VALIDATE_REGEXP, ["options" => ["regexp" => "/^[a-zA-Z0-9]{4,32}/"]]);
-            $email = filter_input(INPUT_POST, "email__field", FILTER_SANITIZE_EMAIL);
+            $email = filter_input(INPUT_POST, "email_field", FILTER_SANITIZE_EMAIL);
             $pass1 = filter_input(INPUT_POST, "pass1", FILTER_SANITIZE_STRING);
             $pass2 = filter_input(INPUT_POST, "pass2", FILTER_SANITIZE_STRING);
             
@@ -133,16 +133,17 @@
                 if($username == $user->getUsername() || !$manUser->findOneByCredentials($username, null)){
                     if($email == $user->getEmail() || !$manUser->findOneByCredentials(null, $email)){
                         $user = $manUser->updateUser($id, $username, $email);
-                        Session::addUser($user);
-
+                        
                         if($pass1 || $pass2){
                             if($pass1 && $pass2){
                                 if(password_verify($pass1, $manUser->getAuthInfo(Session::getUser()->getUsername())['password'])){
-                                    // TODO: update mdp in $manUser + hash
+                                    $manUser->updatePassword($pass2);
                                     Session::addMessage("success", "Votre profil a été enregistré !");
                                 } else Session::addMessage("error", "Le mot de passe est invalide.");
                             }
                         } else Session::addMessage("success", "Votre profil a été enregistré !");
+
+                        Session::addUser($user);
                     } else Session::addMessage("error", "L'email ".$email." est déjà utilisé.");
                 } else Session::addMessage("error", "Le pseudo ".$username." est déjà utilisé.");
             } else Session::addMessage("error", "Tous les champs doivent être remplis.");

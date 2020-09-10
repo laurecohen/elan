@@ -2,8 +2,9 @@
     namespace Model\Manager;
     
     use App\AbstractManager;
-    
-    class UserManager extends AbstractManager
+use App\Session;
+
+class UserManager extends AbstractManager
     {
         private static $classname = "Model\Entity\User";
 
@@ -91,6 +92,18 @@
                 "id" => $id,
                 "username" => $username,
                 "email" => $email,
+            ]);
+
+            return $this->getUserInfo($id);
+        }
+
+        public function updatePassword($password){
+            $id = Session::getUser()->getId();
+            $sql = "UPDATE user SET password = :password WHERE id = :id";
+
+            self::update($sql, [
+                "id" => $id,
+                "password" => password_hash($password, PASSWORD_ARGON2I),
             ]);
 
             return $this->getUserInfo($id);
